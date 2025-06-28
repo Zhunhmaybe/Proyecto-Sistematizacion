@@ -17,14 +17,26 @@ Route::get('/', function () {
     return view('Inicio');
 });
 
-Route::get('/Academia', function(){
+Route::get('/Academia', function () {
     return view('Academia');
 });
 
-Route::get('/Servicios', function(){
+Route::get('/Servicios', function () {
     return view('Servicios');
 });
 
-Route::get('/Informacion', function(){
-    return view('Informacion');
+Route::get('/MisionVision', function () {
+    return view('MisionVision');
+});
+Route::get('/Ingles', function () {
+    return view('Ingles');
+});
+
+Route::get('/Carreras/{nombre}', function ($nombre) {
+    return view('Carreras.' . $nombre);
+});
+
+
+Route::get('/Inscripciones/{carrera}', function ($carrera) {
+    return view('Inscripciones.formulario' , ['carrera'=>ucfirst($carrera)]);
 });

@@ -8,16 +8,33 @@
     <title>Información</title>
 </head>
 <body>
-     <nav class="navbar">
+<nav class="navbar">
   <div class="navbar-container">
     <div class="logo">
       <img src="{{asset('Imagenes/TUN.jpeg')}}" alt="TUN">
     </div>
     <ul class="nav-links">
-    <li><a href="/" class="nav-link">Inicio</a></li>
-    <li><a href="/Academia" class="nav-link">Academia</a></li>
-    <li><a href="/Servicios" class="nav-link">Servicios</a></li>
-    <li><a href="/Informacion" class="nav-link">Información</a></li>
+      <li><a href="/" class="nav-link">Inicio</a></li>
+
+      <!-- Dropdown Academia -->
+      <li class="dropdown">
+        <a href="/Academia" class="nav-link">Academia ▾</a>
+        <ul class="dropdown-menu">
+        <li><a href="/Academia" class="nav-link">Facultades</a></li>
+        <li><a href="/Ingles" class="nav-link">Ingles</a></li>
+        </ul>
+      </li>
+
+      <!-- Dropdown Información -->
+      <li class="dropdown">
+        <a href="/Informacion" class="nav-link">Información ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="/Informacion/mision" class="nav-link">Misión y Visión</a></li>
+          <li><a href="/Informacion/noticias" class="nav-link">Noticias</a></li>
+        </ul>
+      </li>
+
+      <li><a href="/Servicios" class="nav-link">Servicios</a></li>
     </ul>
   </div>
 </nav>
@@ -36,9 +53,6 @@
         Ser una universidad líder en innovación tecnológica y formación académica, reconocida nacional e internacionalmente por su aporte a la transformación social y científica.
       </p>
     </div>
-  </div>
-  <div class="frase-tun">
-    <blockquote>"Donde el conocimiento se convierte en progreso."</blockquote>
   </div>
 </section>
 

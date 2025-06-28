@@ -15,11 +15,29 @@
 <nav class="navbar">
   <ul class="nav-center">
     <li><a href="/" class="nav-link">Inicio</a></li>
-    <li><a href="/Academia" class="nav-link">Academia</a></li>
+
+    <!-- Menú desplegable Academia -->
+    <li class="dropdown">
+      <a href="/Academia" class="nav-link">Academia ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/Academia" class="nav-link">Facultades</a></li>
+        <li><a href="/Academia/Administracion" class="nav-link">Ingles</a></li>
+      </ul>
+    </li>
+
+    <!-- Menú desplegable Información -->
+    <li class="dropdown">
+      <a href="/Informacion" class="nav-link">Información ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/MisionVision" class="nav-link">Misión y Visión</a></li>
+        <li><a href="/Informacion/Noticias" class="nav-link">Noticias</a></li>
+      </ul>
+    </li>
+
     <li><a href="/Servicios" class="nav-link">Servicios</a></li>
-    <li><a href="/Informacion" class="nav-link">Información</a></li>
   </ul>
 </nav>
+
 <div class="carousel-container">
   <div class="arrow" onclick="cambiarCurso(-1)">&#10094;</div>
 
@@ -137,39 +155,44 @@
 </footer>
 
 <script>
-  const cursos = [
-    {
-      titulo: "Ingeniería en Sistemas",
-      descripcion: "Aprende desarrollo de software, redes y más.",
-      imagen: "/Imagenes/Software.jpg"
-    },
-    {
-      titulo: "Administración de Empresas",
-      descripcion: "Domina la gestión moderna empresarial.",
-      imagen: "/Imagenes/Empresas.jpg"
-    },
-    {
-      titulo: "Diseño Gráfico",
-      descripcion: "Creatividad digital con herramientas profesionales.",
-      imagen: "/Imagenes/Disenio.jpg"
-    },
-    {
-      titulo: "Enfermería",
-      descripcion: "Cuidar con ciencia y vocación.",
-      imagen: "/Imagenes/Enfermeria.png"
-    }
-  ];
+const cursos = [
+  {
+    titulo: "Buscas Cupo Universitario?",
+    descripcion: "Nuestra Universidad te ofrece varias carreras que puedes elegir.",
+    imagen: "/Imagenes/Software.jpg",
+    enlace: "/Academia"
+  },
+  {
+    titulo: "¿Quieres ser Profesor?",
+    descripcion: "Si dominas algún área de aprendizaje, no dudes en pedir una entrevista.",
+    imagen: "/Imagenes/Empresas.jpg",
+    enlace: "/no hay"
+  },
+  {
+    titulo: "Cursos de Inglés",
+    descripcion: "Te garantizamos todos los niveles de inglés para que te sirvan a futuro.",
+    imagen: "/Imagenes/Disenio.jpg",
+    enlace: "/Ingles"
+  },
+  {
+    titulo: "Campus",
+    descripcion: "Nuestro increíble campus universitario.",
+    imagen: "/Imagenes/Enfermeria.png",
+    enlace: "/campus"
+  }
+];
 
   let indice = 0;
 
-  function mostrarCurso(i) {
-    const curso = cursos[i];
-    document.getElementById('cursoActual').innerHTML = `
-      <img src="${curso.imagen}" alt="${curso.titulo}">
-      <h3>${curso.titulo}</h3>
-      <p>${curso.descripcion}</p>
-    `;
-  }
+function mostrarCurso(i) {
+  const curso = cursos[i];
+  document.getElementById('cursoActual').innerHTML = `
+    <img src="${curso.imagen}" alt="${curso.titulo}"">
+    <h3>${curso.titulo}</h3>
+    <p>${curso.descripcion}</p>
+    <a href="${curso.enlace}" class="curso-btn">Ver más</a>
+  `;
+}
 
   function cambiarCurso(direccion) {
     indice += direccion;

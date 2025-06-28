@@ -88,69 +88,69 @@
         display: block;
     }
 
-    /* --- Sección Facultades --- */
-    .facultades {
-        padding: 50px 20px;
-        background-color: #f9f9f9;
+    .niveles-ingles {
         text-align: center;
+        padding: 60px 20px;
+        background-color: #f9f9f9;
     }
 
-    .facultades h2 {
-        font-size: 28px;
+    .niveles-ingles h2 {
         color: #c00;
-        margin-bottom: 30px;
+        font-size: 2em;
+        margin-bottom: 10px;
     }
 
-    .facultades-grid {
+    .niveles-ingles p {
+        max-width: 600px;
+        margin: 0 auto 40px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .niveles-grid {
         display: flex;
-        justify-content: center;
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 20px;
+        justify-content: center;
     }
 
-    .facultad-box {
+    .nivel-box {
         background-color: white;
         border-left: 5px solid #c00;
-        border-radius: 8px;
-        padding: 25px 30px;
-        width: 300px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        width: 260px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         text-align: left;
-        transition: transform 0.3s;
     }
 
-    .facultad-box h3 {
-        margin-top: 0;
-        color: #333;
-        margin-bottom: 15px;
+    .nivel-box h3 {
+        color: #c00;
+        margin-bottom: 10px;
     }
 
-    .facultad-box ul {
-        padding-left: 20px;
-        margin: 0;
-    }
-
-    .facultad-box li {
-        margin-bottom: 8px;
+    .nivel-box p {
+        font-size: 14px;
         color: #444;
     }
+    .btn-inscripcion-container {
+  margin-top: 40px;
+}
 
-    .facultad-box:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    }
+.btn-inscripcion {
+  background-color: #c00;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
 
-    .facultad-box ul li a {
-        color: #c00;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
-
-    .facultad-box ul li a:hover {
-        color: #900;
-        text-decoration: underline;
-    }
+.btn-inscripcion:hover {
+  background-color: #900;
+}
 
     /* --- Footer general --- */
     .footer {

@@ -1,0 +1,45 @@
+.titulo-formulario {
+  text-align: center;
+  margin-top: 40px;
+  color: #c00;
+}
+
+form {
+  background: white;
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  margin-top: 25px;
+  background-color: #c00;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #900;
+}

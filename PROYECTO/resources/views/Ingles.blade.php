@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/Academia.css')}}">
-    <title>Academia</title>
+    <link rel="stylesheet" href="{{asset('css/Ingles.css')}}">
+    <title>Ingles</title>
 </head>
 <body>
-<nav class="navbar">
+    <nav class="navbar">
   <div class="navbar-container">
     <div class="logo">
       <img src="{{asset('Imagenes/TUN.jpeg')}}" alt="TUN">
@@ -38,33 +38,40 @@
     </ul>
   </div>
 </nav>
+ <section class="niveles-ingles">
+  <h2>Niveles de Inglés en TUN</h2>
+  <p>Conoce nuestro programa progresivo de aprendizaje de inglés, basado en el Marco Común Europeo.</p>
 
-<section class="facultades">
-  <h2>Nuestras Facultades</h2>
-  <div class="facultades-grid">
-    
-    <!-- Facultad 1 -->
-    <div class="facultad-box">
-      <h3>Facultad de Ingeniería</h3>
-      <ul>
-        <li><a href="/Carreras/Software">Ingeniería en Sistemas</a></li>
-        <li><a href="/carreras/ingenieria-civil">Ingeniería Civil</a></li>
-        <li><a href="/carreras/ingenieria-electronica">Ingeniería Electrónica</a></li>
-        <li><a href="/carreras/ingenieria-industrial">Ingeniería Industrial</a></li>
-      </ul>
+  <div class="niveles-grid">
+    <div class="nivel-box">
+      <h3>A1 - Básico</h3>
+      <p>Comprensión de frases simples, saludos y expresiones cotidianas.</p>
     </div>
-
-    <!-- Facultad 2 -->
-    <div class="facultad-box">
-      <h3>Facultad de Ciencias Administrativas</h3>
-      <ul>
-        <li><a href="/carreras/administracion">Administración de Empresas</a></li>
-        <li><a href="/carreras/contabilidad">Contabilidad y Auditoría</a></li>
-        <li><a href="/carreras/economia">Economía</a></li>
-        <li><a href="/carreras/marketing">Marketing</a></li>
-      </ul>
+    <div class="nivel-box">
+      <h3>A2 - Elemental</h3>
+      <p>Comunicación básica en situaciones habituales: familia, compras, trabajo.</p>
     </div>
+    <div class="nivel-box">
+      <h3>B1 - Intermedio</h3>
+      <p>Capacidad de mantener conversaciones simples y leer textos básicos.</p>
+    </div>
+    <div class="nivel-box">
+      <h3>B2 - Intermedio Alto</h3>
+      <p>Interacción fluida en temas académicos y profesionales.</p>
+    </div>
+    <div class="nivel-box">
+      <h3>C1 - Avanzado</h3>
+      <p>Comprensión profunda y expresión precisa en contextos complejos.</p>
+    </div>
+    <div class="nivel-box">
+      <h3>C2 - Experto</h3>
+      <p>Dominio total del idioma, similar al de un hablante nativo.</p>
+    </div>
+  </div>
 
+  <!-- Botón de inscripción -->
+  <div class="btn-inscripcion-container">
+    <a href="/Inscripciones/formulario" class="btn-inscripcion">Inscribirse al curso</a>
   </div>
 </section>
 
@@ -126,6 +133,5 @@
 
   </div>
 </footer>
-
 </body>
 </html>
