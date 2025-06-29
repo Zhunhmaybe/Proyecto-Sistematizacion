@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departamentos', function (Blueprint $table) {
-            $table->char('iddep', 10)->primary();
-            $table->char('idare', 10);
+            $table->char('iddep', 10)->primary();            
             $table->string('nombredep', 50);            
         });
     }

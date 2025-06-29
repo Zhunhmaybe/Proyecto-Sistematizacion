@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->char('idare', 10)->primary();
-            $table->string('nombre', 50);
             $table->string('iddep', 10);                    
+            $table->string('nombreare', 50);
             $table->foreign('iddep')->references('iddep')->on('departamentos')->onDelete('cascade');
         });
     }

@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('detallematriculas', function (Blueprint $table) {
             $table->char('iddet', 10)->primary();
             $table->char('idasi', 10);
-            $table->char('idmat', 10);
-            $table->char('idper', 10);
+            $table->char('idmat', 10);            
             $table->integer('detalledet');
             $table->foreign('idmat')->references('idmat')->on('matriculas')->onDelete('cascade');
             $table->foreign('idasi')->references('idasi')->on('asignaturas')->onDelete('cascade');            
