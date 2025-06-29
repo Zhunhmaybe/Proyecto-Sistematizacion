@@ -14,13 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pro_asi', function (Blueprint $table) {
-            $table->string('idpro', 10);
-            $table->string('idasi', 10);
-            $table->primary(['idpro', 'idasi']);
-            $table->foreign('idpro')->references('idpro')->on('profesores')
-                  ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('idasi')->references('idasi')->on('asignaturas')
-                  ->onUpdate('cascade')->onDelete('restrict');
+            $table->char('idpro', 10)->primary();
+            $table->char('idasi', 10);            
+            $table->char('idusu', 10);
+            $table->foreign('idasi')->references('idasi')->on('asignaturas')->onDelete('cascade');            
+            $table->foreign('idusu')->references('idusu')->on('usuarios')->onDelete('cascade');
         });
     }
 

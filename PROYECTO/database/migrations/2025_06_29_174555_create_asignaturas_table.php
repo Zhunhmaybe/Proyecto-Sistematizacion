@@ -14,16 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('asignaturas', function (Blueprint $table) {
-            $table->string('idasi', 10)->primary();
-            $table->string('idtit', 10);
-            $table->string('idniv', 10);
+            $table->char('idasi', 10)->primary();
+            $table->char('idtit',10);
+            $table->char('idniv', 10);
             $table->string('nombreasi', 50);
-            $table->smallInteger('teoricosasi');
-            $table->smallInteger('practicosasi');
-            $table->foreign('idtit')->references('idtit')->on('titulaciones')
-                  ->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('idniv')->references('idniv')->on('niveles')
-                  ->onUpdate('cascade')->onDelete('restrict');
+            $table->integer('teoricosasi')->default(123);
+            $table->integer('practicosasi')->default(123);
+            $table->foreign('idniv')->references('idniv')->on('niveles')->onDelete('cascade');
+            $table->foreign('idtit')->references('idtit')->on('titulaciones')->onDelete('cascade');
+
         });
     }
 

@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dias', function (Blueprint $table) {
-            $table->string('iddia', 10)->primary();
-            $table->string('nombredia', 20);
+        Schema::create('titulaciones', function (Blueprint $table) {
+            $table->char('idtit', 10)->primary();                        
+            $table->integer('detalletit')->default(100);
+            $table->integer('nivelestit')->default(2);        
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dias');
+        Schema::dropIfExists('titulaciones');
     }
 };

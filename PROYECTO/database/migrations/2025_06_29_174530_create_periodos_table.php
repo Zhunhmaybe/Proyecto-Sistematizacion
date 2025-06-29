@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('periodos', function (Blueprint $table) {
-            $table->string('idper', 10)->primary();
+            $table->char('idper', 10)->primary();
             $table->string('detalleper', 30);
             $table->date('inicioper');
             $table->date('finper');

@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('titulaciones', function (Blueprint $table) {
-            $table->string('idtit', 10)->primary();
-            $table->string('detalletit', 100);
-            $table->smallInteger('nivelestit');
+        Schema::create('areas', function (Blueprint $table) {
+            $table->char('idare', 10)->primary();
+            $table->string('nombre', 50);
+            $table->string('iddep', 10);                    
+            $table->foreign('iddep')->references('iddep')->on('departamentos')->onDelete('cascade');
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('titulaciones');
+        Schema::dropIfExists('areas');
     }
 };

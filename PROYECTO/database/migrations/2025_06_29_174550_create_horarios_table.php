@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('niveles', function (Blueprint $table) {
-            $table->string('idniv', 10)->primary();
-            $table->string('nombreniv', 30);
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->char('idhor', 10)->primary();
+            $table->time('horaini');
+            $table->time('horafin');
+            $table->char('iddia', 10);
+            $table->foreign('iddia')->references('iddia')->on('dias')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niveles');
+        Schema::dropIfExists('horarios');
     }
 };

@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estudiantes', function (Blueprint $table) {
-            $table->string('idest', 10)->primary();
-            $table->string('nombresest', 50);
-            $table->string('apellidosest', 50);
-            $table->string('direccionest', 100);
-            $table->string('mailest', 100);
-            $table->date('nacimientoest');
+        Schema::create('dias', function (Blueprint $table) {
+            $table->char('iddia', 10)->primary();
+            $table->string('nombredia', 20);
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estudiantes');
+        Schema::dropIfExists('dias');
     }
 };
