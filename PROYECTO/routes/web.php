@@ -14,5 +14,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Inicio');
+});
+
+Route::get('/Academia', function () {
+    return view('Academia');
+});
+
+Route::get('/Servicios', function () {
+    return view('Servicios');
+});
+
+Route::get('/MisionVision', function () {
+    return view('MisionVision');
+});
+Route::get('/Ingles', function () {
+    return view('Ingles');
+});
+
+Route::get('/Carreras/{nombre}', function ($nombre) {
+    return view('Carreras.' . $nombre);
+});
+
+
+Route::get('/Inscripciones/{carrera}', function ($carrera) {
+    return view('Inscripciones.formulario' , ['carrera'=>ucfirst($carrera)]);
 });
