@@ -10,11 +10,12 @@
         color: white;
         text-align: center;
         padding: 10px;
+        font-size: 14px;
     }
 
     /* --- Navbar centrado sin logo --- */
     .navbar {
-        background-color: #c00;
+        background-color: #890202;
         padding: 15px 0;
         position: sticky;
         top: 0;
@@ -66,7 +67,7 @@
     .dropdown-menu {
         display: none;
         position: absolute;
-        background-color: #c00;
+        background-color: #890202;
         list-style: none;
         padding: 10px 0;
         top: 100%;
@@ -107,7 +108,7 @@
 
     .arrow {
         font-size: 40px;
-        color: #c00;
+        color: #890202;
         cursor: pointer;
         user-select: none;
         padding: 10px;

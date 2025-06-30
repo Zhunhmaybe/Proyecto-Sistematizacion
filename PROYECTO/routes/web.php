@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,5 +39,10 @@ Route::get('/Carreras/{nombre}', function ($nombre) {
 
 
 Route::get('/Inscripciones/{carrera}', function ($carrera) {
-    return view('Inscripciones.formulario' , ['carrera'=>ucfirst($carrera)]);
+    return view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]);
 });
+
+Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
+Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');

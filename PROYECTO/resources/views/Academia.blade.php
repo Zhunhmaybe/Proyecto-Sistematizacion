@@ -48,9 +48,9 @@
       <h3>Facultad de Ingeniería</h3>
       <ul>
         <li><a href="/Carreras/Software">Ingeniería en Sistemas</a></li>
-        <li><a href="/carreras/ingenieria-civil">Ingeniería Civil</a></li>
-        <li><a href="/carreras/ingenieria-electronica">Ingeniería Electrónica</a></li>
-        <li><a href="/carreras/ingenieria-industrial">Ingeniería Industrial</a></li>
+        <li><a href="/Carreras/Civil">Ingeniería Civil</a></li>
+        <li><a href="/Carreras/ingenieria-electronica">Ingeniería Electrónica</a></li>
+        <li><a href="/Carreras/ingenieria-industrial">Ingeniería Industrial</a></li>
       </ul>
     </div>
 

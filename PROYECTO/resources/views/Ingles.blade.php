@@ -42,6 +42,11 @@
   <h2>Niveles de Inglés en TUN</h2>
   <p>Conoce nuestro programa progresivo de aprendizaje de inglés, basado en el Marco Común Europeo.</p>
 
+  <div class=Imagen>
+      <img src="{{asset('Imagenes/Ingles.jpg')}}" alt="Ingles">
+  </div>
+
+
   <div class="niveles-grid">
     <div class="nivel-box">
       <h3>A1 - Básico</h3>

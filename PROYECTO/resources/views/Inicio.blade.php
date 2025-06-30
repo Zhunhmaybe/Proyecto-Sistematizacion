@@ -21,7 +21,7 @@
       <a href="/Academia" class="nav-link">Academia ▾</a>
       <ul class="dropdown-menu">
         <li><a href="/Academia" class="nav-link">Facultades</a></li>
-        <li><a href="/Academia/Administracion" class="nav-link">Ingles</a></li>
+        <li><a href="/Ingles" class="nav-link">Ingles</a></li>
       </ul>
     </li>
 
@@ -51,7 +51,7 @@
 <section class="anuncio">
   <h2>¡Inscripciones Abiertas!</h2>
   <p>Estudia en la Universidad TUN. Postúlate hasta el <strong>15 de agosto de 2025</strong>.</p>
-  <a href="/inscripciones">Inscribirse ahora</a>
+  <a href="/Academia">Inscribirse ahora</a>
 </section>
 
 <!-- Modalidades -->
