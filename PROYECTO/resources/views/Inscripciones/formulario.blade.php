@@ -9,32 +9,40 @@
 </head>
 <body>
     <h2 class="titulo-formulario">Formulario de Inscripción - {{ $carrera }}</h2>
+ <h2 class="titulo-formulario">Formulario de Registro de Usuario</h2>
 
-<form action="/inscripcion/{{ strtolower($carrera) }}" method="POST">
-  @csrf
+    <form action="{{ route('usuarios.store') }}" method="POST">
+        @csrf
 
-  <label for="nombre">Nombre completo:</label>
-  <input type="text" name="nombre" required>
+        <label for="idusu">Cedula:</label>
+        <input type="text" name="idusu" maxlength="10" required>
 
-  <label for="cedula">Cédula:</label>
-  <input type="text" name="cedula" required>
+        <label for="nombredusu">Nombre:</label>
+        <input type="text" name="nombredusu" maxlength="50" required>
 
-  <label for="correo">Correo electrónico:</label>
-  <input type="email" name="correo" required>
+        <label for="apellidousu">Apellido:</label>
+        <input type="text" name="apellidousu" maxlength="50" required>
 
-  <label for="telefono">Teléfono:</label>
-  <input type="tel" name="telefono" required>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required>
 
-  <label for="nivel">Nivel al que desea aplicar:</label>
-  <select name="nivel" required>
-    <option value="1">Primer semestre</option>
-    <option value="2">Segundo semestre</option>
-    <option value="3">Tercero</option>
-    <option value="4">Cuarto</option>
-  </select>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" name="email" maxlength="100" required>
 
-  <button type="submit">Enviar inscripción</button>
-  
-</form>
+        <label for="fechanacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fechanacimiento" required>
+
+</select>
+        <label for="idrol">Rol:</label>
+        <select name="idrol" required>
+            <option value="0">Admin</option>
+            <option value="1">Docente</option>
+            <option value="2">Estudiante</option>
+        </select>
+
+        <button type="submit">Registrar</button>
+
+    </form>
+<a href="{{route('usuarios.index')}}">Usuarios</a>
 </body>
 </html>
