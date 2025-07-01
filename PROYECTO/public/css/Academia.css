@@ -1,0 +1,268 @@
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --- Navbar --- */
+    .navbar {
+        background-color: #c00;
+        color: white;
+        padding: 15px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .logo img {
+        width: 100px;
+        height: auto;
+        margin-left: -100px;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 10px 10px;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Dropdown general */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #c00;
+        padding: 10px 0;
+        list-style: none;
+        top: 100%;
+        left: 0;
+        min-width: 200px;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .dropdown-menu li a {
+        display: block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+        transition: background-color 0.3s;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mostrar el menú al hacer hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+
+    /* --- Sección Facultades --- */
+    .facultades {
+        padding: 50px 20px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .facultades h2 {
+        font-size: 28px;
+        color: #c00;
+        margin-bottom: 30px;
+    }
+
+    .facultades-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .facultad-box {
+        background-color: white;
+        border-left: 5px solid #c00;
+        border-radius: 8px;
+        padding: 25px 30px;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        text-align: left;
+        transition: transform 0.3s;
+    }
+
+    .facultad-box h3 {
+        margin-top: 0;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .facultad-box ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+
+    .facultad-box li {
+        margin-bottom: 8px;
+        color: #444;
+    }
+
+    .facultad-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .facultad-box ul li a {
+        color: #c00;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .facultad-box ul li a:hover {
+        color: #900;
+        text-decoration: underline;
+    }
+
+    /* --- Footer general --- */
+    .footer {
+        background-color: #000;
+        color: #fff;
+        padding: 40px 20px;
+        font-size: 14px;
+    }
+
+    .footer-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .footer-section {
+        flex: 1 1 250px;
+    }
+
+    .footer-section h3 {
+        color: #fff;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    .footer-section p {
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .red-letter {
+        color: #c00;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 8px;
+    }
+
+    .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+    }
+
+    .footer-links a:hover {
+        text-decoration: underline;
+    }
+
+    .contact-item {
+        margin-bottom: 10px;
+    }
+
+    .contact-item i {
+        color: #c00;
+        margin-right: 8px;
+    }
+
+    /* Redes sociales */
+    .social-icons {
+        margin-top: 10px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 18px;
+        color: #ccc;
+    }
+
+    .social-icons a:hover {
+        color: #fff;
+    }
+
+    /* Boletín informativo */
+    .boletin-item {
+        display: flex;
+        margin-bottom: 15px;
+    }
+
+    .fecha {
+        background-color: #c00;
+        color: white;
+        text-align: center;
+        width: 40px;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 5px 0;
+        margin-right: 10px;
+        line-height: 1.2;
+        border-radius: 3px;
+    }
+
+    .fecha span {
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .contenido p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .contenido small {
+        color: #aaa;
+        font-size: 12px;
+    }
