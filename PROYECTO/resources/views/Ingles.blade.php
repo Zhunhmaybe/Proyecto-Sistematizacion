@@ -16,24 +16,31 @@
     <ul class="nav-links">
       <li><a href="/" class="nav-link">Inicio</a></li>
 
-      <!-- Dropdown Academia -->
-      <li class="dropdown">
-        <a href="/Academia" class="nav-link">Academia ▾</a>
-        <ul class="dropdown-menu">
+    <!-- Menú desplegable Academia -->
+    <li class="dropdown">
+      <a class="nav-link">Academia ▾</a>
+      <ul class="dropdown-menu">
         <li><a href="/Academia" class="nav-link">Facultades</a></li>
         <li><a href="/Ingles" class="nav-link">Ingles</a></li>
-        </ul>
-      </li>
+      </ul>
+    </li>
 
-      <!-- Dropdown Información -->
-      <li class="dropdown">
-        <a href="/Informacion" class="nav-link">Información ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="/Informacion/mision" class="nav-link">Misión y Visión</a></li>
-          <li><a href="/Informacion/noticias" class="nav-link">Noticias</a></li>
-        </ul>
-      </li>
+    <!-- Menú desplegable Información -->
+    <li class="dropdown">
+      <a class="nav-link">Información ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/MisionVision" class="nav-link">Misión y Visión</a></li>
+        <li><a href="/Informacion/Noticias" class="nav-link">Noticias</a></li>
+      </ul>
+    </li>
 
+    <li class="dropdown">
+      <a class="nav-link">Sesion ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/Estudiante" class="nav-link">Estudiante</a></li>
+        <li><a href="/Docente" class="nav-link">Docente</a></li>
+      </ul>
+    </li>
       <li><a href="/Servicios" class="nav-link">Servicios</a></li>
     </ul>
   </div>

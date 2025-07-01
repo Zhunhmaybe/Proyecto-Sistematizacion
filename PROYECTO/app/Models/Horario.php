@@ -4,26 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Usuario;
+use App\Models\Dia;
 
-class Rol extends Model
+class Horario extends Model
 {
     use HasFactory;
-
-    protected $table = 'roles';
-    protected $primaryKey = 'idrol';
+    protected $table = 'horarios';
+    protected $primaryKey = 'idhor';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
 
     protected $fillable = [
-        'idrol',
-        'detalle',
+        'idhor',
+        'horaini',
+        'horafin',
+        'iddia',
     ];
 
-    // Relación: un rol tiene muchos usuarios
-    public function usuarios()
+    public function dia()
     {
-        return $this->hasMany(Usuario::class, 'idrol');
+        return $this->belongsTo(Dia::class, 'iddia');
     }
 }

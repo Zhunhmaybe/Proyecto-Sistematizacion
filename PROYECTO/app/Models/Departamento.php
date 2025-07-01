@@ -4,21 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Area;
 
 class Departamento extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'iddep'; // Porque no es "id"
-    public $incrementing = false;    // Porque es char
-    protected $keyType = 'string';   // Porque es tipo char
+    protected $table = 'departamentos';
+    protected $primaryKey = 'iddep';
+    public $incrementing = false;
+    protected $keyType = 'string';
+    public $timestamps = false;
 
     protected $fillable = [
         'iddep',
         'nombredep',
     ];
 
-    // Relación: Un departamento tiene muchas áreas
+    // Relación: un departamento tiene muchas áreas
     public function areas()
     {
         return $this->hasMany(Area::class, 'iddep');
