@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AuthController;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +51,16 @@ Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.st
 Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
 Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
+
+
+
+Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
+Route::post('/Login', [AuthController::class, 'login'])->name('login'); // procesa el login
+
+Route::get('/dashboard', function () {
+    return view('estudiante'); // ← Aquí se muestra tu vista estudiante.blade.php
+})->middleware('auth.session')->name('dashboard');
+
+Route::get('/register', function(){
+return view('register');
+});
