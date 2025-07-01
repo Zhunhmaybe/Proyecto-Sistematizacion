@@ -37,7 +37,7 @@
     <li class="dropdown">
       <a class="nav-link">Sesion ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="/Estudiante" class="nav-link">Estudiante</a></li>
+        <li><a href="/Login" class="nav-link">Estudiante</a></li>
         <li><a href="/Docente" class="nav-link">Docente</a></li>
       </ul>
     </li>
