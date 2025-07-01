@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('contrasena', 100);
             $table->string('email', 100);
             $table->date('fechanacimiento');
-            $table->char('idare', 10);
-            $table->char('idrol', 10);
+            $table->char('idare', 10)->nullable();
+            $table->char('idrol', 10)->nullable();
             $table->foreign('idrol')->references('idrol')->on('roles')->onDelete('cascade');
             $table->foreign('idare')->references('idare')->on('areas')->onDelete('cascade');
         });
