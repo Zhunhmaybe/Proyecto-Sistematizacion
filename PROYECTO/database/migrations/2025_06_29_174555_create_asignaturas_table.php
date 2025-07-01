@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->char('idasi', 10)->primary();
-            $table->char('idtit',10);
+            $table->char('idtit',10)->nullable();
             $table->char('idniv', 10);
             $table->string('nombreasi', 50);
             $table->integer('teoricosasi')->default(123);

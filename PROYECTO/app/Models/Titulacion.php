@@ -4,26 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Usuario;
+use App\Models\Asignatura;
 
-class Rol extends Model
+class Titulacion extends Model
 {
     use HasFactory;
-
-    protected $table = 'roles';
-    protected $primaryKey = 'idrol';
+    protected $table = 'titulaciones';
+    protected $primaryKey = 'idtit';
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
 
     protected $fillable = [
-        'idrol',
-        'detalle',
+        'idtit',
+        'detalletit',
+        'nivelestit',
     ];
 
-    // Relación: un rol tiene muchos usuarios
-    public function usuarios()
+    public function asignaturas()
     {
-        return $this->hasMany(Usuario::class, 'idrol');
+        return $this->hasMany(Asignatura::class, 'idtit');
     }
 }

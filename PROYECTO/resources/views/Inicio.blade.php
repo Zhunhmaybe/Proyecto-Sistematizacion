@@ -18,7 +18,7 @@
 
     <!-- Menú desplegable Academia -->
     <li class="dropdown">
-      <a href="/Academia" class="nav-link">Academia ▾</a>
+      <a class="nav-link">Academia ▾</a>
       <ul class="dropdown-menu">
         <li><a href="/Academia" class="nav-link">Facultades</a></li>
         <li><a href="/Ingles" class="nav-link">Ingles</a></li>
@@ -27,10 +27,18 @@
 
     <!-- Menú desplegable Información -->
     <li class="dropdown">
-      <a href="/Informacion" class="nav-link">Información ▾</a>
+      <a class="nav-link">Información ▾</a>
       <ul class="dropdown-menu">
         <li><a href="/MisionVision" class="nav-link">Misión y Visión</a></li>
         <li><a href="/Informacion/Noticias" class="nav-link">Noticias</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a class="nav-link">Sesion ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/Estudiante" class="nav-link">Estudiante</a></li>
+        <li><a href="/Docente" class="nav-link">Docente</a></li>
       </ul>
     </li>
 
@@ -166,7 +174,7 @@ const cursos = [
     titulo: "¿Quieres ser Profesor?",
     descripcion: "Si dominas algún área de aprendizaje, no dudes en pedir una entrevista.",
     imagen: "/Imagenes/Empresas.jpg",
-    enlace: "/no hay"
+    enlace: "/Empresas"
   },
   {
     titulo: "Cursos de Inglés",
