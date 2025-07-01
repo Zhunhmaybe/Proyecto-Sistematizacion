@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,26 +19,12 @@ Route::get('/', function () {
     return view('Inicio');
 });
 
-Route::get('/Academia', function () {
-    return view('Academia');
-});
 
-Route::get('/Servicios', function () {
-    return view('Servicios');
-});
-
-Route::get('/MisionVision', function () {
-    return view('MisionVision');
-});
-Route::get('/Ingles', function () {
-    return view('Ingles');
-});
-
-Route::get('/Carreras/{nombre}', function ($nombre) {
-    return view('Carreras.' . $nombre);
-});
-
-
-Route::get('/Inscripciones/{carrera}', function ($carrera) {
-    return view('Inscripciones.formulario' , ['carrera'=>ucfirst($carrera)]);
-});
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/home', function () {
+    return view('home');
+})->name('home');

@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Area;
 use App\Models\Rol;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Contracts\Auth\CanResetPassword;
+use Illuminate\Auth\Passwords\CanResetPassword as CanResetPasswordTrait;
 
-class Usuario extends Model
+class Usuario extends Authenticatable implements CanResetPassword
 {
     use HasFactory;
 
@@ -40,5 +43,9 @@ class Usuario extends Model
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'idrol');
+    }
+    public function getAuthPassword()
+    {
+        return $this->contrasena;
     }
 }
