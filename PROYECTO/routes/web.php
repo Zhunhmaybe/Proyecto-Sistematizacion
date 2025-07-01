@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\AuthController;
 
 
@@ -47,10 +48,10 @@ Route::get('/Inscripciones/{carrera}', function ($carrera) {
     return view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]);
 });
 
-Route::post('/usuarios', [UsuarioController::class, 'store'])->name('usuarios.store');
-Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
-Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
-Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
+Route::post('/usuarios', [RegistroController::class, 'store'])->name('usuarios.store');
+Route::get('/usuarios', [RegistroController::class, 'index'])->name('usuarios.index');
+Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{idusu}', [RegistroController::class, 'update'])->name('usuarios.update');
 
 
 
