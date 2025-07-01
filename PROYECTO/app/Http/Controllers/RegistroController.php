@@ -44,7 +44,7 @@ class RegistroController extends Controller
             'email' => $request->email,
             'fechanacimiento' => $request->fechanacimiento,
             'idare' => $request->idare, // puede ser null
-            'idrol' => $request->idrol,
+            'idrol' => $request->idrol
         ]);
 
 
@@ -71,7 +71,7 @@ class RegistroController extends Controller
             'email' => $request->email,
             'fechanacimiento' => $request->fechanacimiento,
             'idare' => $request->idare, // puede ser null
-            'idrol' => $request->idrol
+            'idrol' => $request->idrol,
         ]);
 
         return redirect()->back()->with('success', 'Usuario registrado con éxito.');
