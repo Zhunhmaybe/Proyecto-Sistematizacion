@@ -23,15 +23,26 @@ class AuthController extends Controller
 
         if ($usuario && password_verify($request->password, $usuario->contrasena)) {
             session(['usuario' => $usuario]);
-            return redirect()->route('dashboard');
+
+            // Redirigir según el rol
+            switch ($usuario->idrol) {
+                case 0:
+                    return redirect()->route('admin.index');
+                case 1:
+                    return redirect()->route('docente.dashboard');
+                case 2:
+                    return redirect()->route('estudiante.dashboard');
+                default:
+                    return redirect()->route('login.form')->withErrors(['email' => 'Rol no reconocido.']);
+            }
         }
 
-        return back()->withErrors(['email' => 'Correo o contraseña incorrectos']);
+        return back()->withErrors(['email' => 'Correo o contraseña incorrectos'])->withInput();
     }
 
     public function logout()
     {
         session()->forget('usuario');
-        return redirect()->route('login.form')->with('success', 'Sesión cerrada exitosamente.');
+        return redirect()->route('login')->with('success', 'Sesión cerrada exitosamente.');
     }
 }

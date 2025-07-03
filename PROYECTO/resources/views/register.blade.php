@@ -74,6 +74,8 @@
             <button type="submit" class="login-button">Registrarse</button>
         </form>
 
+        <a href="/">Volver</a>
+        
         <div class="register-link">
             ¿Ya tienes cuenta? <a href="{{ route('Login') }}">Inicia sesión</a>
         </div>

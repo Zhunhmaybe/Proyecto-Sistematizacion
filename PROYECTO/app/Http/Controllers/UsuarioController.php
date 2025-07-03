@@ -13,7 +13,7 @@ class UsuarioController extends Controller
     {
         $usuarios = Usuario::all();
         $areas = Area::all(); // para el combo de áreas
-        return view('usuarios.index', compact('usuarios','areas'));
+        return view('usuarios.index', compact('usuarios', 'areas'));
     }
 
     // Mostrar formulario para editar un usuario
@@ -24,7 +24,15 @@ class UsuarioController extends Controller
         return view('usuarios.edit', compact('usuario', 'areas'));
     }
 
-    // Actualizar usuario
+    public function show($idusu)
+    {
+        $usuario = Usuario::with('rol', 'area')->findOrFail($idusu);
+
+        return view('usuarios.show', compact('usuario'));
+    }
+
+
+    // Actualizar usuario   
     public function update(Request $request, $idusu)
     {
         $usuario = Usuario::findOrFail($idusu);

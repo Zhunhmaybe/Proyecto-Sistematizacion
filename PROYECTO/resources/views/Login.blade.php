@@ -64,6 +64,7 @@
             <button type="submit" class="login-button">
                 Iniciar Sesión
             </button>
+            <a href="/">Volver</a>
         </form>
 
         <div class="register-link">

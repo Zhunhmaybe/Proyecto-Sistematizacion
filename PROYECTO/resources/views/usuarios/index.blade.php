@@ -30,7 +30,7 @@
                     <td>{{ $usuario->apellidousu }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->idare }}</td>
-                    <td>{{ $usuario->idrol }}</td>
+                    <td>{{ $usuario->rol->detalle ?? 'Sin rol' }}</td>
                     <td>
                         <a href="{{ route('usuarios.edit', $usuario->idusu) }}">Editar</a>
                     </td>
@@ -38,5 +38,7 @@
             @endforeach
         </tbody>
     </table>
+                    <a href="{{ route('admin.index') }}">Salir</a>
+                    
 </body>
 </html>
