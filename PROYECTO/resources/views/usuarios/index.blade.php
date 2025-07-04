@@ -17,7 +17,6 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
-                <th>Área</th>
                 <th>Rol</th>
                 <th>Acciones</th>
             </tr>
@@ -29,7 +28,6 @@
                     <td>{{ $usuario->nombredusu }}</td>
                     <td>{{ $usuario->apellidousu }}</td>
                     <td>{{ $usuario->email }}</td>
-                    <td>{{ $usuario->idare }}</td>
                     <td>{{ $usuario->rol->detalle ?? 'Sin rol' }}</td>
                     <td>
                         <a href="{{ route('usuarios.edit', $usuario->idusu) }}">Editar</a>
