@@ -10,7 +10,7 @@ use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
-
+use App\Http\Controllers\NivelController;
 
 
 /*
@@ -95,3 +95,9 @@ Route::get('/admin/roles', [RolController::class, 'index'])->name('roles.index')
 Route::resource('roles', RolController::class);
 
 Route::resource('departamentos', DepartamentoController::class);
+
+
+Route::get('/niveles', [NivelController::class, 'index'])->name('niveles.index');
+Route::get('/niveles/create', [NivelController::class, 'create'])->name('niveles.create');
+Route::post('/niveles', [NivelController::class, 'store'])->name('niveles.store');
+
