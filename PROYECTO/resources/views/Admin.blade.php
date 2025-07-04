@@ -19,6 +19,7 @@
                 <a href="{{ route('areas.create') }}" class="admin-button">➕ Crear Área</a>
                 <a href="{{ route('periodos.create') }}" class="admin-button">📆 Añadir Período</a>
                 <a href="{{ route('roles.index') }}" class="admin-button">👥 Ver Roles</a>
+                <a href="{{route('niveles.index')}}" class="admin-button">Ver Niveles</a>
                 
             </div>
         </div>
