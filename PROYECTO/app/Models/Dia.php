@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Horario;
 class Dia extends Model
 {
     use HasFactory;
@@ -19,8 +19,7 @@ class Dia extends Model
         'nombredia',
     ];
 
-    public function horarios()
-    {
-        return $this->hasMany(Horario::class, 'iddia');
+    public function horario(){
+        return $this->hasMany(Horario::class,'iddia');
     }
 }

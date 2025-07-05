@@ -4,9 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\RegistroController;
 use App\Http\Controllers\AuthController;
-
-
-
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\PeriodoController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\DepartamentoController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\NivelController;
 
 
 /*
@@ -55,12 +60,11 @@ Route::put('/usuarios/{idusu}', [RegistroController::class, 'update'])->name('us
 
 
 
-Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
-Route::post('/Login', [AuthController::class, 'login'])->name('login'); // procesa el login
 
-Route::get('/dashboard', function () {
-    return view('estudiante'); // ← Aquí se muestra tu vista estudiante.blade.php
-})->middleware('auth.session')->name('dashboard');
+Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
+Route::post('/Login', [AuthController::class, 'login'])->name('login');
+Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+
 
 Route::get('/register', function(){
 return view('register');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Matricula;
 
 class Periodo extends Model
 {
@@ -20,4 +21,7 @@ class Periodo extends Model
         'inicioper',
         'finper',
     ];
+    public function matricula(){
+        return $this->hasMany(Matricula::class,'idper');
+    }
 }
