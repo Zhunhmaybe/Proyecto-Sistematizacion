@@ -32,11 +32,13 @@ class Usuario extends Model
         'contrasena',
     ];
 
+    // Relación: un usuario pertenece a un área (opcional)
     public function area()
     {
         return $this->belongsTo(Area::class, 'idare');
     }
 
+    // Relación: un usuario pertenece a un rol
     public function rol()
     {
         return $this->belongsTo(Rol::class, 'idrol');

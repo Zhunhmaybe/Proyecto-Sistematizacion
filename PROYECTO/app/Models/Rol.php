@@ -9,6 +9,7 @@ use App\Models\Usuario;
 class Rol extends Model
 {
     use HasFactory;
+
     protected $table = 'roles';
     protected $primaryKey = 'idrol';
     public $incrementing = false;
@@ -20,6 +21,7 @@ class Rol extends Model
         'detalle',
     ];
 
+    // Relación: un rol tiene muchos usuarios
     public function usuarios()
     {
         return $this->hasMany(Usuario::class, 'idrol');

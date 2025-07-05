@@ -8,33 +8,55 @@
     <title>Inscripciones</title>
 </head>
 <body>
-    <h2 class="titulo-formulario">Formulario de Inscripción - {{ $carrera }}</h2>
+    <h2 class="titulo-formulario">Formulario de Inscripción - {{ $carrera ?? '' }}</h2>
+    <h2 class="titulo-formulario">Formulario de Registro de Usuario</h2>
 
-<form action="/inscripcion/{{ strtolower($carrera) }}" method="POST">
-  @csrf
+    @if ($errors->any())
+        <div style="color: red; margin-bottom: 1em;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-  <label for="nombre">Nombre completo:</label>
-  <input type="text" name="nombre" required>
+    <form action="{{ route('usuarios.store') }}" method="POST">
+        @csrf
 
-  <label for="cedula">Cédula:</label>
-  <input type="text" name="cedula" required>
+        <label for="idusu">Cédula:</label>
+        <input type="text" name="idusu" maxlength="10" value="{{ old('idusu') }}" required>
 
-  <label for="correo">Correo electrónico:</label>
-  <input type="email" name="correo" required>
+        <label for="nombredusu">Nombre:</label>
+        <input type="text" name="nombredusu" maxlength="50" value="{{ old('nombredusu') }}" required>
 
-  <label for="telefono">Teléfono:</label>
-  <input type="tel" name="telefono" required>
+        <label for="apellidousu">Apellido:</label>
+        <input type="text" name="apellidousu" maxlength="50" value="{{ old('apellidousu') }}" required>
 
-  <label for="nivel">Nivel al que desea aplicar:</label>
-  <select name="nivel" required>
-    <option value="1">Primer semestre</option>
-    <option value="2">Segundo semestre</option>
-    <option value="3">Tercero</option>
-    <option value="4">Cuarto</option>
-  </select>
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required>
 
-  <button type="submit">Enviar inscripción</button>
-  
-</form>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" name="email" maxlength="100" value="{{ old('email') }}" required>
+
+        <label for="fechanacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="fechanacimiento" value="{{ old('fechanacimiento') }}" required>
+
+        {{-- Campo oculto para idare opcional --}}
+        <input type="hidden" name="idare" value="">
+
+        <label for="idrol">Rol:</label>
+        <select name="idrol" required>
+            <option value="" disabled {{ old('idrol') ? '' : 'selected' }}>Seleccione un rol</option>
+            <option value="0" {{ old('idrol') == '0' ? 'selected' : '' }}>Admin</option>
+            <option value="1" {{ old('idrol') == '1' ? 'selected' : '' }}>Docente</option>
+            <option value="2" {{ old('idrol') == '2' ? 'selected' : '' }}>Estudiante</option>
+        </select>
+
+        <button type="submit">Registrar</button>
+
+    </form>
+
+    <a href="{{ route('usuarios.index') }}">Usuarios</a>
 </body>
 </html>

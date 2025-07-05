@@ -10,6 +10,7 @@ use App\Models\Departamento;
 class Area extends Model
 {
     use HasFactory;
+
     protected $table = 'areas';
     protected $primaryKey = 'idare';
     public $incrementing = false;
@@ -22,11 +23,13 @@ class Area extends Model
         'nombreare',
     ];
 
+    // Relación: un área pertenece a un departamento
     public function departamento()
     {
         return $this->belongsTo(Departamento::class, 'iddep');
     }
 
+    // Relación: un área tiene muchos usuarios
     public function usuarios()
     {
         return $this->hasMany(Usuario::class, 'idare');
