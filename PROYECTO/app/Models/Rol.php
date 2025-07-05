@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Usuario;
+use App\Models\User;
 
 class Rol extends Model
 {
@@ -22,8 +22,8 @@ class Rol extends Model
     ];
 
     // Relación: un rol tiene muchos usuarios
-    public function usuarios()
+    public function users()
     {
-        return $this->hasMany(Usuario::class, 'idrol');
+        return $this->hasMany(User::class, 'idrol');
     }
 }

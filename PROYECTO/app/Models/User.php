@@ -17,10 +17,23 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use Notifiable;
+
+    protected $table = 'users';          // El nombre de la tabla en la base de datos
+    protected $primaryKey = 'id';        // Clave primaria de la tabla
+    public $incrementing = true;         // Si el id es autoincremental
+    protected $keyType = 'int';          // Tipo de la clave primaria
+    public $timestamps = true;
+
     protected $fillable = [
-        'name',
+        'nombreusu',
+        'apellidousu',
+        'contrasena',
         'email',
-        'password',
+        'fechanacimiento',
+        'idrol',
+        'remember_token',
+        //'email_verified_at',
     ];
 
     /**
@@ -29,7 +42,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'contrasena',
         'remember_token',
     ];
 

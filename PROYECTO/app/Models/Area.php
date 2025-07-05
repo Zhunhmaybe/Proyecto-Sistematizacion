@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Usuario;
+use App\Models\Profesor;
 use App\Models\Departamento;
 
 class Area extends Model
@@ -28,10 +28,7 @@ class Area extends Model
     {
         return $this->belongsTo(Departamento::class, 'iddep');
     }
-
-    // Relación: un área tiene muchos usuarios
-    public function usuarios()
-    {
-        return $this->hasMany(Usuario::class, 'idare');
+    public function profesor(){
+        return $this->hasMany(Profesor::class, 'idare');
     }
 }

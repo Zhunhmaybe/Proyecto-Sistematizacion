@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Asignatura;
-use App\Models\Usuario;
+use App\Models\Profesor;
 
 class ProAsi extends Model
 {
@@ -17,9 +17,9 @@ class ProAsi extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idpro',
+        'idpro_asi',
         'idasi',
-        'idusu',
+        'idpro',
     ];
 
     public function asignatura()
@@ -29,6 +29,6 @@ class ProAsi extends Model
 
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class, 'idusu');
+        return $this->belongsTo(Profesor::class, 'idpro');
     }
 }
