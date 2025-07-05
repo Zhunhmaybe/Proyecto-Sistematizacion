@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->char('idusu', 10)->primary();
             $table->string('nombredusu', 50);
             $table->string('apellidousu', 50);
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->char('idare', 10)->nullable();
             $table->char('idrol', 10);
             $table->foreign('idrol')->references('idrol')->on('roles')->onDelete('cascade');
-            $table->foreign('idare')->references('idare')->on('areas')->onDelete('cascade');
         });
     }
 
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        Schema::dropIfExists('users');
     }
 };
