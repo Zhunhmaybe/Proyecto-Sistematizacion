@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->char('idare', 10)->primary();
-            $table->string('iddep', 10)->nullable();                    
-            $table->string('nombreare', 50);
-            $table->foreign('iddep')->references('iddep')->on('departamentos')->onDelete('cascade');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->primary();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('password_resets');
     }
 };

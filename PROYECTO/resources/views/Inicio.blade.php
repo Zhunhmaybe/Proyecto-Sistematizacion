@@ -18,19 +18,27 @@
 
     <!-- Menú desplegable Academia -->
     <li class="dropdown">
-      <a href="/Academia" class="nav-link">Academia ▾</a>
+      <a class="nav-link">Academia ▾</a>
       <ul class="dropdown-menu">
         <li><a href="/Academia" class="nav-link">Facultades</a></li>
-        <li><a href="/Academia/Administracion" class="nav-link">Ingles</a></li>
+        <li><a href="/Ingles" class="nav-link">Ingles</a></li>
       </ul>
     </li>
 
     <!-- Menú desplegable Información -->
     <li class="dropdown">
-      <a href="/Informacion" class="nav-link">Información ▾</a>
+      <a class="nav-link">Información ▾</a>
       <ul class="dropdown-menu">
         <li><a href="/MisionVision" class="nav-link">Misión y Visión</a></li>
         <li><a href="/Informacion/Noticias" class="nav-link">Noticias</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+      <a class="nav-link">Sesion ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="/Login" class="nav-link">Iniciar</a></li>
+        <li><a href="/register" class="nav-link">Registrarse</a></li>
       </ul>
     </li>
 
@@ -51,7 +59,7 @@
 <section class="anuncio">
   <h2>¡Inscripciones Abiertas!</h2>
   <p>Estudia en la Universidad TUN. Postúlate hasta el <strong>15 de agosto de 2025</strong>.</p>
-  <a href="/inscripciones">Inscribirse ahora</a>
+  <a href="/Academia">Inscribirse ahora</a>
 </section>
 
 <!-- Modalidades -->
@@ -166,7 +174,7 @@ const cursos = [
     titulo: "¿Quieres ser Profesor?",
     descripcion: "Si dominas algún área de aprendizaje, no dudes en pedir una entrevista.",
     imagen: "/Imagenes/Empresas.jpg",
-    enlace: "/no hay"
+    enlace: "/Empresas"
   },
   {
     titulo: "Cursos de Inglés",
