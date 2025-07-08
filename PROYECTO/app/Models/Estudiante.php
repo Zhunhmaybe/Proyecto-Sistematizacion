@@ -23,7 +23,14 @@ class Estudiante extends Model
         'nacimientoest',
     ];
 
-    public function estudiante(){
-        return $this->hasMany(Matricula::class,'idest');
+    public function matriculas()
+    {
+        return $this->hasMany(Matricula::class, 'idest', 'idest');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'idusu', 'idusu');
     }
 }
+
