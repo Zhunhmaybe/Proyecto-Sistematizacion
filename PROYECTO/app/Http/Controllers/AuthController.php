@@ -27,11 +27,11 @@ class AuthController extends Controller
             // Redirigir según el rol
             switch ($usuario->idrol) {
                 case 0:
-                    return redirect()->route('usuarios.index');
+                    return redirect()->route('admin.index');
                 case 1:
                     return redirect()->route('usuarios.dashboard');
                 case 2:
-                    return redirect()->route('usuarios.dashboard');
+                    return redirect()->route('estudiante.dashboard');
                 default:
                     return redirect()->route('login.form')->withErrors(['email' => 'Rol no reconocido.']);
             }

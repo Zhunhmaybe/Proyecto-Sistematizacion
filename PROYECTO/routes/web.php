@@ -65,7 +65,32 @@ Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
 Route::post('/Login', [AuthController::class, 'login'])->name('login');
 Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
+Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
+Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
 
 Route::get('/register', function(){
 return view('register');
 });
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::get('/admin/areas/create', [AreaController::class, 'create'])->name('areas.create');
+Route::get('/areas', [AreaController::class, 'index'])->name('areas.index');
+Route::resource('areas', AreaController::class);
+
+Route::get('/periodos', [PeriodoController::class, 'index'])->name('periodos.index');
+Route::get('/periodos/create', [PeriodoController::class, 'create'])->name('periodos.create');
+Route::post('/periodos', [PeriodoController::class, 'store'])->name('periodos.store');
+Route::get('/periodos/{idper}/edit', [PeriodoController::class, 'edit'])->name('periodos.edit');
+Route::put('/periodos/{idper}', [PeriodoController::class, 'update'])->name('periodos.update');
+
+Route::get('/admin/roles', [RolController::class, 'index'])->name('roles.index');
+Route::resource('roles', RolController::class);
+
+Route::resource('departamentos', DepartamentoController::class);
+
+
+Route::get('/niveles', [NivelController::class, 'index'])->name('niveles.index');
+Route::get('/niveles/create', [NivelController::class, 'create'])->name('niveles.create');
+Route::post('/niveles', [NivelController::class, 'store'])->name('niveles.store');
