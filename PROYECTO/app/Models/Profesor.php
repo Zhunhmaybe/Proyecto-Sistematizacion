@@ -21,8 +21,8 @@ class Profesor extends Model
         'idare',
         'nombrespro',
         'apellidopro',
-        'telefonopro',
         'correopro',
+        'fechanacimientopro',
     ];
     //
     public function area()

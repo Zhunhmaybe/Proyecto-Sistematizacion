@@ -20,20 +20,21 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table = 'users';          // El nombre de la tabla en la base de datos
-    protected $primaryKey = 'id';        // Clave primaria de la tabla
-    public $incrementing = true;         // Si el id es autoincremental
-    protected $keyType = 'int';          // Tipo de la clave primaria
-    public $timestamps = true;
+    protected $primaryKey = 'idusu';        // Clave primaria de la tabla
+    public $incrementing = false;         // Si el id es autoincremental
+    protected $keyType = 'string';          // Tipo de la clave primaria
+    public $timestamps = false;
 
     protected $fillable = [
-        'nombreusu',
+        'idusu',
+        'nombredusu',
         'apellidousu',
         'contrasena',
         'email',
         'fechanacimiento',
         'idrol',
         'remember_token',
-        //'email_verified_at',
+
     ];
 
     /**

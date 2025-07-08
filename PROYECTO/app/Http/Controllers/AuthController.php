@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuario;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -19,7 +19,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        $usuario = Usuario::where('email', $request->email)->first();
+        $usuario = User::where('email', $request->email)->first();
 
         if ($usuario && password_verify($request->password, $usuario->contrasena)) {
             session(['usuario' => $usuario]);
@@ -27,11 +27,11 @@ class AuthController extends Controller
             // Redirigir según el rol
             switch ($usuario->idrol) {
                 case 0:
-                    return redirect()->route('admin.index');
+                    return redirect()->route('usuarios.index');
                 case 1:
-                    return redirect()->route('docente.dashboard');
+                    return redirect()->route('usuarios.dashboard');
                 case 2:
-                    return redirect()->route('estudiante.dashboard');
+                    return redirect()->route('usuarios.dashboard');
                 default:
                     return redirect()->route('login.form')->withErrors(['email' => 'Rol no reconocido.']);
             }
