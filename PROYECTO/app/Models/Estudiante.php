@@ -19,7 +19,6 @@ class Estudiante extends Model
         'idest',
         'nombreest',
         'apellidoest',
-        'direccionest',
         'mailest',
         'nacimientoest',
     ];

@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('profesores', function (Blueprint $table) {
             $table->char('idpro', 10)->primary();
-            $table->char('idare', 10);
+            $table->char('idare', 10)->nullable();
             $table->string('nombrespro', 50);
             $table->string('apellidopro', 50);
-            $table->string('telefonopro', 50);
             $table->string('correopro', 50);
+            $table->date('fechanacimientopro');
             $table->foreign('idare')->references('idare')->on('areas')->onDelete('cascade');
         });
     }
