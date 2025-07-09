@@ -78,7 +78,7 @@ class AsignaturaController extends Controller
             'practicosasi' => $request->practicosasi,
         ]);
 
-        return redirect()->route('asignaturas.index')->with('success', 'Asignatura actualizada correctamente.');
+        return redirect()->route('asignatura.index')->with('success', 'Asignatura actualizada correctamente.');
     }
 
     // Eliminar una asignatura
@@ -87,6 +87,6 @@ class AsignaturaController extends Controller
         $asignatura = Asignatura::findOrFail($idasi);
         $asignatura->delete();
 
-        return redirect()->route('asignaturas.index')->with('success', 'Asignatura eliminada correctamente.');
+        return redirect()->route('asignatura.index')->with('success', 'Asignatura eliminada correctamente.');
     }
 }

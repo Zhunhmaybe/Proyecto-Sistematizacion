@@ -42,5 +42,6 @@
             @endforelse
         </tbody>
     </table>
+        <a href="{{ route('admin.index') }}">Salir</a>
 </body>
 </html>

@@ -48,6 +48,9 @@
         <input type="number" name="practicosasi" value="{{ $asignatura->practicosasi }}" min="0" required><br><br>
 
         <button type="submit">Actualizar</button>
+
+            <a href="{{ route('admin.index') }}">Salir</a>
+            
     </form>
 </body>
 </html>

@@ -36,7 +36,7 @@
             @endforeach
         </tbody>
     </table>
-                    <a href="{{ route('admin.index') }}">Salir</a>
+    <a href="{{ route('admin.index') }}">Salir</a>
                     
 </body>
 </html>

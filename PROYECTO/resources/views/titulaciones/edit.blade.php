@@ -29,6 +29,7 @@
         <input type="text" name="nivelestit" value="{{ $titulacion->nivelestit }}" required><br><br>
 
         <button type="submit">Actualizar</button>
+            <a href="{{ route('admin.index') }}">Salir</a>
     </form>
 </body>
 </html>

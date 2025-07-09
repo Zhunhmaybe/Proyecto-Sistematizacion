@@ -48,7 +48,7 @@ class UsuarioController extends Controller
             'fechanacimiento' => $request->fechanacimiento,
             'contrasena' => Hash::make($request->contrasena),
             'idrol' => $request->idrol,
-            'idare' => $request->idrol == '1' ? $request->idare : null,
+            'idare' => $request->idrol == '1' ? $request->idare : null, 
             'remember_token' => Str::random(10),
         ]);
 
@@ -76,6 +76,7 @@ class UsuarioController extends Controller
             'fechanacimiento' => 'required|date',
             'idrol' => 'required|string',
             'idare' => $request->idrol == '1' ? 'required|string' : 'nullable',
+
         ]);
 
         $usuario->update([
