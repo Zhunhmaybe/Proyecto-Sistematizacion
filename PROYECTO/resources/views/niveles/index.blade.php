@@ -28,6 +28,6 @@
             @endforeach
         </tbody>
     </table>
-        <a href="{{ route('logout') }}">Cerrar Sesion</a>
+        <a href="{{ route('admin.index') }}">Salir</a>
 </body>
 </html>

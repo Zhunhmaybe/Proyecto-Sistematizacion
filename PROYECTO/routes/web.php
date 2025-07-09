@@ -14,7 +14,9 @@ use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\AsignaturaController;
 use App\Http\Controllers\TitulacionController;
-
+use Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass;
+use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\ProAsiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,10 +57,13 @@ Route::get('/Inscripciones/{carrera}', function ($carrera) {
     return view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]);
 });
 
-Route::post('/usuarios', [RegistroController::class, 'store'])->name('usuarios.store');
+Route::post('/usuario', [RegistroController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios', [RegistroController::class, 'index'])->name('usuarios.index');
 Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [RegistroController::class, 'update'])->name('usuarios.update');
+
+Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
 
 Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
 Route::post('/Login', [AuthController::class, 'login'])->name('login');
@@ -77,6 +82,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/areas/create', [AreaController::class, 'create'])->name('areas.create');
 Route::get('/areas', [AreaController::class, 'index'])->name('areas.index');
 Route::resource('areas', AreaController::class);
+Route::get('/areas/{idare}/edit', [AreaController::class, 'edit'])->name('areas.edit');
 
 Route::get('/periodos', [PeriodoController::class, 'index'])->name('periodos.index');
 Route::get('/periodos/create', [PeriodoController::class, 'create'])->name('periodos.create');
@@ -97,8 +103,8 @@ Route::post('/niveles', [NivelController::class, 'store'])->name('niveles.store'
 Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura.index');
 Route::get('/asignatura/create', [AsignaturaController::class, 'create'])->name('asignatura.create');
 Route::post('/asignaturas', [AsignaturaController::class, 'store'])->name('asignaturas.store');
-Route::get('/titulacion/{idasi}/edit', [TitulacionController::class, 'edit'])->name('asignaturas.edit');
-Route::get('/titulacion/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
+Route::get('/asignatura/{idasi}/edit', [TitulacionController::class, 'edit'])->name('asignaturas.edit');
+Route::get('/asgignaturas/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
 
 Route::get('/titulacion', [TitulacionController::class, 'index'])->name('titulacion.index');
 Route::get('/titulacion/create', [TitulacionController::class, 'create'])->name('titulacion.create');
@@ -106,3 +112,13 @@ Route::post('/titulaciones', [TitulacionController::class, 'store'])->name('titu
 Route::get('/titulacion/{idtit}/edit', [TitulacionController::class, 'edit'])->name('titulaciones.edit');
 Route::get('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name('titulaciones.update');
 
+Route::resource('profesores', ProfesorController::class);
+
+Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
+
+
+Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
+Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
+
+// Opcional: listar asignaciones
+Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');

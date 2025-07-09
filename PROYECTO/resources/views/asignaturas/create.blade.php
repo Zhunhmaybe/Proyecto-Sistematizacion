@@ -50,6 +50,8 @@
         <input type="number" name="practicosasi" value="{{ old('practicosasi') ?? 0 }}" min="0" required><br><br>
 
         <button type="submit">Crear</button>
+
+            <a href="{{ route('admin.index') }}">Salir</a>
     </form>
 </body>
 </html>

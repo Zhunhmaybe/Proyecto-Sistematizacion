@@ -19,7 +19,8 @@
                 <a href="{{ route('periodos.create') }}" class="admin-button">📆 Añadir Período</a>
                 <a href="{{route('niveles.index')}}" class="admin-button">Ver Niveles</a> 
                 <a href="{{route('asignatura.index')}}" class="admin-button">Ver Asignaturas</a>
-                <a href="{{route('titulacion.index')}}" class="admin-button">Ver Titulaciones</a>                  
+                <a href="{{route('titulacion.index')}}" class="admin-button">Ver Titulaciones</a> 
+                <a href="{{route('pro_asi.create')}}" class="admin-button">Asignar Materias</a>                       
             </div>
         </div>
 
