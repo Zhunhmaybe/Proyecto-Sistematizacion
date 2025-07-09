@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Departamentos</title>
+    <link rel="stylesheet" href="{{ asset('/css/Departamentos/index.css') }}">
 </head>
 <body>
     <h1>Departamentos</h1>
     
-    <a href="{{ route('departamentos.create') }}">➕ Crear nuevo</a>
+    <a href="{{ route('departamentos.create') }}"><button class="create-button"> Crear nuevo</button></a>
 
     @if (session('success'))
         <div style="color: green;">{{ session('success') }}</div>
@@ -28,6 +29,6 @@
             </li>
         @endforeach
     </ul>
-     <a href="{{ route('admin.index') }}">Cancelar</a>
+     <a href="{{ route('admin.index') }}"><button class="left-button">Cancelar</button></a>
 </body>
 </html>

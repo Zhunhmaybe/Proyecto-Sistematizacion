@@ -8,13 +8,13 @@
     <title>Technical University of North (TUN)</title>
 </head>
 <body>
-    <header>
-        <h1>Technical University of North</h1>
-    </header>
-
 <nav class="navbar">
-  <ul class="nav-center">
-    <li><a href="/" class="nav-link">Inicio</a></li>
+  <div class="navbar-container">
+    <div class="logo">
+      <img src="{{asset('Imagenes/TUN.jpeg')}}" alt="TUN">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="nav-link">Inicio</a></li>
 
     <!-- Menú desplegable Academia -->
     <li class="dropdown">
@@ -34,16 +34,17 @@
       </ul>
     </li>
 
-    <li class="dropdown">
+          <li class="dropdown">
       <a class="nav-link">Sesion ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="/Login" class="nav-link">Iniciar</a></li>
+        <li><a href="/Login" class="nav-link">Iniciar Sesión</a></li>
         <li><a href="/register" class="nav-link">Registrarse</a></li>
       </ul>
     </li>
 
-    <li><a href="/Servicios" class="nav-link">Servicios</a></li>
-  </ul>
+      <li><a href="/Servicios" class="nav-link">Servicios</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="carousel-container">
