@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear un Departamento</title>
+    <link rel="stylesheet" href="{{ asset('/css/Departamentos/create.css') }}">
 </head>
 <body>
-     <h2>Crear Nuevo Departamento</h2>
+     <h1>Crear Nuevo Departamento</h1>
 
     <form action="{{ route('departamentos.store') }}" method="POST">
         @csrf
-        <label for="iddep">ID:</label>
+        <label for="iddep">Identificación:</label>
         <input type="text" name="iddep" maxlength="10" required>
 
         <label for="nombredep">Nombre:</label>
@@ -20,7 +21,7 @@
         <button type="submit">Guardar</button>
     </form>
 
-    <a href="{{ route('departamentos.index') }}">Registro de Departamentos</a>
-     <a href="{{ route('admin.index') }}">Cancelar</a>
+    <a href="{{ route('departamentos.index') }}" ><button class="register-button">Registro de Departamentos</button></a>
+     <a href="{{ route('admin.index') }}" ><button class="left-button">Cancelar</button></a>
 </body>
 </html>
