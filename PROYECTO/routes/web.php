@@ -12,6 +12,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\NivelController;
+use App\Http\Controllers\AsignaturaController;
+use App\Http\Controllers\TitulacionController;
 
 
 /*
@@ -58,9 +60,6 @@ Route::get('/usuarios', [RegistroController::class, 'index'])->name('usuarios.in
 Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [RegistroController::class, 'update'])->name('usuarios.update');
 
-
-
-
 Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
 Route::post('/Login', [AuthController::class, 'login'])->name('login');
 Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
@@ -94,3 +93,16 @@ Route::resource('departamentos', DepartamentoController::class);
 Route::get('/niveles', [NivelController::class, 'index'])->name('niveles.index');
 Route::get('/niveles/create', [NivelController::class, 'create'])->name('niveles.create');
 Route::post('/niveles', [NivelController::class, 'store'])->name('niveles.store');
+
+Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura.index');
+Route::get('/asignatura/create', [AsignaturaController::class, 'create'])->name('asignatura.create');
+Route::post('/asignaturas', [AsignaturaController::class, 'store'])->name('asignaturas.store');
+Route::get('/titulacion/{idasi}/edit', [TitulacionController::class, 'edit'])->name('asignaturas.edit');
+Route::get('/titulacion/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
+
+Route::get('/titulacion', [TitulacionController::class, 'index'])->name('titulacion.index');
+Route::get('/titulacion/create', [TitulacionController::class, 'create'])->name('titulacion.create');
+Route::post('/titulaciones', [TitulacionController::class, 'store'])->name('titulaciones.store');
+Route::get('/titulacion/{idtit}/edit', [TitulacionController::class, 'edit'])->name('titulaciones.edit');
+Route::get('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name('titulaciones.update');
+

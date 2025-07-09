@@ -17,8 +17,9 @@
             <a href="{{ route('departamentos.create') }}" class="admin-button">➕ Crear Departamentos</a>
                 <a href="{{ route('areas.create') }}" class="admin-button">➕ Crear Área</a>
                 <a href="{{ route('periodos.create') }}" class="admin-button">📆 Añadir Período</a>
-                <a href="{{ route('roles.index') }}" class="admin-button">👥 Ver Roles</a>
-                <a href="{{route('niveles.index')}}" class="admin-button">Ver Niveles</a>            
+                <a href="{{route('niveles.index')}}" class="admin-button">Ver Niveles</a> 
+                <a href="{{route('asignatura.index')}}" class="admin-button">Ver Asignaturas</a>
+                <a href="{{route('titulacion.index')}}" class="admin-button">Ver Titulaciones</a>                  
             </div>
         </div>
 
