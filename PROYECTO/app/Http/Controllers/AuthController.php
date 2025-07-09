@@ -29,9 +29,9 @@ class AuthController extends Controller
                 case 0:
                     return redirect()->route('usuarios.index');
                 case 1:
-                    return redirect()->route('usuarios.dashboard');
+                    return redirect()->route('usuarios.index');
                 case 2:
-                    return redirect()->route('usuarios.dashboard');
+                    return redirect()->route('usuarios.index');
                 default:
                     return redirect()->route('login.form')->withErrors(['email' => 'Rol no reconocido.']);
             }
