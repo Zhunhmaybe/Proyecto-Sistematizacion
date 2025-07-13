@@ -17,6 +17,7 @@ use App\Http\Controllers\TitulacionController;
 use Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\ProAsiController;
+use App\Http\Middleware\CheckAnyPermission;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,10 +58,14 @@ Route::get('/Inscripciones/{carrera}', function ($carrera) {
     return view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]);
 });
 
+Route::get('/register', function(){
+return view('register');
+});
+//Gestion de usuasrios
 Route::post('/usuario', [RegistroController::class, 'store'])->name('usuarios.store');
-Route::get('/usuarios', [RegistroController::class, 'index'])->name('usuarios.index');
 Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [RegistroController::class, 'update'])->name('usuarios.update');
+Route::get('/usuarios', [RegistroController::class, 'index'])->name('usuarios.index');
 
 Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
@@ -73,13 +78,10 @@ Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])-
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
 
-Route::get('/register', function(){
-return view('register');
-});
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-
 Route::get('/admin/areas/create', [AreaController::class, 'create'])->name('areas.create');
+
 Route::get('/areas', [AreaController::class, 'index'])->name('areas.index');
 Route::resource('areas', AreaController::class);
 Route::get('/areas/{idare}/edit', [AreaController::class, 'edit'])->name('areas.edit');
@@ -94,7 +96,6 @@ Route::get('/admin/roles', [RolController::class, 'index'])->name('roles.index')
 Route::resource('roles', RolController::class);
 
 Route::resource('departamentos', DepartamentoController::class);
-
 
 Route::get('/niveles', [NivelController::class, 'index'])->name('niveles.index');
 Route::get('/niveles/create', [NivelController::class, 'create'])->name('niveles.create');
