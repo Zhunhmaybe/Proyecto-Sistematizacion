@@ -1,0 +1,366 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background: linear-gradient(135deg, #ededf4 0%, #fbf5f3 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Título principal */
+h1 {
+    color: #333333;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    font-weight: 300;
+}
+
+/* Contenedor del formulario */
+form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333333;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Campos de entrada */
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #333333;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+input[type="text"]:hover {
+    border-color: #cbd5e0;
+    background: white;
+}
+
+/* Botón de actualizar */
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #990100 0%,#b90504 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(246, 173, 85, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(246, 173, 85, 0.4);
+    background: linear-gradient(135deg,#990100 0%,#b90504 100%);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Contenedores de botones de navegación */
+div {
+    margin-bottom: 1rem;
+}
+
+div:last-child {
+    margin-bottom: 0;
+}
+
+/* Enlaces que contienen botones */
+div a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Botones de navegación */
+div button {
+    width: 200px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botón Volver */
+.left {
+    background: linear-gradient(135deg, #990100 0%,#b90504 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+
+}
+
+.left:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+    background: linear-gradient(135deg, #990100 0%,#b90504 100%);
+}
+
+/* Botón Cancelar */
+.cancel {
+    margin-top:10px;
+    background: linear-gradient(135deg,  #990100 0%,#b90504 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(245, 101, 101, 0.3);
+}
+
+.cancel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 101, 101, 0.4);
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+}
+
+/* Efectos activos para todos los botones */
+div button:active {
+    transform: translateY(0);
+}
+
+/* Efecto de enfoque para accesibilidad */
+button:focus,
+input:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Aplicar animaciones */
+h2 {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+form {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+div:first-of-type {
+    animation: slideInLeft 1s ease forwards;
+}
+
+div:last-of-type {
+    animation: slideInRight 1s ease forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    form {
+        padding: 2rem;
+    }
+    
+    input[type="text"] {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+    
+    button[type="submit"] {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+    
+    div button {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+    
+    div {
+        margin-bottom: 0.75rem;
+    }
+    
+    div a {
+        max-width: 100%;
+    }
+}
+
+/* Efectos adicionales */
+input[type="text"]::placeholder {
+    color: #a0aec0;
+    opacity: 0.7;
+}
+
+/* Efecto de brillo en botones */
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+/* Validación visual */
+input[type="text"]:invalid {
+    border-color: #e53e3e;
+}
+
+input[type="text"]:valid {
+    border-color: #38a169;
+}
+
+/* Estados de carga */
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Indicador de campo requerido */
+label::after {
+    content: ' *';
+    color: #e53e3e;
+    font-weight: normal;
+}
+
+/* Estilo para el valor actual */
+input[type="text"][value] {
+    background: #f6f6f6;
+    border-color: #e8e8e8;
+}
+
+input[type="text"][value]:focus {
+    background: white;
+    border-color: #333333;
+}
+
+/* Efecto de pulsación en botones */
+button:active {
+    transform: scale(0.98);
+}
+
+/* Estilos para mejorar la experiencia del usuario */
+form::before {
+    content: 'Modifica la información del departamento';
+    display: block;
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-style: italic;
+}

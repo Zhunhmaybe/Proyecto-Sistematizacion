@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear Rol</title>
+         <link rel="stylesheet" href="{{asset('css/Roles/create.css')}}">
 </head>
 <body>
     <div class="container">
@@ -34,9 +35,9 @@
         </div>
 
         <div style="margin-top: 1.5rem;">
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="{{ route('roles.index') }}" class="btn btn-secondary">Volver</a>
-                <a href="{{ route('admin.index') }}">Salir</a>
+            <button type="submit" class="save">Guardar</button>
+            <a href="{{ route('roles.index') }}" ><button class="volver">Volver<button></a>
+            <a href="{{ route('admin.index') }}"><button class="close">Salir</button></a>
         </div>
     </form>
 </div>

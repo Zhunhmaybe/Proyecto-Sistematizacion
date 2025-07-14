@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease-out;
+}
+
+h1 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: fadeIn 0.6s ease-out;
+}
+
+
+/* Mensaje de éxito */
+.success-message {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out;
+}
+
+.success-message::before {
+    content: "✅";
+    font-size: 1.2em;
+}
+
+/* Contenedor de botones superiores */
+.header-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón Nuevo Periodo */
+.btn-primary {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.btn-primary::before {
+    font-size: 1.1em;
+}
+
+/* Botón salir */
+.close {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.close:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.close::before {
+    font-size: 1.1em;
+}
+
+/* Botón edit */
+.edit {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.edit:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.edit::before {
+    font-size: 1.1em;
+}
+
+/* Contenedor de tabla responsiva */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Tabla principal */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    min-width: 700px;
+}
+
+/* Cabecera de la tabla */
+thead {
+    background: linear-gradient(135deg, #333333);
+    position: relative;
+}
+
+thead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+}
+
+thead th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    position: relative;
+}
+
+/* Cuerpo de la tabla */
+tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    transform: translateY(-1px);
+}
+
+tbody tr:hover::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #333333);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 18px 15px;
+    vertical-align: middle;
+    border: none;
+    font-size: 1em;
+    position: relative;
+}
+
+/* Estilos específicos para columnas */
+tbody td:nth-child(1) {
+    font-weight: 600;
+    color: #333333;
+    font-family: 'Courier New', monospace;
+}
+
+tbody td:nth-child(2) {
+    font-weight: 500;
+    color: #333;
+}
+
+tbody td:nth-child(3),
+tbody td:nth-child(4) {
+    color: #666;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Formateo de fechas */
+tbody td:nth-child(3)::before {
+    color: #4CAF50;
+    margin-right: 5px;
+}
+
+tbody td:nth-child(4)::before {
+    color: #f44336;
+    margin-right: 5px;
+}
+
+/* Fila vacía */
+tbody tr:has(td[colspan="5"]) {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+tbody tr:has(td[colspan="5"]) td {
+    padding: 40px 20px;
+    font-size: 1.1em;
+}
+
+tbody tr:has(td[colspan="5"])::before {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    font-size: 2em;
+    opacity: 0.3;
+}
+
+/* Estilos para acciones */
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+}
+
+.action-link:hover {
+    background: linear-gradient(135deg, #F57C00, #E65100);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+/* Contenedor de botones inferiores */
+.footer-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+/* Efectos de ondas en botones */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Scroll personalizado */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #333333);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #333333);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    h1::after {
+        display: none;
+    }
+    
+    .header-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    table {
+        font-size: 0.9em;
+        min-width: 600px;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 12px 8px;
+    }
+    
+    .footer-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+        margin: 5px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animaciones escalonadas para filas */
+tbody tr {
+    animation: fadeIn 0.6s ease-out;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+tbody tr:nth-child(4) { animation-delay: 0.4s; }
+tbody tr:nth-child(5) { animation-delay: 0.5s; }
+tbody tr:nth-child(6) { animation-delay: 0.6s; }
+tbody tr:nth-child(7) { animation-delay: 0.7s; }
+tbody tr:nth-child(8) { animation-delay: 0.8s; }
+
+/* Mejoras para accesibilidad */
+.btn:focus,
+.action-link:focus {
+    outline: 2px solid #333333;
+    outline-offset: 2px;
+}
+
+/* Indicadores de estado */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 2s infinite;
+}
+
+.status-active {
+    background: #4CAF50;
+}
+
+.status-inactive {
+    background: #f44336;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}

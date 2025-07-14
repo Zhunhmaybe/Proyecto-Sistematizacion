@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Periodos</title>
+    <title>Listado de Periodos</title>
+    <link rel="stylesheet" href="{{asset('css/Periodos/index.css')}}">
 </head>
 <body>
-        <div class="container">
-        <h2>Listado de Periodos</h2>
+    <div class="container">
+        <h1>Listado de Periodos</h1>
 
         @if(session('success'))
             <div style="color: green;">{{ session('success') }}</div>
         @endif
 
-        <a href="{{ route('periodos.create') }}" class="btn btn-primary">➕ Nuevo Periodo</a>
+        <a href="{{ route('periodos.create') }}"><button class="btn btn-primary">Nuevo Periodo</button></a>
 
         <table border="1" cellpadding="10" cellspacing="0" style="margin-top: 20px; width: 100%;">
             <thead>
@@ -34,7 +35,7 @@
                         <td>{{ $periodo->inicioper }}</td>
                         <td>{{ $periodo->finper }}</td>
                         <td>
-                            <a href="{{ route('periodos.edit', $periodo->idper) }}">✏️ Editar</a>
+                            <a href="{{ route('periodos.edit', $periodo->idper) }}"><button class="edit"> Editar</button></a>
                         </td>
                     </tr>
                 @empty
@@ -42,7 +43,10 @@
                 @endforelse
             </tbody>
         </table>
+        <div>
+            <a href="{{ route('admin.index') }}"><button class="close">Salir</button></a>
+        </div>
     </div>
-     <a href="{{ route('admin.index') }}">Salir</a>
+    
 </body>
 </html>

@@ -290,7 +290,7 @@ body > a[href*="logout"]:hover {
 .boton {
     width: 30%;
     padding: 15px;
-    background: linear-gradient(135deg, #F70000 0%, #FF0000 100%);
+    background: linear-gradient(135deg,#B90504, #990100 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -339,7 +339,7 @@ body > a[href*="logout"]:hover {
     width: 10%;
     padding:15px;
     gap:10pX;
-    background: linear-gradient(135deg, #F70000 0%, #FF0000 100%);
+    background: linear-gradient(135deg,#B90504, #990100 100%);
     color: white;
     border: none;
     border-radius: 12px;
