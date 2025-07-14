@@ -1,0 +1,330 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333333;
+}
+
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Mensajes de éxito */
+div[style*="color: green"] {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 1px solid #b8dabc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #155724 !important;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    animation: slideDown 0.5s ease-out;
+}
+
+div[style*="color: green"]::before {
+    content: '✓';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #28a745;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+thead {
+    background: linear-gradient(135deg, #333333, #333333);
+    color: white;
+}
+
+thead th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    border: none;
+}
+
+thead th:first-child {
+    border-radius: 0;
+}
+
+thead th:last-child {
+    border-radius: 0;
+}
+
+tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, #f8f9ff, #f1f3ff);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 18px 15px;
+    border: none;
+    vertical-align: middle;
+    font-size: 15px;
+}
+
+tbody td:first-child {
+    font-weight: 600;
+    color: #333333;
+    font-size: 16px;
+}
+
+tbody td:nth-child(2) {
+    color: #555;
+    font-weight: 500;
+}
+
+/* Mensaje de tabla vacía */
+tbody tr td[colspan="3"] {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    font-size: 16px;
+    padding: 40px 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+/* Contenedor de acciones */
+tbody td:last-child {
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón editar */
+.edit {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+
+}
+
+.edit:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.edit::before {
+    font-size: 1.1em;
+}
+
+/* Botón delete */
+.delete {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.delete:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.delete::before {
+    font-size: 1.1em;
+}
+
+/* Botón salir */
+.close {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.close:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.close::before {
+    font-size: 1.1em;
+}
+/* Enlaces sin decoración */
+a {
+    text-decoration: none;
+}
+
+/* Formularios inline */
+form[style*="display: inline"] {
+    display: inline-block !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    thead th {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+    
+    tbody td {
+        padding: 12px 10px;
+    }
+    
+    button {
+        padding: 6px 12px;
+        font-size: 12px;
+        margin: 2px;
+    }
+    
+    .close {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px 10px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    thead th {
+        padding: 12px 8px;
+        font-size: 11px;
+    }
+    
+    tbody td {
+        padding: 10px 8px;
+    }
+    
+    button {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+    
+    /* Hacer la tabla scrollable horizontalmente en móviles */
+    .table-container {
+        overflow-x: auto;
+    }
+}
+
+/* Animación para botones activos */
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Mejoras para accesibilidad */
+button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Efectos de hover para filas */
+@media (hover: hover) {
+    tbody tr:hover {
+        cursor: pointer;
+    }
+}

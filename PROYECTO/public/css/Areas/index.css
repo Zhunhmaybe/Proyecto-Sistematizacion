@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f6f6f6 0%, #e8e8e8 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    animation: fadeIn 0.6s ease-out;
+}
+
+h1 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Mensaje de éxito */
+.success-message {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out;
+}
+
+.success-message::before {
+    content: "✅";
+    font-size: 1.2em;
+}
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón Nueva Área */
+.new-area {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.new-area {
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+    box-shadow: 0 4px 15px rgba(243, 33, 33, 0.3);
+}
+
+.new-area:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 33, 33, 0.4);
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Tabla principal */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Cabecera de la tabla */
+thead {
+    background: linear-gradient(135deg, #333333);
+}
+
+thead th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    position: relative;
+}
+
+thead th::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+}
+
+/* Cuerpo de la tabla */
+tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+    transform: translateY(-1px);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 18px 15px;
+    vertical-align: middle;
+    border: none;
+    font-size: 1em;
+}
+
+/* Fila vacía */
+tbody tr:has(td[colspan="4"]) {
+    background: #f8f9fa;
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+/* Estilos para el estado "No asignado" */
+.no-assigned {
+    color: #f44336;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Contenedor de acciones */
+.actions-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Boton de editar */
+.edit {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.edit {
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+    box-shadow: 0 4px 15px rgba(243, 33, 33, 0.3);
+}
+
+.edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 33, 33, 0.4);
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Boton de eliminar */
+.delete {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.delete {
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+    box-shadow: 0 4px 15px rgba(243, 33, 33, 0.3);
+}
+
+.delete:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 33, 33, 0.4);
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Botón Cancelar */
+.cancel {
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+    position:relative;
+    left:90%;
+}
+
+.cancel:hover {
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+        margin: 10px;
+    }
+    
+    h2 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    table {
+        font-size: 0.9em;
+    }
+    
+    thead th,
+    tbody td {
+        padding: 12px 8px;
+    }
+    
+    .actions-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .action-link,
+    .delete-btn {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Tabla responsive - scroll horizontal */
+    .table-container {
+        overflow-x: auto;
+        margin: 20px -15px;
+        padding: 0 15px;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Efectos de carga */
+tbody tr {
+    animation: fadeIn 0.6s ease-out;
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.1s; }
+tbody tr:nth-child(2) { animation-delay: 0.2s; }
+tbody tr:nth-child(3) { animation-delay: 0.3s; }
+tbody tr:nth-child(4) { animation-delay: 0.4s; }
+tbody tr:nth-child(5) { animation-delay: 0.5s; }
+
+/* Scroll personalizado */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #B90504, #990100);
+    border-radius: 10px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #B90504, #990100);
+}

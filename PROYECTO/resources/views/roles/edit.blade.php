@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Editar Rol</title>
+    <link rel="stylesheet" href="{{asset('css/Roles/edit.css')}}">
 </head>
 <body>
     <div class="container">
-        <h2>Editar Rol</h2>
+        <h1>Editar Rol</h1>
 
         @if($errors->any())
             <div style="color: red;">
@@ -27,18 +28,14 @@
             <label for="idrol">ID del Rol:</label>
             <input type="text" name="idrol" value="{{ $rol->idrol }}" disabled>
 
-            <br><br>
-
             <label for="detalle">Detalle:</label>
             <input type="text" name="detalle" value="{{ old('detalle', $rol->detalle) }}" required>
 
-            <br><br>
-
-            <button type="submit">Guardar Cambios</button>
-            <a href="{{ route('roles.index') }}">Volver</a>
+            <button type="submit" class="save">Guardar Cambios</button>
+            <a href="{{ route('roles.index') }}"><button class="volver">Volver</button></a>
         </form>
     </div>
-    <a href="{{ route('admin.index') }}">Salir</a>
+    <a href="{{ route('admin.index') }}"><button class="close">Salir</button></a>
 </body>
 </html>
     
