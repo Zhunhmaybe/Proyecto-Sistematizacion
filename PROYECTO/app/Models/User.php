@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Rol;
 
 class User extends Authenticatable
 {
@@ -55,4 +56,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // app/Models/User.php
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class, 'idrol', 'idrol');
+    }
+    
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'idare', 'idare');
+    }
 }

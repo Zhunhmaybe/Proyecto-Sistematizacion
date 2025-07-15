@@ -68,7 +68,7 @@
         </form>
 
         <div class="register-link">
-            ¿No tienes cuenta? <a href="/register" onclick="alert('Redirigiendo a registro...')">Regístrate aquí</a>
+            ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
         </div>
     </div>
 
