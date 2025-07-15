@@ -26,6 +26,6 @@
     </form>
 
     <p><a href="{{ route('niveles.index') }}">← Volver al listado</a></p>
-        <a href="{{ route('logout') }}">Cerrar Sesion</a>
+        <a href="{{ route('admin.index') }}">Salir</a>
 </body>
 </html>
