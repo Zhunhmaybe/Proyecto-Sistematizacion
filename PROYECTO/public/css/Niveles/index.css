@@ -108,7 +108,7 @@ a button:active {
 .create {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
 }
 
 .create:hover {
@@ -120,17 +120,17 @@ a button:active {
 }
 
 /* Botón volver */
-.log-out {
+.close {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
-    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 4px 15px rgba(243, 33, 33, 0.3);
 }
 
-.log-out:hover {
+.close:hover {
     background: linear-gradient(135deg, #b90504, #990100);
 }
 
-.log-out::before {
+.close::before {
     font-size: 1.1em;
 }
 
@@ -181,7 +181,7 @@ tbody tr {
 tbody tr:hover {
     background: linear-gradient(135deg, #f8f9ff, #f1f3ff);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 4px 12px rgba(234, 102, 102, 0.1);
 }
 
 tbody tr:last-child {
@@ -199,10 +199,10 @@ tbody td {
 /* Estilos específicos para cada columna */
 tbody td:first-child {
     font-weight: 600;
-    color: #667eea;
+    color: #333333;
     font-size: 18px;
     text-align: center;
-    background: linear-gradient(135deg, #f8f9ff, #f1f3ff);
+    background: linear-gradient(135deg, #ffffff);
     border-radius: 8px;
     margin: 4px 0;
     width: 120px;

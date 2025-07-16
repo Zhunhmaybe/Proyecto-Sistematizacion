@@ -15,6 +15,19 @@ body {
     padding: 20px;
 }
 
+/* Contenedor principal */
+.container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 1400px;
+    position: relative;
+    margin-bottom: 20px;
+    width: 30%;
+}
+
 h1 {
     color: #333333;
     text-align: center;
@@ -22,18 +35,6 @@ h1 {
     font-size: 2.5em;
     font-weight: 300;
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Contenedor del formulario */
-form {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
 }
 
 /* Estilos para errores */

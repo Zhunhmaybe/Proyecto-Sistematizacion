@@ -28,7 +28,10 @@ class Area extends Model
     {
         return $this->belongsTo(Departamento::class, 'iddep');
     }
+
     public function profesor(){
+        
         return $this->hasMany(Profesor::class, 'idare');
     }
+
 }

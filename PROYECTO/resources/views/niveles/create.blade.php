@@ -27,8 +27,7 @@
             <button type="submit" class="save">Guardar Nivel</button>
         </form>
 
-        <a href="{{ route('niveles.index') }}"><button class="volver">Volver al listado</button></a>
-        <a href="{{ route('logout') }}"><button class="close">Cerrar Sesion</button></a>
-    </diV>
+    <p><a href="{{ route('niveles.index') }}">← Volver al listado</a></p>
+        <a href="{{ route('logout') }}">Cerrar Sesion</a>
 </body>
 </html>

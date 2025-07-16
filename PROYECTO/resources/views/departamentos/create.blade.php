@@ -9,19 +9,21 @@
 </head>
 <body>
     <h1>Crear Nuevo Departamento</h1>
+    <div class="container">
+        <form action="{{ route('departamentos.store') }}" method="POST">
+            @csrf
+            <label for="iddep">Identificación:</label>
+            <input type="text" name="iddep" maxlength="10" required>
 
-    <form action="{{ route('departamentos.store') }}" method="POST">
-        @csrf
-        <label for="iddep">Identificación:</label>
-        <input type="text" name="iddep" maxlength="10" required>
+            <label for="nombredep">Nombre:</label>
+            <input type="text" name="nombredep" maxlength="50" required>
 
-        <label for="nombredep">Nombre:</label>
-        <input type="text" name="nombredep" maxlength="50" required>
-
-        <button type="submit">Guardar</button>
-    </form>
-
-    <a href="{{ route('departamentos.index') }}" ><button class="register-button">Ver Departamentos</button></a>
-    <a href="{{ route('admin.index') }}" ><button class="left-button">Cancelar</button></a>
+            <button type="submit">Guardar</button>
+        </form>
+        <div class="navegacion">
+        <a href="{{ route('departamentos.index') }}" ><button class="register-button">Ver Departamentos</button></a>
+        <a href="{{ route('admin.index') }}" ><button class="left-button">Cancelar</button></a>
+        </div>
+    </div>
 </body>
 </html>

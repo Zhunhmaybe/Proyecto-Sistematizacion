@@ -14,23 +14,22 @@
 
         <a href="{{ route('niveles.create') }}"><button class="create">Crear nuevo nivel</button></a>
 
-        <table border="1" cellpadding="5">
-            <thead>
+    <table border="1" cellpadding="5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Nivel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($niveles as $nivel)
                 <tr>
-                    <th>ID</th>
-                    <th>Nombre del Nivel</th>
+                    <td>{{ $nivel->idniv }}</td>
+                    <td>{{ $nivel->nombreniv }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($niveles as $nivel)
-                    <tr>
-                        <td>{{ $nivel->idniv }}</td>
-                        <td>{{ $nivel->nombreniv }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <a href="{{ route('logout') }}"><button class="log-out">Cerrar Sesion</button></a>
-    </div>
+            @endforeach
+        </tbody>
+    </table>
+        <a href="{{ route('admin') }}"><button class="close">Volver</button></a>
 </body>
 </html>
