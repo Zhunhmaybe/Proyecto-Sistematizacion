@@ -86,6 +86,6 @@
 
   <!-- Puedes continuar con los semestres 5 al 10 -->
 
-  <a href="/Inscripciones/formulario" class="btn-inscripcion">Inscribirse</a>
+  <a href="/register" class="btn-inscripcion">Inscribirse</a>
 </body>
 </html>
