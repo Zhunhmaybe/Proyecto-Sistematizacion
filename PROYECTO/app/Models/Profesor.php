@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Area;
 use App\Models\ProAsi;
+use App\Models\Asignatura;
 
 class Profesor extends Model
 {
@@ -31,7 +32,11 @@ class Profesor extends Model
     }
     public function proasi()
     {
-        return $this->hasMany(ProAsi::class, 'idpro_asi');
+        return $this->hasMany(ProAsi::class, 'idpro_asi','idpro');
+    }
+    public function asignatura()
+    {
+        return $this->belongsTo(Asignatura::class, 'idasi', 'idasi');
     }
     public function getAuthPassword()
     {
