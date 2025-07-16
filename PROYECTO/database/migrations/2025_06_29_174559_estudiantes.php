@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->char('idare', 10)->primary();
-            $table->string('iddep', 10)->nullable();                    
-            $table->string('nombreare', 50);
-            $table->foreign('iddep')->references('iddep')->on('departamentos')->onDelete('cascade');
+        Schema::create('estudiantes', function (Blueprint $table) {
+            $table->string('idest', 10)->primary();
+            $table->string('nombreest', 50);
+            $table->string('apellidoest', 50);
+            //$table->string($direccionest, 100);
+            $table->string('mailest', 100);
+            $table->date('nacimientoest');
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('estudiantes');
     }
 };

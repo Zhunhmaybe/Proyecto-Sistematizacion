@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Periodo;
-use App\Models\Usuario;
+use App\Models\Estudiante;
 use App\Models\Detallematricula;
 
 class Matricula extends Model
@@ -16,19 +16,20 @@ class Matricula extends Model
     public $incrementing = false;
     protected $keyType = 'string';
     public $timestamps = false;
+
     protected $fillable = [
         'idmat',
         'idper',
-        'idusu',
+        'idest',
         'fechamat',
     ];
     public function periodo()
     {
         return $this->belongsTo(Periodo::class, 'idper');
     }
-    public function usuario()
+    public function estudiante()
     {
-        return $this->belongsTo(Usuario::class, 'idusu');
+        return $this->belongsTo(Estudiante::class, 'idest');
     }
     public function detallematriculas()
     {

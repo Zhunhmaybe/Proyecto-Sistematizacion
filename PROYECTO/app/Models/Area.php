@@ -4,12 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Usuario;
+use App\Models\Profesor;
 use App\Models\Departamento;
 
 class Area extends Model
 {
     use HasFactory;
+
     protected $table = 'areas';
     protected $primaryKey = 'idare';
     public $incrementing = false;
@@ -22,13 +23,15 @@ class Area extends Model
         'nombreare',
     ];
 
+    // Relación: un área pertenece a un departamento
     public function departamento()
     {
         return $this->belongsTo(Departamento::class, 'iddep');
     }
 
-    public function usuarios()
-    {
-        return $this->hasMany(Usuario::class, 'idare');
+    public function profesor(){
+        
+        return $this->hasMany(Profesor::class, 'idare');
     }
+
 }
