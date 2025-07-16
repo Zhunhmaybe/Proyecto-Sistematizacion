@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('/css/Departamentos/create.css') }}">
 </head>
 <body>
-     <h1>Crear Nuevo Departamento</h1>
+    <h1>Crear Nuevo Departamento</h1>
 
     <form action="{{ route('departamentos.store') }}" method="POST">
         @csrf
@@ -21,7 +21,7 @@
         <button type="submit">Guardar</button>
     </form>
 
-    <a href="{{ route('departamentos.index') }}" ><button class="register-button">Registro de Departamentos</button></a>
-     <a href="{{ route('admin.index') }}" ><button class="left-button">Cancelar</button></a>
+    <a href="{{ route('departamentos.index') }}" ><button class="register-button">Ver Departamentos</button></a>
+    <a href="{{ route('admin.index') }}" ><button class="left-button">Cancelar</button></a>
 </body>
 </html>

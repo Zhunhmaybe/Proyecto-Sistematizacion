@@ -49,20 +49,6 @@
                                 <a href="{{ route('usuarios.index') }}" class="referencia"><button class="boton">Ver Usuarios</button></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Áreas</td>
-                            <td>{{ $totalAreas }}</td>
-                            <td>
-                                <a href="{{ route('areas.index') }}" class="referencia"><button class="boton">Ver Areas</button></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Roles</td>
-                            <td>{{ $totalRoles }}</td>
-                            <td>
-                                <a href="{{ route('roles.index') }}" class="referencia"><button class="boton">Ver Roles</button></a>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>

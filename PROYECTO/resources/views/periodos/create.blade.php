@@ -55,7 +55,7 @@
             </div>
         </form>
         <div>
-            <a href="{{ route('periodos.index') }}"><button class="volver">Volver a la lista de periodos</button></a>
+            <a href="{{ route('periodos.index') }}"><button class="volver">Ver Lista de Periodos</button></a>
         </div>
         <div>
             <a href="{{ route('admin.index') }}"><button class="close">Salir</button></a>

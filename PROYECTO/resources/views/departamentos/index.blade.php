@@ -9,26 +9,27 @@
 </head>
 <body>
     <h1>Departamentos</h1>
-    
-    <a href="{{ route('departamentos.create') }}"><button class="create-button"> Crear nuevo</button></a>
+    <div class="container">
+        <a href="{{ route('departamentos.create') }}"><button class="create"> Crear nuevo</button></a>
 
-    @if (session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
-    @endif
+        @if (session('success'))
+            <div style="color: green;">{{ session('success') }}</div>
+        @endif
 
-    <ul>
-        @foreach($departamentos as $dep)
-            <li>
-                {{ $dep->iddep }} - {{ $dep->nombredep }}
-                <a href="{{ route('departamentos.edit', $dep->iddep) }}">✏️ Editar</a>
-                <form action="{{ route('departamentos.destroy', $dep->iddep) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">🗑️ Borrar</button>
-                </form>
-            </li>
-        @endforeach
-    </ul>
-     <a href="{{ route('admin.index') }}"><button class="left-button">Cancelar</button></a>
+        <ul>
+            @foreach($departamentos as $dep)
+                <li>
+                    {{ $dep->iddep }} - {{ $dep->nombredep }}
+                    <a href="{{ route('departamentos.edit', $dep->iddep) }}"><button class="edit">Editar</button></a>
+                    <form action="{{ route('departamentos.destroy', $dep->iddep) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete">Borrar</button>
+                    </form>
+                </li>
+            @endforeach
+        </ul>
+        <a href="{{ route('admin.index') }}"><button class="left">Cancelar</button></a>
+    </div>
 </body>
 </html>
