@@ -1,22 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\RegistroController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AreaController;
-use App\Http\Controllers\PeriodoController;
-use App\Http\Controllers\RolController;
-use App\Http\Controllers\DepartamentoController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DocenteController;
-use App\Http\Controllers\EstudianteController;
-use App\Http\Controllers\NivelController;
-use App\Http\Controllers\AsignaturaController;
-use App\Http\Controllers\TitulacionController;
-use Symfony\Component\HttpKernel\DependencyInjection\RegisterControllerArgumentLocatorsPass;
-use App\Http\Controllers\ProfesorController;
-use App\Http\Controllers\ProAsiController;
+use App\Http\Controllers\{
+    UsuarioController,
+    RegistroController,
+    AuthController,
+    AreaController,
+    PeriodoController,
+    RolController,
+    DepartamentoController,
+    AdminController,
+    DocenteController,
+    EstudianteController,
+    NivelController,
+    AsignaturaController,
+    TitulacionController,
+    ProfesorController,
+    ProAsiController,
+    TutoriaController,
+    HorarioController,
+    DiaController
+};
 use App\Http\Middleware\CheckAnyPermission;
 
 // === PÚBLICAS ===
@@ -34,9 +38,6 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/register', function(){
-return view('register');
-});
 //Gestion de usuasrios
 Route::post('/usuario', [RegistroController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
@@ -94,8 +95,40 @@ Route::resource('profesores', ProfesorController::class);
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
 
 
+Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');
 Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
 Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
 Route::delete('/pro_asi/{id}', [ProAsiController::class, 'destroy'])->name('pro_asi.destroy');
-// Opcional: listar asignaciones
-Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');
+
+//Rutas protegidas
+
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/admin/areas/create', [AreaController::class, 'create'])->name('areas.create');
+Route::get('/admin/roles', [RolController::class, 'index'])->name('roles.index');
+
+Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
+
+Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
+Route::post('/Login', [AuthController::class, 'login'])->name('login');
+Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
+Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
+Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
+
+// Rutas para Tutorías
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('tutorias', TutoriaController::class);
+});
+
+// Rutas para Horarios
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('horarios', HorarioController::class);
+});
+
+// Rutas para Días
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('dias',DiaController::class);
+});
