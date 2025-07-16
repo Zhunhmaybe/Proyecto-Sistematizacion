@@ -16,7 +16,10 @@ use App\Http\Controllers\{
     AsignaturaController,
     TitulacionController,
     ProfesorController,
-    ProAsiController
+    ProAsiController,
+    TutoriaController,
+    HorarioController,
+    DiaController
 };
 use App\Http\Middleware\CheckAnyPermission;
 
@@ -35,9 +38,6 @@ Route::get('/register', function () {
     return view('register');
 });
 
-Route::get('/register', function(){
-return view('register');
-});
 //Gestion de usuasrios
 Route::post('/usuario', [RegistroController::class, 'store'])->name('usuarios.store');
 Route::get('/usuarios/{idusu}/edit', [RegistroController::class, 'edit'])->name('usuarios.edit');
@@ -95,10 +95,10 @@ Route::resource('profesores', ProfesorController::class);
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
 
 
-   Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');
-    Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
-    Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
-    Route::delete('/pro_asi/{id}', [ProAsiController::class, 'destroy'])->name('pro_asi.destroy');
+Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');
+Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
+Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
+Route::delete('/pro_asi/{id}', [ProAsiController::class, 'destroy'])->name('pro_asi.destroy');
 
 //Rutas protegidas
 
@@ -117,3 +117,18 @@ Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
+
+// Rutas para Tutorías
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('tutorias', TutoriaController::class);
+});
+
+// Rutas para Horarios
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('horarios', HorarioController::class);
+});
+
+// Rutas para Días
+Route::middleware(['check.any.permission:admin'])->group(function () {
+    Route::resource('dias', DiaController::class);
+});
