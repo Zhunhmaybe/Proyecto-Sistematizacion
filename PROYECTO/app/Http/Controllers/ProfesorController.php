@@ -6,6 +6,7 @@ use App\Models\Profesor;
 use App\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Departamento;
 
 class ProfesorController extends Controller
 {
@@ -19,17 +20,33 @@ class ProfesorController extends Controller
     public function create()
     {
         $areas = Area::all();
-        return view('profesor.create', compact('areas'));
+        $departamentos = Departamento::all();
+        return view('profesor.create', compact('areas', 'departamentos'));
     }
 
     public function dashboard()
     {
-        $totalProfesores = Profesor::count();
-        $profesoresPorArea = Area::withCount('profesor')->with('departamento')->get();
+        $usuario = session('usuario');
 
-        return view('profesor', compact('totalProfesores', 'profesoresPorArea'));
+        // Verificar que esté autenticado y sea un docente
+        if (!$usuario || $usuario->idrol != 1) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        // Buscar el profesor usando su ID de usuario
+        $profesor = Profesor::with([
+            'area.departamento',
+            'proasi.asignatura'
+        ])->where('idpro', $usuario->idusu)->first();
+
+
+        // Verificar si se encontró el profesor
+        if (!$profesor) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Profesor no registrado.']);
+        }
+
+        return view('profesor   ', compact('usuario', 'profesor'));
     }
-
 
 
     // Guardar un nuevo profesor
@@ -60,8 +77,9 @@ class ProfesorController extends Controller
     public function edit($idpro)
     {
         $profesor = Profesor::findOrFail($idpro);
+        $departamentos = Departamento::all();
         $areas = Area::all();
-        return view('profesor.edit', compact('profesor', 'areas'));
+        return view('profesor.edit', compact('profesor', 'departamentos','areas'));
     }
 
     // Actualizar profesor existente

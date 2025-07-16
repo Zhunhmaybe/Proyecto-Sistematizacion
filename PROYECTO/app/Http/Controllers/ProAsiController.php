@@ -4,47 +4,57 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProAsi;
-use App\Models\Profesor;
+use App\Models\User;
 use App\Models\Asignatura;
+use Illuminate\Support\Str;
 
 class ProAsiController extends Controller
 {
-    // Mostrar el formulario para asignar materias a un profesor
+    // Mostrar todas las asignaciones
+    public function index()
+    {
+        $asignaciones = ProAsi::with(['profesor', 'asignatura'])->get();
+        return view('pro_asi.index', compact('asignaciones'));
+    }
+
+    // Mostrar formulario de asignación
+
     public function create()
     {
-        $profesores = Profesor::all();
+        $profesores = User::where('idrol', 1)->get();
         $asignaturas = Asignatura::all();
 
         return view('pro_asi.create', compact('profesores', 'asignaturas'));
     }
 
-    // Guardar la asignación en la base de datos
+
+    // Guardar la asignación
     public function store(Request $request)
     {
         $request->validate([
             'idpro' => 'required|exists:profesores,idpro',
-            'idasis' => 'required|array',
-            'idasis.*' => 'exists:asignaturas,idasi',
+            'idasi' => 'required|exists:asignaturas,idasi',
         ]);
 
-        // Eliminar asignaciones anteriores (opcional, si quieres evitar duplicados)
-        ProAsi::where('idpro', $request->idpro)->delete();
 
-        foreach ($request->idasis as $idasi) {
-            ProAsi::create([
-                'idpro_asi' => uniqid(), // si usas un campo ID personalizado
-                'idpro' => $request->idpro,
-                'idasi' => $idasi,
-            ]);
-        }
+        // Generar ID único para la tabla pro_asi
+        $idpro_asi = strtoupper(Str::random(8));
 
-        return redirect()->route('pro_asi.create')->with('success', 'Materias asignadas al profesor correctamente.');
+        ProAsi::create([
+            'idpro_asi' => $idpro_asi,
+            'idpro' => $request->idpro,
+            'idasi' => $request->idasi,
+        ]);
+
+        return redirect()->route('pro_asi.index')->with('success', 'Asignación creada correctamente.');
     }
 
-    // (Opcional) Mostrar lista de asignaciones
-    public function index()
+    // Eliminar una asignación
+    public function destroy($id)
     {
-        $asignaciones = ProAsi::with('asignatura', 'usuario')->get();
-        return view('pro_asi.index', compact('asignaciones'));
+        $asignacion = ProAsi::findOrFail($id);
+        $asignacion->delete();
+
+        return redirect()->route('pro_asi.index')->with('success', 'Asignación eliminada correctamente.');
     }
 }
