@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Rol;
 
 class User extends Authenticatable
 {
@@ -17,10 +18,24 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    use Notifiable;
+
+    protected $table = 'users';          // El nombre de la tabla en la base de datos
+    protected $primaryKey = 'idusu';        // Clave primaria de la tabla
+    public $incrementing = false;         // Si el id es autoincremental
+    protected $keyType = 'string';          // Tipo de la clave primaria
+    public $timestamps = false;
+
     protected $fillable = [
-        'name',
+        'idusu',
+        'nombredusu',
+        'apellidousu',
+        'contrasena',
         'email',
-        'password',
+        'fechanacimiento',
+        'idrol',
+        'remember_token',
+
     ];
 
     /**
@@ -29,7 +44,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
+        'contrasena',
         'remember_token',
     ];
 
@@ -41,4 +56,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // app/Models/User.php
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class, 'idrol', 'idrol');
+    }
+    
+    public function area()
+    {
+        return $this->belongsTo(Area::class, 'idare', 'idare');
+    }
 }

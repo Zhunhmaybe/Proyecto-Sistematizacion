@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('matriculas', function (Blueprint $table) {
             $table->char('idmat', 10)->primary();
             $table->char('idper', 10);
-            $table->char('idusu', 10);
+            $table->char('idest', 10);
             $table->date('fechamat');
             $table->foreign('idper')->references('idper')->on('periodos')->onDelete('cascade');
-            $table->foreign('idusu')->references('idusu')->on('usuarios')->onDelete('cascade');
+            $table->foreign('idest')->references('idest')->on('estudiantes')->onDelete('cascade');
         });
     }
 

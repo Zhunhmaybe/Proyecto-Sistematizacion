@@ -9,6 +9,7 @@ use App\Models\Area;
 class Departamento extends Model
 {
     use HasFactory;
+
     protected $table = 'departamentos';
     protected $primaryKey = 'iddep';
     public $incrementing = false;
@@ -20,6 +21,7 @@ class Departamento extends Model
         'nombredep',
     ];
 
+    // Relación: un departamento tiene muchas áreas
     public function areas()
     {
         return $this->hasMany(Area::class, 'iddep');

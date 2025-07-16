@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Titulacion;
 use App\Models\Nivel;
+use App\Models\ProAsi;
+use App\Models\Detallematricula;
 
 class Asignatura extends Model
 {
@@ -34,4 +36,15 @@ class Asignatura extends Model
     {
         return $this->belongsTo(Nivel::class, 'idniv');
     }
+
+    public function proasi()
+    {
+        return $this->hasMany(ProAsi::class, 'idasi');
+    }
+
+    public function detallematricula()
+    {
+        return $this->hasMany(Detallematricula::class, 'idasi');
+    }
+    
 }
