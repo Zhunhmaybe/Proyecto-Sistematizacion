@@ -25,28 +25,26 @@ class ProfesorController extends Controller
     }
 
     public function dashboard()
-    {
-        $usuario = session('usuario');
+{
+    $usuario = session('usuario');
 
-        // Verificar que esté autenticado y sea un docente
-        if (!$usuario || $usuario->idrol != 1) {
-            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
-        }
-
-        // Buscar el profesor usando su ID de usuario
-        $profesor = Profesor::with([
-            'area.departamento',
-            'proasi.asignatura'
-        ])->where('idpro', $usuario->idusu)->first();
-
-
-        // Verificar si se encontró el profesor
-        if (!$profesor) {
-            return redirect()->route('login.form')->withErrors(['access' => 'Profesor no registrado.']);
-        }
-
-        return view('profesor   ', compact('usuario', 'profesor'));
+    // Verificar que esté autenticado y sea un docente
+    if (!$usuario || $usuario->idrol != 1) {
+        return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
     }
+
+    // Cargar el profesor, su área, departamento y asignaturas
+    $profesor = Profesor::with([
+        'area.departamento',
+        'proasi.asignatura'
+    ])->where('idpro', $usuario->idusu)->first();
+
+    if (!$profesor) {
+        return redirect()->route('login.form')->withErrors(['access' => 'Profesor no registrado.']);
+    }
+
+    return view('profesor', compact('usuario', 'profesor'));
+}
 
 
     // Guardar un nuevo profesor

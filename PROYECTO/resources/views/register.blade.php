@@ -65,7 +65,6 @@
             <div class="form-group">
                 <label class="form-label" for="idrol">Rol</label>
                 <select id="idrol" name="idrol" class="form-input" required>
-                    <option value="0">Admin</option>
                     <option value="1">Docente</option>
                     <option value="2">Estudiante</option>
                 </select>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Horario;
 use App\Models\Dia;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class HorarioController extends Controller
@@ -26,13 +27,14 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'idhor'=>'required|max:10',
             'horaini' => 'required|date_format:H:i',
             'horafin' => 'required|date_format:H:i|after:horaini',
             'iddia' => 'required|exists:dias,iddia',  // Verifica que el día exista
         ]);
 
         Horario::create([
-            'idhor' => uniqid(), // Genera un id único
+            'idhor' => $validated['idhor'],
             'horaini' => $validated['horaini'],
             'horafin' => $validated['horafin'],
             'iddia' => $validated['iddia'],

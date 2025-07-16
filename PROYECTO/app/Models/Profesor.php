@@ -32,7 +32,7 @@ class Profesor extends Model
     }
     public function proasi()
     {
-        return $this->hasMany(ProAsi::class, 'idpro_asi','idpro');
+        return $this->hasMany(ProAsi::class, 'idpro','idpro');
     }
     public function asignatura()
     {
