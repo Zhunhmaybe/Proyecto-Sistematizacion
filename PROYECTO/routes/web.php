@@ -19,43 +19,19 @@ use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\ProAsiController;
 use App\Http\Middleware\CheckAnyPermission;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// === PÚBLICAS ===
+Route::view('/', 'Inicio');
+Route::view('/Academia', 'Academia');
+Route::view('/Servicios', 'Servicios');
+Route::view('/MisionVision', 'MisionVision');
+Route::view('/Ingles', 'Ingles');
+Route::view('/register', 'register');
 
-Route::get('/', function () {
-    return view('Inicio');
-});
+Route::get('/Carreras/{nombre}', fn($nombre) => view('Carreras.' . $nombre));
+Route::get('/Inscripciones/{carrera}', fn($carrera) => view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]));
 
-Route::get('/Academia', function () {
-    return view('Academia');
-});
-
-Route::get('/Servicios', function () {
-    return view('Servicios');
-});
-
-Route::get('/MisionVision', function () {
-    return view('MisionVision');
-});
-Route::get('/Ingles', function () {
-    return view('Ingles');
-});
-
-Route::get('/Carreras/{nombre}', function ($nombre) {
-    return view('Carreras.' . $nombre);
-});
-
-
-Route::get('/Inscripciones/{carrera}', function ($carrera) {
-    return view('Inscripciones.formulario', ['carrera' => ucfirst($carrera)]);
+Route::get('/register', function () {
+    return view('register');
 });
 
 Route::get('/register', function(){
@@ -120,6 +96,6 @@ Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->n
 
 Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
 Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
-
+Route::delete('/pro_asi/{id}', [ProAsiController::class, 'destroy'])->name('pro_asi.destroy');
 // Opcional: listar asignaciones
 Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');

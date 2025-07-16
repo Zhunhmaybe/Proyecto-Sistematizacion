@@ -4,37 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Asignaturas</title>
+    <title>Asignar Materia</title>
 </head>
 <body>
-    <h1>Asignar Materias a un Profesor</h1>
+    <h2>Asignar Materia a Profesor</h2>
 
     @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
+        <div style="color: green">{{ session('success') }}</div>
     @endif
 
-    <form method="POST" action="{{ route('pro_asi.store') }}">
+    <form action="{{ route('pro_asi.store') }}" method="POST">
         @csrf
 
-        <label for="idpro">Profesor:</label>
         <select name="idpro" required>
-            <option value="">Seleccione un profesor</option>
-            @foreach($profesores as $profesor)
-                <option value="{{ $profesor->idpro }}">{{ $profesor->nombrespro }} {{ $profesor->apellidopro }}</option>
-            @endforeach
-        </select>
+    <option value="">Seleccione un profesor</option>
+    @foreach($profesores as $profesor)
+        <option value="{{ $profesor->idusu }}">{{ $profesor->nombredusu }} {{ $profesor->apellidousu }}</option>
+    @endforeach
+</select>
 
-        <br><br>
+<select name="idasi" required>
+    <option value="">Seleccione una asignatura</option>
+    @foreach($asignaturas as $asignatura)
+        <option value="{{ $asignatura->idasi }}">{{ $asignatura->nombreasi }}</option>
+    @endforeach
+</select>
 
-        <label for="idasis">Asignaturas:</label><br>
-        @foreach($asignaturas as $asignatura)
-            <input type="checkbox" name="idasis[]" value="{{ $asignatura->idasi }}">
-            {{ $asignatura->nombreasi }}<br>
-        @endforeach
 
-        <br>
+        <button type="submit">Asignar</button>
+    </form> 
 
-        <button type="submit">Asignar Materias</button>
-    </form>
+    <a href="{{ route('pro_asi.index') }}">Ver Usuarios</a>
+       <a href="{{ route('admin.index') }}">Salir</a>
 </body>
 </html>
+
+    
