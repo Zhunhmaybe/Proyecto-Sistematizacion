@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Rol;
 use App\Models\Area;
+use App\Models\Profesor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -65,31 +66,53 @@ class UsuarioController extends Controller
     }
 
     // Actualizar usuario
-    public function update(Request $request, $idusu)
-    {
-        $usuario = User::findOrFail($idusu);
 
-        $request->validate([
-            'nombredusu' => 'required|string|max:50',
-            'apellidousu' => 'required|string|max:50',
-            'email' => 'required|email|unique:users,email,' . $idusu . ',idusu',
-            'fechanacimiento' => 'required|date',
-            'idrol' => 'required|string',
-            'idare' => $request->idrol == '1' ? 'required|string' : 'nullable',
+public function update(Request $request, $idusu)
+{
+    $usuario = User::findOrFail($idusu);
 
-        ]);
+    // Validación
+    $request->validate([
+        'nombredusu' => 'required|string|max:50',
+        'apellidousu' => 'required|string|max:50',
+        'email' => 'required|email|unique:users,email,' . $idusu . ',idusu',
+        'fechanacimiento' => 'required|date',
+        'idrol' => 'required|string',
+        'idare' => $request->idrol == '1' ? 'required|string' : 'nullable',
+    ]);
 
-        $usuario->update([
-            'nombredusu' => $request->nombredusu,
-            'apellidousu' => $request->apellidousu,
-            'email' => $request->email,
-            'fechanacimiento' => $request->fechanacimiento,
-            'idrol' => $request->idrol,
-            'idare' => $request->idrol == '1' ? $request->idare : null,
-        ]);
+    // Actualizar datos del usuario
+    $usuario->update([
+        'nombredusu' => $request->nombredusu,
+        'apellidousu' => $request->apellidousu,
+        'email' => $request->email,
+        'fechanacimiento' => $request->fechanacimiento,
+        'idrol' => $request->idrol,
+        'idare' => $request->idrol == '1' ? $request->idare : null,
+    ]);
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
+    // Si el usuario ahora es docente
+    if ($request->idrol == '1') {
+        Profesor::updateOrCreate(
+            ['idpro' => $usuario->idusu],
+            [
+                'idpro' => $usuario->idusu,
+                'idare' => $request->idare,
+                'nombrespro' => $request->nombredusu,
+                'apellidopro' => $request->apellidousu,
+                'correopro' => $request->email,
+                'fechanacimientopro' => $request->fechanacimiento,
+            ]
+        );
+    } else {
+        // Si ya no es docente, eliminamos el registro de profesores si existe
+        Profesor::where('idpro', $usuario->idusu)->delete();
     }
+
+    return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado correctamente.');
+}
+
+
 
     // Eliminar usuario
     public function destroy($idusu)
