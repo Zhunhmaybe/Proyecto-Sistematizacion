@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 
 class EstudianteController extends Controller
 {
-    public function dashboard()
+   public function dashboard()
     {
         $usuario = session('usuario');
 
@@ -27,14 +27,34 @@ class EstudianteController extends Controller
             ->first();
 
         $matriculado = false;
-        if ($periodoActivo && $estudiante) {
-            $matriculado = Matricula::where('idper', $periodoActivo->idper)
-                ->where('idest', $estudiante->idest)
-                ->exists();
+        $asignaturasMatriculadas = collect();
+
+        if ($estudiante) {
+            $matriculas = Matricula::where('idest', $estudiante->idest)
+                ->with(['detallematriculas.asignatura', 'periodo'])
+                ->get();
+
+            foreach ($matriculas as $matricula) {
+                if ($matricula->idper === $periodoActivo?->idper) {
+                    $matriculado = true;
+                }
+
+                foreach ($matricula->detallematriculas as $detalle) {
+                    $detalle->periodo = $matricula->periodo; // Asocia el periodo al detalle
+                    $asignaturasMatriculadas->push($detalle);
+                }
+            }
         }
 
-        return view('estudiante.dashboard', compact('usuario', 'periodoActivo', 'matriculado'));
+
+        return view('estudiante.dashboard', compact(
+            'usuario',
+            'periodoActivo',
+            'matriculado',
+            'asignaturasMatriculadas'
+        ));
     }
+
 
     public function mostrarFormularioMatricula()
     {
@@ -50,8 +70,9 @@ class EstudianteController extends Controller
             ->first();
         // Obtener todos los periodos disponibles
         $periodos = Periodo::all();
-
         $asignaturas = Asignatura::all(); // Obtener todas las asignaturas disponibles
+        $matriculado = false;
+
 
         // Obtener el estudiante logueado
         $estudiante = Estudiante::where('mailest', $usuario->email)->first();
@@ -64,7 +85,7 @@ class EstudianteController extends Controller
             return view('estudiante.matricula')->with(['mensaje' => 'No hay un periodo activo.']);
         }
 
-        return view('estudiante.matricula', compact('periodoActivo', 'periodos', 'asignaturas', 'estudiante'));
+        return view('estudiante.matricula', compact('periodoActivo','periodos', 'asignaturas','estudiante'));
     }
 
     public function procesarMatricula(Request $request)
@@ -72,37 +93,65 @@ class EstudianteController extends Controller
         $request->validate([
             'idper' => 'required|exists:periodos,idper',
             'asignaturas' => 'required|array|min:1',
-            'idest' => 'required|exists:estudiantes,idest', // Validar que el estudiante existe
+            'idest' => 'required|exists:estudiantes,idest',
         ]);
 
-        // Obtener los datos del estudiante logueado
         $usuario = session('usuario');
         $estudiante = Estudiante::where('mailest', $usuario->email)->first();
-
         $periodo = Periodo::findOrFail($request->idper);
 
-        // Generar un ID para la matrícula
-        $ultimoMatricula = Matricula::orderBy('idmat', 'desc')->first();
-        $ultimoNumero = $ultimoMatricula ? (int) substr($ultimoMatricula->idmat, 3) : 0;
-        $nuevoIdMat = 'MAT' . str_pad($ultimoNumero + 1, 3, '0', STR_PAD_LEFT);
+        // Buscar si ya tiene matrícula en ese periodo
+        $matricula = Matricula::where('idest', $estudiante->idest)
+            ->where('idper', $periodo->idper)
+            ->first();
 
-        // Crear la matrícula
-        $matricula = Matricula::create([
-            'idmat' => $nuevoIdMat,
-            'idper' => $periodo->idper,
-            'idest' => $estudiante->idest,
-            'fechamat' => now(),
-        ]);
+        // Si no tiene, crear una nueva
+        if (!$matricula) {
+            $ultimoMatricula = Matricula::orderBy('idmat', 'desc')->first();
+            $ultimoNumero = $ultimoMatricula ? (int) substr($ultimoMatricula->idmat, 3) : 0;
+            $nuevoIdMat = 'MAT' . str_pad($ultimoNumero + 1, 3, '0', STR_PAD_LEFT);
 
-        // Asignar las asignaturas seleccionadas a la matrícula
-        foreach ($request->asignaturas as $asignaturaId) {
-            Detallematricula::create([
-                'idasi' => $asignaturaId,
-                'idmat' => $matricula->idmat,
-                'detalledet' => 'Matrícula regular',
+            $matricula = Matricula::create([
+                'idmat' => $nuevoIdMat,
+                'idper' => $periodo->idper,
+                'idest' => $estudiante->idest,
+                'fechamat' => now(),
             ]);
         }
 
-        return redirect()->route('estudiante.dashboard')->with('success', 'Matrícula realizada correctamente.');
+        $mensajes = [];
+        $agregadas = [];
+
+        foreach ($request->asignaturas as $idasi) {
+            // Verificar si ya existe esa asignatura en la matrícula actual
+            $yaExiste = Detallematricula::where('idmat', $matricula->idmat)
+                ->where('idasi', $idasi)
+                ->exists();
+
+            if ($yaExiste) {
+                $asignatura = Asignatura::find($idasi);
+                $mensajes[] = "Ya estás matriculado en la asignatura: {$asignatura->nombreasi}";
+            } else {
+                Detallematricula::create([
+                    'idasi' => $idasi,
+                    'idmat' => $matricula->idmat,
+                    'detalledet' => 'Matrícula regular',
+                ]);
+                $agregadas[] = $idasi;
+            }
+        }
+
+        if (empty($agregadas)) {
+            return redirect()->route('estudiante.dashboard')->with('mensaje', implode('<br>', $mensajes));
+        }
+
+        $mensajeFinal = 'Asignaturas matriculadas correctamente.';
+        if (!empty($mensajes)) {
+            $mensajeFinal .= '<br>' . implode('<br>', $mensajes);
+        }
+
+        return redirect()->route('estudiante.dashboard')->with('success', $mensajeFinal);
     }
+
+
 }
