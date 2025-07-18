@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear Titulación</title>
+    <title>Crear Carreras</title>
 </head>
 <body>
-    <h1>Crear Nueva Titulación</h1>
+    <h1>Crear Nueva Carreras</h1>
 
     <a href="{{ route('titulacion.index') }}">Volver al listado</a>
 
@@ -21,13 +21,13 @@
     <form action="{{ route('titulaciones.store') }}" method="POST">
         @csrf
 
-        <label>Id titulacion:</label>
+        <label>Id Carrera:</label>
         <input type="text" name="idtit" value="{{ old('idtit') }}" required><br><br>
 
-        <label>Detalle de Titulación:</label>
+        <label>Detalle de Carrera:</label>
         <input type="text" name="detalletit" value="{{ old('detalletit') }}" required><br><br>
 
-        <label>Nivel de Titulación:</label>
+        <label>Nivel de Carrera:</label>
         <input type="text" name="nivelestit" value="{{ old('nivelestit') }}" required><br><br>
 
         <button type="submit">Crear</button>
