@@ -21,8 +21,7 @@ class EstudianteController extends Controller
             return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
         }
 
-        $estudiante = Estudiante::where('mailest', $usuario->email)->first(); // o usar idusu si está en la tabla estudiantes
-
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
         $periodoActivo = Periodo::whereDate('inicioper', '<=', now())
             ->whereDate('finper', '>=', now())
             ->first();
@@ -34,10 +33,8 @@ class EstudianteController extends Controller
                 ->exists();
         }
 
-        return view('estudiante', compact('usuario', 'periodoActivo', 'matriculado'));
+        return view('estudiante.dashboard', compact('usuario', 'periodoActivo', 'matriculado'));
     }
-
-
 
     public function mostrarFormularioMatricula()
     {
@@ -47,49 +44,59 @@ class EstudianteController extends Controller
             return redirect()->route('login.form')->withErrors(['access' => 'Acceso denegado']);
         }
 
+        // Obtener el periodo activo
         $periodoActivo = Periodo::whereDate('inicioper', '<=', now())
             ->whereDate('finper', '>=', now())
             ->first();
+        // Obtener todos los periodos disponibles
+        $periodos = Periodo::all();
 
-        $asignaturas = Asignatura::all();
+        $asignaturas = Asignatura::all(); // Obtener todas las asignaturas disponibles
+
+        // Obtener el estudiante logueado
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
+        if (!$estudiante) {
+            return back()->withErrors(['estudiante' => 'Estudiante no encontrado.']);
+        }
+        $usuario = session('usuario');
 
         if (!$periodoActivo) {
-            return view('estudiante')->with(['mensaje' => 'No hay un periodo activo.']);
+            return view('estudiante.matricula')->with(['mensaje' => 'No hay un periodo activo.']);
         }
 
-        return view('estudiante.matricula', compact('periodoActivo', 'asignaturas'));
+        return view('estudiante.matricula', compact('periodoActivo','periodos', 'asignaturas','estudiante'));
     }
 
-    public function procesarMatricula(Request $request)
+   public function procesarMatricula(Request $request)
     {
         $request->validate([
             'idper' => 'required|exists:periodos,idper',
             'asignaturas' => 'required|array|min:1',
+            'idest' => 'required|exists:estudiantes,idest', // Validar que el estudiante existe
         ]);
 
+        // Obtener los datos del estudiante logueado
         $usuario = session('usuario');
-
-        if (!$usuario || $usuario->idrol != 2) {
-            return redirect()->route('login.form')->withErrors(['access' => 'Acceso denegado']);
-        }
-
-        $estudiante = Estudiante::where('mailest', $usuario->email)->first(); // o usar idusu
-        if (!$estudiante) {
-            return back()->withErrors(['estudiante' => 'No se encontró el estudiante.']);
-        }
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
 
         $periodo = Periodo::findOrFail($request->idper);
 
+        // Generar un ID para la matrícula
+        $ultimoMatricula = Matricula::orderBy('idmat', 'desc')->first();
+        $ultimoNumero = $ultimoMatricula ? (int) substr($ultimoMatricula->idmat, 3) : 0;
+        $nuevoIdMat = 'MAT' . str_pad($ultimoNumero + 1, 3, '0', STR_PAD_LEFT);
+
+        // Crear la matrícula
         $matricula = Matricula::create([
-            'idmat' => Str::uuid(),
+            'idmat' => $nuevoIdMat,
             'idper' => $periodo->idper,
-            'idest' => $estudiante->idest, // ya no idusu
+            'idest' => $estudiante->idest,
             'fechamat' => now(),
         ]);
 
+        // Asignar las asignaturas seleccionadas a la matrícula
         foreach ($request->asignaturas as $asignaturaId) {
             Detallematricula::create([
-                'iddet' => Str::uuid(),
                 'idasi' => $asignaturaId,
                 'idmat' => $matricula->idmat,
                 'detalledet' => 'Matrícula regular',
@@ -98,4 +105,6 @@ class EstudianteController extends Controller
 
         return redirect()->route('estudiante.dashboard')->with('success', 'Matrícula realizada correctamente.');
     }
+
+
 }

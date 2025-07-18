@@ -17,7 +17,6 @@ class Tutoria extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idtut',
         'iddet',
         'idhor',
         'detalletut',

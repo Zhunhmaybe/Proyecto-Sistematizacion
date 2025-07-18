@@ -18,7 +18,6 @@ class Detallematricula extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'iddet',
         'idasi',
         'idmat',
         'detalledet',
