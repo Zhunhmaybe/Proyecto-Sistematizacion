@@ -25,7 +25,7 @@ class Profesor extends Model
         'correopro',
         'fechanacimientopro',
     ];
-    //
+
     public function area()
     {
         return $this->belongsTo(Area::class, 'idare');
@@ -37,5 +37,9 @@ class Profesor extends Model
     public function asignatura()
     {
         return $this->belongsTo(Asignatura::class, 'idasi', 'idasi');
+    }
+    public function getAuthPassword()
+    {
+        return $this->contrasena;
     }
 }
