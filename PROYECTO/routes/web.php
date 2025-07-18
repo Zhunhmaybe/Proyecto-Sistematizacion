@@ -58,6 +58,11 @@ Route::get('login', [AuthController::class, 'loginForm'])->name('login.form');
 Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
+// Rutas para estudiante
+Route::post('/estudiante/obtener-asignaturas-por-titulacion', [EstudianteController::class, 'obtenerAsignaturasPorTitulacion'])->name('estudiante.obtener-asignaturas-por-titulacion');
+Route::post('/estudiante/procesar-matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.procesarMatricula');
+
+
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
@@ -99,10 +104,15 @@ Route::resource('profesores', ProfesorController::class);
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
 
 
+Route::resource('pro_asi', ProAsiController::class);
 Route::get('/pro_asi', [ProAsiController::class, 'index'])->name('pro_asi.index');
 Route::get('/pro_asi/create', [ProAsiController::class, 'create'])->name('pro_asi.create');
 Route::post('/pro_asi', [ProAsiController::class, 'store'])->name('pro_asi.store');
 Route::delete('/pro_asi/{id}', [ProAsiController::class, 'destroy'])->name('pro_asi.destroy');
+Route::get('pro_asi/asignaturas/{idpro}', [ProAsiController::class, 'getAsignaturasPorDocente'])->name('pro_asi.asignaturas');
+
+Route::get('/pro-asi/get-asignaturas-por-docente/{idpro}', [ProAsiController::class, 'getAsignaturasPorDocente'])
+    ->name('pro_asi.get_asignaturas');
 
 //Rutas protegidas
 
@@ -135,5 +145,5 @@ Route::middleware(['check.any.permission:admin'])->group(function () {
 
 // Rutas para Días
 Route::middleware(['check.any.permission:admin'])->group(function () {
-    Route::resource('dias',DiaController::class);
+    Route::resource('dias', DiaController::class);
 });
