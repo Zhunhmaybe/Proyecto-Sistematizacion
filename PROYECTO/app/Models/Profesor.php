@@ -28,7 +28,7 @@ class Profesor extends Model
 
     public function area()
     {
-        return $this->belongsTo(Area::class, 'idare');
+        return $this->belongsTo(Area::class, 'idare','idare');
     }
     public function proasi()
     {

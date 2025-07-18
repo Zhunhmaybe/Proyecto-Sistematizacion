@@ -29,9 +29,19 @@ class Area extends Model
         return $this->belongsTo(Departamento::class, 'iddep');
     }
 
-    public function profesor(){
-        
+    public function profesor()
+    {
+
         return $this->hasMany(Profesor::class, 'idare');
     }
 
+    public function asignaturas()
+    {
+        return $this->hasMany(Asignatura::class, 'idare', 'idare');
+    }
+    // En app/Models/Area.php
+    public function users()
+    {
+        return $this->hasMany(User::class, 'idare', 'idare');
+    }
 }
