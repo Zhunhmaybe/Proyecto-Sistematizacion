@@ -64,10 +64,10 @@ class EstudianteController extends Controller
             return view('estudiante.matricula')->with(['mensaje' => 'No hay un periodo activo.']);
         }
 
-        return view('estudiante.matricula', compact('periodoActivo','periodos', 'asignaturas','estudiante'));
+        return view('estudiante.matricula', compact('periodoActivo', 'periodos', 'asignaturas', 'estudiante'));
     }
 
-   public function procesarMatricula(Request $request)
+    public function procesarMatricula(Request $request)
     {
         $request->validate([
             'idper' => 'required|exists:periodos,idper',
@@ -105,6 +105,4 @@ class EstudianteController extends Controller
 
         return redirect()->route('estudiante.dashboard')->with('success', 'Matrícula realizada correctamente.');
     }
-
-
 }
