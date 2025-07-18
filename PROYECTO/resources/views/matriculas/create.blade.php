@@ -1,8 +1,13 @@
-<form action="{{ route('estudiante.matricula') }}" method="POST">
+<form action="{{ route('matriculas.store') }}" method="POST">
     @csrf
     <div class="form-group mb-3">
         <label for="idest">Estudiante</label>
-        <input type="text" name="idest" class="form-control" value="{{ $estudiante->idest }}" readonly required>
+        <select name="idest" class="form-control" required>
+            <option value="">Seleccione un estudiante</option>
+            @foreach($estudiantes as $estudiante)
+                <option value="{{ $estudiante->idest }}">{{ $estudiante->nombreest }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="form-group mb-3">
         <label for="idper">Periodo</label>
