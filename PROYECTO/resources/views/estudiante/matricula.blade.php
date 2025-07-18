@@ -1,4 +1,13 @@
-<form action="{{ route('estudiante.matricula') }}" method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matricula</title>
+</head>
+<body>
+    <form action="{{ route('estudiante.matricula') }}" method="POST">
     @csrf
     <div class="form-group mb-3">
         <label for="idest">Estudiante</label>
@@ -23,3 +32,7 @@
     </div>
     <button type="submit" class="btn btn-success">Matricular</button>
 </form>
+</body>
+</html>
+
+

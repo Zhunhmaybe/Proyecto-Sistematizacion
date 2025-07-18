@@ -137,4 +137,3 @@ Route::middleware(['check.any.permission:admin'])->group(function () {
 Route::middleware(['check.any.permission:admin'])->group(function () {
     Route::resource('dias',DiaController::class);
 });
-
