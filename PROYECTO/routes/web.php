@@ -19,7 +19,8 @@ use App\Http\Controllers\{
     ProAsiController,
     TutoriaController,
     HorarioController,
-    DiaController
+    DiaController,
+    MatriculaController
 };
 use App\Http\Middleware\CheckAnyPermission;
 
@@ -50,6 +51,9 @@ Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usu
 Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
 Route::post('/Login', [AuthController::class, 'login'])->name('login');
 Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
+// Ruta para mostrar el formulario de login
+Route::get('login', [AuthController::class, 'loginForm'])->name('login.form');
+
 
 Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
@@ -82,7 +86,7 @@ Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignat
 Route::get('/asignatura/create', [AsignaturaController::class, 'create'])->name('asignatura.create');
 Route::post('/asignaturas', [AsignaturaController::class, 'store'])->name('asignaturas.store');
 Route::get('/asignatura/{idasi}/edit', [TitulacionController::class, 'edit'])->name('asignaturas.edit');
-Route::get('/asgignaturas/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
+Route::get('/asignaturas/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
 
 Route::get('/titulacion', [TitulacionController::class, 'index'])->name('titulacion.index');
 Route::get('/titulacion/create', [TitulacionController::class, 'create'])->name('titulacion.create');
@@ -110,13 +114,14 @@ Route::get('/admin/roles', [RolController::class, 'index'])->name('roles.index')
 Route::get('/usuarios/{idusu}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
 Route::put('/usuarios/{idusu}', [UsuarioController::class, 'update'])->name('usuarios.update');
 
-Route::view('Login', 'login')->name('Login'); // para mostrar el formulario
-Route::post('/Login', [AuthController::class, 'login'])->name('login');
-Route::get('/Logout', [AuthController::class, 'logout'])->name('logout');
 
+//Matriculas estudiante
 Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
-Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
+Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
+Route::resource('matriculas', MatriculaController::class);
+Route::post('matriculas', [MatriculaController::class, 'store'])->name('matricula.store');
+
 
 // Rutas para Tutorías
 Route::middleware(['check.any.permission:admin'])->group(function () {
@@ -132,3 +137,4 @@ Route::middleware(['check.any.permission:admin'])->group(function () {
 Route::middleware(['check.any.permission:admin'])->group(function () {
     Route::resource('dias',DiaController::class);
 });
+

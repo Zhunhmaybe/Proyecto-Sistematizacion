@@ -36,7 +36,6 @@ class TutoriaController extends Controller
         ]);
 
         Tutoria::create([
-            'idtut' => uniqid(),  // ID único para la tutoría
             'iddet' => $validated['iddet'],
             'idhor' => $validated['idhor'],
             'detalletut' => $validated['detalletut'],
