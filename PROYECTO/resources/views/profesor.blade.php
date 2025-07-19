@@ -20,6 +20,11 @@
             @endforeach
         </ul>
     @endif
+
+<a href="{{ route('profesores.tutorias.index') }}">Ver mis Tutorías</a>
+
+    <a href="{{ route('profesores.tutorias.create') }}" class="admin-button"> Crear Tutoría</a>
+
         <a href="{{ route('logout') }}">Cerrar Sesion</a>
 </body>
 </html>
