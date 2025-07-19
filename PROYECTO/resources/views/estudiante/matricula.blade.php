@@ -236,10 +236,10 @@
                         <div class="form-group">
                             <label for="idtit" class="form-label">
                                 <i class="fas fa-university"></i>
-                                Titulación
+                                Carreras
                             </label>
                             <select name="idtit" id="idtit" class="form-control" required>
-                                <option value="">Seleccione una titulación</option>
+                                <option value="">Seleccione una Carrera</option>
                                 @foreach($titulaciones as $titulacion)
                                     <option value="{{ $titulacion->idtit }}">{{ $titulacion->detalletit }}</option>
                                 @endforeach
@@ -254,7 +254,7 @@
                             
                             <div class="alert alert-warning" id="asignaturas-warning" style="display: none;">
                                 <i class="fas fa-exclamation-triangle"></i>
-                                Primero debe seleccionar una titulación para ver las asignaturas disponibles.
+                                Primero debe seleccionar una carrera para ver las asignaturas disponibles.
                             </div>
                             
                             <div class="loading-spinner" id="loading-spinner">
@@ -265,12 +265,12 @@
                             </div>
                             
                             <select name="asignaturas[]" id="asignaturas" class="form-control" multiple required disabled>
-                                <option value="">Seleccione una titulación primero</option>
+                                <option value="">Seleccione una Carrera primero</option>
                             </select>
                             
                             <div class="asignaturas-info" id="asignaturas-info" style="display: none;">
                                 <i class="fas fa-lightbulb"></i>
-                                Mantenga presionada la tecla Ctrl (Cmd en Mac) para seleccionar múltiples asignaturas
+                                Mantenga presionada la tecla Ctrl para seleccionar múltiples asignaturas
                             </div>
                         </div>
                         
@@ -359,12 +359,13 @@
                         asignaturasSelect.disabled = true;
                     } else {
                         // Agregar asignaturas
-                        data.asignaturas.forEach(asignatura => {
-                            const option = document.createElement('option');
-                            option.value = asignatura.idasi;
-                            option.textContent = `${asignatura.nombreasi} (${asignatura.creditosasi || 0} créditos)`;
-                            asignaturasSelect.appendChild(option);
-                        });
+data.asignaturas.forEach(asignatura => {
+    const option = document.createElement('option');
+    option.value = asignatura.idasi;
+    option.textContent = asignatura.nombreasi; // ✅ Créditos eliminados
+    asignaturasSelect.appendChild(option);
+});
+
                         
                         asignaturasSelect.disabled = false;
                         asignaturasInfo.style.display = 'block';
@@ -430,11 +431,6 @@
                 return;
             }
             
-            // Confirmación antes de enviar
-            const confirmacion = confirm(`¿Está seguro de matricular al estudiante en ${asignaturas.length} asignatura(s) de la titulación seleccionada?`);
-            if (!confirmacion) {
-                e.preventDefault();
-            }
         });
     </script>
 </body>
