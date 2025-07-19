@@ -59,7 +59,8 @@ Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])-
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
 // Rutas para estudiante
-Route::post('/estudiante/obtener-asignaturas-por-titulacion', [EstudianteController::class, 'obtenerAsignaturasPorTitulacion'])->name('estudiante.obtener-asignaturas-por-titulacion');
+Route::post('/estudiante/obtener-asignaturas-por-titulacion', [EstudianteController::class, 'obtenerAsignaturasPorTitulacion'])
+    ->name('estudiante.obtenerAsignaturasPorTitulacion');
 Route::post('/estudiante/procesar-matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.procesarMatricula');
 
 
@@ -102,6 +103,9 @@ Route::get('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name
 Route::resource('profesores', ProfesorController::class);
 
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
+Route::get('/profesor/tutorias/crear', [TutoriaController::class, 'createFromProfesor'])->name('profesor.tutorias.create');
+Route::post('/profesor/tutorias', [TutoriaController::class, 'storeFromProfesor'])->name('profesor.tutorias.store');
+
 
 
 Route::resource('pro_asi', ProAsiController::class);

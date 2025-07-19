@@ -121,7 +121,7 @@ class EstudianteController extends Controller
 
             // Obtener las asignaturas con información adicional
             $asignaturas = Asignatura::where('idtit', $request->idtit)
-                ->select('idasi', 'nombreasi', 'creditosasi')
+                ->select('idasi', 'nombreasi')
                 ->orderBy('nombreasi', 'asc')
                 ->get();
 
@@ -155,5 +155,69 @@ class EstudianteController extends Controller
                 'error' => $e->getMessage()
             ], 500);
         }
+    }
+    public function procesarMatricula(Request $request)
+    {
+        $request->validate([
+            'idper' => 'required|exists:periodos,idper',
+            'asignaturas' => 'required|array|min:1',
+            'idest' => 'required|exists:estudiantes,idest',
+        ]);
+
+        $usuario = session('usuario');
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
+        $periodo = Periodo::findOrFail($request->idper);
+
+        // Buscar si ya tiene matrícula en ese periodo
+        $matricula = Matricula::where('idest', $estudiante->idest)
+            ->where('idper', $periodo->idper)
+            ->first();
+
+        // Si no tiene, crear una nueva
+        if (!$matricula) {
+            $ultimoMatricula = Matricula::orderBy('idmat', 'desc')->first();
+            $ultimoNumero = $ultimoMatricula ? (int) substr($ultimoMatricula->idmat, 3) : 0;
+            $nuevoIdMat = 'MAT' . str_pad($ultimoNumero + 1, 3, '0', STR_PAD_LEFT);
+
+            $matricula = Matricula::create([
+                'idmat' => $nuevoIdMat,
+                'idper' => $periodo->idper,
+                'idest' => $estudiante->idest,
+                'fechamat' => now(),
+            ]);
+        }
+
+        $mensajes = [];
+        $agregadas = [];
+
+        foreach ($request->asignaturas as $idasi) {
+            // Verificar si ya existe esa asignatura en la matrícula actual
+            $yaExiste = Detallematricula::where('idmat', $matricula->idmat)
+                ->where('idasi', $idasi)
+                ->exists();
+
+            if ($yaExiste) {
+                $asignatura = Asignatura::find($idasi);
+                $mensajes[] = "Ya estás matriculado en la asignatura: {$asignatura->nombreasi}";
+            } else {
+                Detallematricula::create([
+                    'idasi' => $idasi,
+                    'idmat' => $matricula->idmat,
+                    'detalledet' => 'Matrícula regular',
+                ]);
+                $agregadas[] = $idasi;
+            }
+        }
+
+        if (empty($agregadas)) {
+            return redirect()->route('estudiante.dashboard')->with('mensaje', implode('<br>', $mensajes));
+        }
+
+        $mensajeFinal = 'Asignaturas matriculadas correctamente.';
+        if (!empty($mensajes)) {
+            $mensajeFinal .= '<br>' . implode('<br>', $mensajes);
+        }
+
+        return redirect()->route('estudiante.dashboard')->with('success', $mensajeFinal);
     }
 }

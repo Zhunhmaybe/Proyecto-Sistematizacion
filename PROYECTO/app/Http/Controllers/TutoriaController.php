@@ -11,7 +11,7 @@ use App\Models\Detallematricula;
 
 class TutoriaController extends Controller
 {
-     // Mostrar todas las tutorías
+    // Mostrar todas las tutorías
     public function index()
     {
         $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
@@ -70,6 +70,34 @@ class TutoriaController extends Controller
         ]);
 
         return redirect()->route('tutorias.index')->with('success', 'Tutoría actualizada con éxito.');
+    }
+
+    public function createFromProfesor()
+    {
+        $usuario = auth()->user(); // Asegúrate de que está autenticado como profesor
+        $profesor = $usuario->profesor;
+
+        // Filtramos los detalles de matrícula donde haya asignaturas que el profesor imparte
+        $detallematriculas = Detallematricula::whereHas('asignatura', function ($query) use ($profesor) {
+            $query->whereIn('idasi', $profesor->proasi->pluck('idasi'));
+        })->get();
+
+        $horarios = Horario::all();
+
+        return view('profesor.tutorias.create', compact('detallematriculas', 'horarios', 'usuario'));
+    }
+
+    public function storeFromProfesor(Request $request)
+    {
+        $validated = $request->validate([
+            'iddet' => 'required|exists:detallematriculas,iddet',
+            'idhor' => 'required|exists:horarios,idhor',
+            'detalletut' => 'required|max:100',
+        ]);
+
+        Tutoria::create($validated);
+
+        return redirect()->route('panel.profesor')->with('success', 'Tutoría creada con éxito.');
     }
 
     // Eliminar una tutoría
