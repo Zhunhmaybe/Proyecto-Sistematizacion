@@ -127,6 +127,11 @@ Route::get('pro_asi/asignaturas/{idpro}', [ProAsiController::class, 'getAsignatu
 Route::get('/pro-asi/get-asignaturas-por-docente/{idpro}', [ProAsiController::class, 'getAsignaturasPorDocente'])
     ->name('pro_asi.get_asignaturas');
 
+//Asignar areas a profesor
+Route::get('/asignar-area-docente', [AreaController::class, 'asignarArea'])->name('asignar.area.docente');
+Route::post('/asignar-area-docente', [AreaController::class, 'guardarAsignacion'])->name('guardar.asignacion.area');
+
+
 //Rutas protegidas
 
 

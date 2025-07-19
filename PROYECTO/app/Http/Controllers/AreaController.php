@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Area;
 use App\Models\Departamento;
 use Illuminate\Http\Request;
+use App\Models\Profesor;
+use App\Models\User;
+
+
 
 class AreaController extends Controller
 {
@@ -76,5 +80,29 @@ class AreaController extends Controller
         $area->delete();
 
         return redirect()->route('areas.index')->with('success', 'Área eliminada correctamente.');
+    }
+
+    public function asignarArea()
+    {
+        // Selecciona solo docentes (usuarios con rol_id = 1)
+        $profesores = Profesor::all();
+
+        $areas = Area::all();
+
+        return view('areas.asignar', compact('profesores', 'areas'));
+    }
+
+    public function guardarAsignacion(Request $request)
+    {
+        $request->validate([
+            'idpro' => 'required|exists:profesores,idpro',
+            'idare' => 'required|exists:areas,idare',
+        ]);
+
+        $profesor = Profesor::findOrFail($request->idpro);
+        $profesor->idare = $request->idare;
+        $profesor->save();
+
+        return redirect()->route('asignar.area.docente')->with('success', 'Área asignada correctamente al docente.');
     }
 }

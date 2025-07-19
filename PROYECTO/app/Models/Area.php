@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Profesor;
 use App\Models\Departamento;
 
+
 class Area extends Model
 {
     use HasFactory;
