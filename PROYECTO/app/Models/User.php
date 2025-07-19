@@ -63,9 +63,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Rol::class, 'idrol', 'idrol');
     }
-    
+
     public function area()
     {
         return $this->belongsTo(Area::class, 'idare', 'idare');
+    }
+
+    public function profesor()
+    {
+        return $this->hasOne(Profesor::class, 'idpro', 'idusu');
     }
 }

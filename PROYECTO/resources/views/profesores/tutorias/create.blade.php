@@ -7,8 +7,8 @@
     <title>Crear Tutoria</title>
 </head>
 <body>
-    <h2>Crear Tutoría</h2>
-    <form action="{{ route('tutorias.index') }}" method="POST">
+    <h2>Crear Tutoría Profesores</h2>
+    <form action="{{ route('profesores.tutorias.index') }}" method="POST">
         @csrf
 
         <label for="iddet">Asignatura (Detalle Matrícula):</label>
@@ -34,7 +34,7 @@
 
         <button type="submit">Guardar Tutoría</button>
     </form>
-      <a href="{{ route('tutorias.index') }}">Volver</a>
-     <a href="{{ route('admin.index') }}">Cancelar</a>
+      <a href="{{ route('profesores.tutorias.index') }}">Volver</a>
+     <a href="{{ route('profesor.dashboard') }}">Cancelar</a>
 </body>
 </html>

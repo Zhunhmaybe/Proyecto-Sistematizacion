@@ -74,30 +74,35 @@ class TutoriaController extends Controller
 
     public function createFromProfesor()
     {
-        $usuario = auth()->user(); // Asegúrate de que está autenticado como profesor
-        $profesor = $usuario->profesor;
+        $detallematriculas = Detallematricula::all();  // Obtener todos los registros de detalle de matrícula
+        $horarios = Horario::all();  // Obtener todos los registros de horarios
 
-        // Filtramos los detalles de matrícula donde haya asignaturas que el profesor imparte
-        $detallematriculas = Detallematricula::whereHas('asignatura', function ($query) use ($profesor) {
-            $query->whereIn('idasi', $profesor->proasi->pluck('idasi'));
-        })->get();
-
-        $horarios = Horario::all();
-
-        return view('profesor.tutorias.create', compact('detallematriculas', 'horarios', 'usuario'));
+        return view('profesores.tutorias.create', compact('detallematriculas', 'horarios'));
     }
 
     public function storeFromProfesor(Request $request)
     {
+
         $validated = $request->validate([
             'iddet' => 'required|exists:detallematriculas,iddet',
             'idhor' => 'required|exists:horarios,idhor',
             'detalletut' => 'required|max:100',
         ]);
 
-        Tutoria::create($validated);
+        Tutoria::create([
+            'iddet' => $validated['iddet'],
+            'idhor' => $validated['idhor'],
+            'detalletut' => $validated['detalletut'],
+        ]);
 
-        return redirect()->route('panel.profesor')->with('success', 'Tutoría creada con éxito.');
+        return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
+    }
+
+    public function misTutorias()
+    {
+        $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
+
+        return view('profesores.tutorias.index', compact('tutorias'));
     }
 
     // Eliminar una tutoría

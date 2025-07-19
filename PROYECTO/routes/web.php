@@ -25,7 +25,7 @@ use App\Http\Controllers\{
 use App\Http\Middleware\CheckAnyPermission;
 
 // === PÚBLICAS ===
-Route::view('/', 'Inicio');
+Route::view('/', 'Inicio')->name('Inicio');
 Route::view('/Academia', 'Academia');
 Route::view('/Servicios', 'Servicios');
 Route::view('/MisionVision', 'MisionVision');
@@ -103,8 +103,17 @@ Route::get('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name
 Route::resource('profesores', ProfesorController::class);
 
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
-Route::get('/profesor/tutorias/crear', [TutoriaController::class, 'createFromProfesor'])->name('profesor.tutorias.create');
-Route::post('/profesor/tutorias', [TutoriaController::class, 'storeFromProfesor'])->name('profesor.tutorias.store');
+Route::middleware(['check.any.permission:profesor'])->prefix('profesor')->group(function () {
+    Route::get('/tutorias/crear', [TutoriaController::class, 'createFromProfesor'])->name('profesores.tutorias.create');
+});
+Route::middleware(['check.any.permission:profesor'])->prefix('profesor')->group(function () {
+    Route::get('/tutorias', [TutoriaController::class, 'misTutorias'])->name('profesores.tutorias.index');
+});
+
+Route::middleware(['check.any.permission:profesor'])->prefix('profesor')->group(function () {
+    Route::post('/tutorias', [TutoriaController::class, 'storeFromProfesor'])->name('profesores.tutorias.store');
+});
+
 
 
 
@@ -138,7 +147,7 @@ Route::post('matriculas', [MatriculaController::class, 'store'])->name('matricul
 
 
 // Rutas para Tutorías
-Route::middleware(['check.any.permission:admin'])->group(function () {
+Route::middleware(['check.any.permission:admin,profesor'])->group(function () {
     Route::resource('tutorias', TutoriaController::class);
 });
 
