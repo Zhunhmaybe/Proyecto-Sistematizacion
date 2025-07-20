@@ -49,9 +49,9 @@ class AsignaturaController extends Controller
     }
 
     // Mostrar formulario para editar una asignatura
-    public function edit($idasi)    
+    public function edit($idasi)
     {
-        $asignatura = Asignatura::all();
+        $asignatura = Asignatura::findOrFail($idasi);
         $titulaciones = Titulacion::all();
         $niveles = Nivel::all();
         return view('asignaturas.edit', compact('asignatura', 'titulaciones', 'niveles'));
@@ -59,7 +59,7 @@ class AsignaturaController extends Controller
 
     // Actualizar una asignatura
     public function update(Request $request, $idasi)
-    {   
+    {
         $asignatura = Asignatura::findOrFail($idasi);
 
         $request->validate([

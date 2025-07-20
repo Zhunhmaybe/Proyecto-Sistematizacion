@@ -6,7 +6,7 @@
 <body>
     <h1>Editar Asignatura: {{ $asignatura->nombreasi }}</h1>
 
-    <a href="{{ route('asignaturas.index') }}">Volver al listado</a>
+    <a href="{{ route('asignatura.index') }}">Volver al listado</a>
 
     @if ($errors->any())
         <div style="color:red;">
@@ -26,7 +26,7 @@
         <select name="idtit" required>
             <option value="">-- Seleccione una titulación --</option>
             @foreach ($titulaciones as $tit)
-                <option value="{{ $tit->idtit }}" {{ $asignatura->idtit == $tit->idtit ? 'selected' : '' }}>{{ $tit->detallet }}</option>
+                <option value="{{ $tit->idtit }}" {{ $asignatura->idtit == $tit->idtit ? 'selected' : '' }}>{{ $tit->detalletit }}</option>
             @endforeach
         </select><br><br>
 

@@ -29,7 +29,7 @@ class Asignatura extends Model
 
     public function titulacion()
     {
-        return $this->belongsTo(Titulacion::class, 'idtit');
+        return $this->belongsTo(Titulacion::class, 'idtit','idtit');
     }
 
     public function nivel()
