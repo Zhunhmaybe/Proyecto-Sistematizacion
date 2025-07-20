@@ -25,17 +25,32 @@ class Profesor extends Model
         'correopro',
         'fechanacimientopro',
     ];
-    //
+
     public function area()
     {
-        return $this->belongsTo(Area::class, 'idare');
+        return $this->belongsTo(Area::class, 'idare', 'idare');
     }
     public function proasi()
     {
-        return $this->hasMany(ProAsi::class, 'idpro','idpro');
+        return $this->hasMany(ProAsi::class, 'idpro', 'idpro');
     }
     public function asignatura()
     {
         return $this->belongsTo(Asignatura::class, 'idasi', 'idasi');
+    }
+    public function getAuthPassword()
+    {
+        return $this->contrasena;
+    }
+    public function tutorias()
+    {
+        return $this->hasManyThrough(
+            Tutoria::class,
+            Detallematricula::class,
+            'idasi', // Foreign key en Detallematricula
+            'iddet', // Foreign key en Tutoria
+            'idpro', // Local key en Profesor
+            'iddet'  // Local key en Detallematricula
+        );
     }
 }

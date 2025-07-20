@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar Titulación</title>
+    <title>Editar Carrera</title>
 </head>
 <body>
-    <h1>Editar Titulación: {{ $titulacion->detalletit }}</h1>
+    <h1>Editar Carrera: {{ $titulacion->detalletit }}</h1>
 
     <a href="{{ route('titulacion.index') }}">Volver al listado</a>
 
@@ -22,10 +22,10 @@
         @csrf
         @method('PUT')
 
-        <label>Detalle de Titulación:</label>
+        <label>Detalle de Carrera:</label>
         <input type="text" name="detalletit" value="{{ $titulacion->detalletit }}" required><br><br>
 
-        <label>Nivel de Titulación:</label>
+        <label>Niveles de Carrera:</label>
         <input type="text" name="nivelestit" value="{{ $titulacion->nivelestit }}" required><br><br>
 
         <button type="submit">Actualizar</button>

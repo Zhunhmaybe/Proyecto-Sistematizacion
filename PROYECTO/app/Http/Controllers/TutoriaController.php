@@ -11,7 +11,7 @@ use App\Models\Detallematricula;
 
 class TutoriaController extends Controller
 {
-     // Mostrar todas las tutorías
+    // Mostrar todas las tutorías
     public function index()
     {
         $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
@@ -36,7 +36,6 @@ class TutoriaController extends Controller
         ]);
 
         Tutoria::create([
-            'idtut' => uniqid(),  // ID único para la tutoría
             'iddet' => $validated['iddet'],
             'idhor' => $validated['idhor'],
             'detalletut' => $validated['detalletut'],
@@ -71,6 +70,39 @@ class TutoriaController extends Controller
         ]);
 
         return redirect()->route('tutorias.index')->with('success', 'Tutoría actualizada con éxito.');
+    }
+
+    public function createFromProfesor()
+    {
+        $detallematriculas = Detallematricula::all();  // Obtener todos los registros de detalle de matrícula
+        $horarios = Horario::all();  // Obtener todos los registros de horarios
+
+        return view('profesores.tutorias.create', compact('detallematriculas', 'horarios'));
+    }
+
+    public function storeFromProfesor(Request $request)
+    {
+
+        $validated = $request->validate([
+            'iddet' => 'required|exists:detallematriculas,iddet',
+            'idhor' => 'required|exists:horarios,idhor',
+            'detalletut' => 'required|max:100',
+        ]);
+
+        Tutoria::create([
+            'iddet' => $validated['iddet'],
+            'idhor' => $validated['idhor'],
+            'detalletut' => $validated['detalletut'],
+        ]);
+
+        return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
+    }
+
+    public function misTutorias()
+    {
+        $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
+
+        return view('profesores.tutorias.index', compact('tutorias'));
     }
 
     // Eliminar una tutoría

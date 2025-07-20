@@ -24,15 +24,13 @@ class DiaController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'iddia'=>'required|max:10',
+            'iddia' => 'required|max:10|unique:dias,iddia',
             'nombredia' => 'required|max:20',
         ]);
 
         Dia::create([
-            'iddia' => $validated['iddia'], // Genera un id único
+            'iddia' => $validated['iddia'],
             'nombredia' => $validated['nombredia'],
-
-
         ]);
 
         return redirect()->route('dias.index')->with('success', 'Día creado con éxito.');

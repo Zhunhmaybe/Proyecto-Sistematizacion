@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesor;
 use App\Models\Area;
+use App\Models\Tutoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Departamento;
@@ -25,26 +26,39 @@ class ProfesorController extends Controller
     }
 
     public function dashboard()
-{
-    $usuario = session('usuario');
+    {
+        $usuario = session('usuario');
 
-    // Verificar que esté autenticado y sea un docente
-    if (!$usuario || $usuario->idrol != 1) {
-        return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        // Verificar que esté autenticado y sea un docente
+        if (!$usuario || $usuario->idrol != 1) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        // Cargar el profesor con sus relaciones
+        $profesor = Profesor::with([
+            'area.departamento',
+            'proasi.asignatura'
+        ])->where('idpro', $usuario->idusu)->first();
+
+        if (!$profesor) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Profesor no registrado.']);
+        }
+
+        // Obtener las tutorías del docente
+        $tutorias = Tutoria::all();
+
+        // Convertir tutorías en eventos para el calendario
+        $eventos = $tutorias->map(function ($tutoria) {
+            return [
+                'title' => $tutoria->titulo ?? 'Tutoría',
+                'start' => $tutoria->fecha . 'T' . $tutoria->hora_inicio,
+                'end' => $tutoria->fecha . 'T' . $tutoria->hora_fin,
+            ];
+        });
+
+        return view('profesor', compact('usuario', 'profesor', 'eventos'));
     }
 
-    // Cargar el profesor, su área, departamento y asignaturas
-    $profesor = Profesor::with([
-        'area.departamento',
-        'proasi.asignatura'
-    ])->where('idpro', $usuario->idusu)->first();
-
-    if (!$profesor) {
-        return redirect()->route('login.form')->withErrors(['access' => 'Profesor no registrado.']);
-    }
-
-    return view('profesor', compact('usuario', 'profesor'));
-}
 
 
     // Guardar un nuevo profesor

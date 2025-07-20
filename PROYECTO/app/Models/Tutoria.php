@@ -17,7 +17,7 @@ class Tutoria extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idtut',
+        'idpro',
         'iddet',
         'idhor',
         'detalletut',
@@ -32,4 +32,9 @@ class Tutoria extends Model
     {
         return $this->belongsTo(Horario::class, 'idhor');
     }
+    public function profesor()
+    {
+        return $this->belongsTo(\App\Models\Profesor::class, 'idpro');
+    }
+
 }

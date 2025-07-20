@@ -15,36 +15,41 @@
 
     <a href="{{ route('pro_asi.create') }}">Nueva Asignación</a>
 
-    <table>
+    <table border="1" cellpadding="8">
         <thead>
             <tr>
                 <th>Profesor</th>
+                <th>Área</th>
                 <th>Asignatura</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-<tbody>
-    @foreach($asignaciones as $asig)
-        <tr>
-            <td>
-                {{ $asig->profesor->nombrespro ?? 'Sin nombre' }}
-                {{ $asig->profesor->apellidopro ?? '' }}
-            </td>
-            <td>{{ $asig->asignatura->nombreasi ?? 'Sin asignatura' }}</td>
-            <td>
-                <form action="{{ route('pro_asi.destroy', $asig->idpro_asi) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Eliminar</button>
-
-                </form>
-            </td>
-        </tr>
-    @endforeach
-</tbody>
-
+        <tbody>
+            @foreach($asignaciones as $asig)
+                <tr>
+                    <td>
+                        {{ $asig->profesor->nombrespro ?? 'Sin nombre' }}
+                        {{ $asig->profesor->apellidopro ?? '' }}
+                    </td>
+                    <td>
+                        {{ $asig->profesor->area->nombreare ?? 'No definida' }}
+                    </td>
+                    <td>
+                        {{ $asig->asignatura->nombreasi ?? 'Sin asignatura' }}
+                    </td>
+                    <td>
+                        <form action="{{ route('pro_asi.destroy', $asig->idpro_asi) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
-                            <a href="{{ route('admin.index') }}">Salir</a>
+
+    <br>
+    <a href="{{ route('admin.index') }}">Salir</a>
 </body>
 </html>
-

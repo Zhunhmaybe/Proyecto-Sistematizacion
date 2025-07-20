@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Listado de Titulaciones</title>
+    <title>Listado de Carreras</title>
 </head>
 <body>
-    <h1>Titulaciones</h1>
+    <h1>Carrera</h1>
 
-    <a href="{{ route('titulacion.create') }}">Crear Nueva Titulación</a>
+    <a href="{{ route('titulacion.create') }}">Crear Nueva Carrera</a>
 
     @if(session('success'))
         <p style="color:green;">{{ session('success') }}</p>
@@ -17,7 +17,7 @@
             <tr>
                 <th>ID</th>
                 <th>Detalle</th>
-                <th>Nivel</th>
+                <th>Niveles</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -32,7 +32,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="4">No hay titulaciones registradas.</td></tr>
+                <tr><td colspan="4">No hay Carreras registradas.</td></tr>
             @endforelse
         </tbody>
     </table>
