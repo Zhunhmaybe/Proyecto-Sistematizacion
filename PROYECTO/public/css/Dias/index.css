@@ -1,0 +1,341 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #2d3436;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Alertas de éxito */
+.alert {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    position: relative;
+}
+
+.alert-success::before {
+    content: '✓';
+    position: absolute;
+    left: 15px;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.alert-success {
+    padding-left: 40px;
+}
+
+
+/* Estilos de la tabla */
+.table {
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-bordered {
+    border: 1px solid #e0e0e0;
+}
+
+.table thead th {
+    background: linear-gradient(135deg, #333333 100%);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #333333;
+}
+
+.table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Estilos para las acciones */
+.table td:last-child {
+    white-space: nowrap;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: auto;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón crear */
+.create {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
+}
+
+.create:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.create::before {
+    font-size: 1.1em;
+}
+
+/* Botón editar */
+.editar {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+
+}
+
+.editar:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.editar::before {
+    font-size: 1.1em;
+}
+
+
+/* Botón eliminar */
+.eliminar {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.eliminar:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.eliminar::before {
+    font-size: 1.1em;
+}
+
+
+/* Botón cancelar */
+.cancel {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.cancel:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.cancel::before {
+    font-size: 1.1em;
+}
+
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.table tbody tr {
+    animation: slideIn 0.4s ease-out;
+}
+
+.table tbody tr:nth-child(even) {
+    animation-delay: 0.1s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .table {
+        font-size: 14px;
+    }
+    
+    .table thead th,
+    .table tbody td {
+        padding: 10px 8px;
+    }
+    
+    .editar,
+    .btn {
+        padding: 6px 10px;
+        font-size: 12px;
+        margin-right: 5px;
+    }
+    
+    /* Hacer la tabla scrollable en móviles */
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .table thead th:nth-child(1) {
+        width: 20%;
+    }
+    
+    .table thead th:nth-child(2) {
+        width: 40%;
+    }
+    
+    .table thead th:nth-child(3) {
+        width: 40%;
+    }
+    
+    .create,
+    .cancelar {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Estados de focus para accesibilidad */
+.create:focus,
+.editar:focus,
+.btn:focus,
+.cancelar:focus {
+    outline: 2px solid #333333;
+    outline-offset: 2px;
+}
+
+/* Efectos adicionales */
+.create:active,
+.editar:active,
+.btn:active,
+.cancelar:active {
+    transform: translateY(0);
+}
+
+/* Enlaces sin decoración */
+a {
+    text-decoration: none;
+}
+
+/* Mejoras visuales para formularios inline */
+form {
+    display: inline-block;
+}
+
+/* Estilos para estados vacíos */
+.table tbody tr:empty::after {
+    content: 'No hay días registrados';
+    display: block;
+    text-align: center;
+    padding: 20px;
+    color: #636e72;
+    font-style: italic;
+}

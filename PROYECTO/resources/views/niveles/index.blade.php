@@ -30,6 +30,6 @@
             @endforeach
         </tbody>
     </table>
-        <a href="{{ route('admin') }}"><button class="close">Volver</button></a>
+        <a href="{{ route('admin.index') }}"><button class="close">Volver</button></a>
 </body>
 </html>

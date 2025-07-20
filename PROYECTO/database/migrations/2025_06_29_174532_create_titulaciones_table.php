@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('titulaciones', function (Blueprint $table) {
-
             $table->char('idtit', 10)->primary();
             $table->char('detalletit', 100);
             $table->integer('nivelestit')->default(2);
