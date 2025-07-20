@@ -60,7 +60,7 @@ class TitulacionController extends Controller
             'nivelestit' => $request->nivelestit,
         ]);
 
-        return redirect()->route('titulaciones.index')->with('success', 'Titulación actualizada correctamente.');
+        return redirect()->route('titulacion.index')->with('success', 'Titulación actualizada correctamente.');
     }
 
     // Eliminar titulación

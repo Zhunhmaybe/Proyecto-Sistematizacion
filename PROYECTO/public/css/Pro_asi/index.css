@@ -1,0 +1,461 @@
+/* Reset y variables CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333333;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Mensajes de éxito */
+div[style*="color: green"] {
+    background: var(--success-light);
+    color: #065f46;
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--success-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    animation: slideIn 0.4s ease-out;
+}
+
+div[style*="color: green"]::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--success-color);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Botones */
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón new */
+.new {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
+    width: auto;
+}
+
+.new:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.new::before {
+    font-size: 1.1em;
+}
+
+/* Botón edit */
+.edit {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.edit:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.edit::before {
+    font-size: 1.1em;
+}
+
+/* Botón salir */
+.salir {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    width: auto;
+}
+
+.salir:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.salir::before {
+    font-size: 1.1em;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    background-color: #333333;
+    border-collapse: collapse;
+    margin: 1.5rem 0 2rem;
+    background: var(--card-background);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: none;
+}
+
+/* Cabecera de tabla */
+thead {
+    background: linear-gradient(135deg, #333333);
+    color: white;
+}
+
+thead th {
+    padding: 1.25rem 1rem;
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.925rem;
+    letter-spacing: 0.025em;
+    position: relative;
+}
+
+thead th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    bottom: 25%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Filas de tabla */
+tbody tr {
+    transition: var(--transition);
+    border-bottom: 1px solid var(--table-border);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--table-stripe);
+}
+
+tbody tr:hover {
+    background-color: #e0f2fe;
+    transform: translateX(4px);
+    box-shadow: inset 4px 0 0 var(--primary-color);
+}
+
+/* Celdas de tabla */
+td {
+    padding: 1rem;
+    color: var(--text-primary);
+    font-size: 0.925rem;
+    vertical-align: middle;
+}
+
+td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+td:nth-child(2) {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+td:nth-child(3) {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Contenedor de formulario para eliminar */
+form {
+    margin: 0;
+    display: inline-block;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+table {
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+/* Estados de loading para botones */
+button:disabled,
+.eliminar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    table {
+        font-size: 0.875rem;
+    }
+    
+    td, th {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    
+    .container {
+        padding: 1rem;
+        border-radius: var(--radius);
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Tabla responsive - scroll horizontal */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    table {
+        border: none;
+    }
+    
+    /* Convertir tabla en cards en móvil */
+    thead {
+        display: none;
+    }
+    
+    tbody tr {
+        display: block;
+        background: white;
+        margin-bottom: 1rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-sm);
+        padding: 1rem;
+        white-space: normal;
+        border: none;
+    }
+    
+    tbody tr:nth-child(even) {
+        background: white;
+    }
+    
+    tbody tr:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+        background: white;
+    }
+    
+    tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        padding: 0.5rem 0;
+        text-align: right;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    tbody td:last-child {
+        border-bottom: none;
+        justify-content: center;
+        padding-top: 1rem;
+    }
+    
+    tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-secondary);
+        flex: 1;
+        text-align: left;
+    }
+    
+    tbody td:nth-child(1)::before { content: "Profesor: "; }
+    tbody td:nth-child(2)::before { content: "Área: "; }
+    tbody td:nth-child(3)::before { content: "Asignatura: "; }
+    tbody td:nth-child(4)::before { content: ""; }
+    
+    .eliminar {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .new, .salir {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    
+    tbody td {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    tbody td::before {
+        font-size: 0.825rem;
+    }
+}
+
+/* Mejoras para accesibilidad */
+button:focus-visible,
+.new:focus-visible,
+.eliminar:focus-visible,
+.salir:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Estados hover mejorados */
+tbody tr:hover td:first-child {
+    color: var(--primary-color);
+}
+
+/* Indicador de carga */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    margin: -0.5rem 0 0 -0.5rem;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

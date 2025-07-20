@@ -144,6 +144,7 @@ a button:active {
 
 /* Estilos de la tabla */
 table {
+    margin-top: 10px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 30px;
@@ -195,8 +196,6 @@ table tbody tr td[colspan="7"] {
 
 /* Enlaces de editar */
 table tbody td a {
-    background: linear-gradient(135deg, #333333 100%);
-    color: white;
     padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
@@ -206,12 +205,11 @@ table tbody td a {
     letter-spacing: 0.3px;
     transition: all 0.3s ease;
     display: inline-block;
-    box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
 }
 
 table tbody td a:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(149, 149, 149, 0.4);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
 }
 
 /* Animaciones */

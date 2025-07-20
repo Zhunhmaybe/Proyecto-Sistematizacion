@@ -1,0 +1,422 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333333;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Mensaje de éxito */
+p[style*="color:green"] {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c8);
+    border: 2px solid #4CAF50;
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin: 20px 0;
+    color: #2e7d32;
+    font-weight: 600;
+    position: relative;
+    animation: slideInSuccess 0.5s ease-out;
+}
+
+p[style*="color:green"]::before {
+    content: "✅";
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+@keyframes slideInSuccess {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Botones */
+button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón crear */
+.crear {
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
+    width: auto;
+}
+
+.crear:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.crear::before {
+    font-size: 1.1em;
+}
+
+/* Botón editar */
+.edit {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    width: auto;
+}
+
+.edit:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.edit::before {
+    font-size: 1.1em;
+}
+
+/* Botón salir */
+.salir {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    width: auto;
+}
+
+.salir:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.salir::before {
+    font-size: 1.1em;
+}
+
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+thead {
+    background: linear-gradient(135deg, #333333);
+    color: white;
+}
+
+thead th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    border: none;
+}
+
+thead th:first-child {
+    border-radius: 0;
+}
+
+thead th:last-child {
+    border-radius: 0;
+}
+
+tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, #f8f9ff, #ffffff);
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+tbody td {
+    padding: 18px 15px;
+    border: none;
+    vertical-align: middle;
+    color: #555;
+}
+
+/* Estilos específicos por columna */
+tbody td:first-child {
+    font-weight: 700;
+    color: #333333;
+    font-size: 1.1rem;
+}
+
+tbody td:nth-child(2) {
+    font-weight: 600;
+    color: #333;
+}
+
+tbody td:nth-child(3) {
+    color: #666;
+    font-style: italic;
+}
+
+tbody td:last-child {
+    text-align: center;
+}
+
+/* Fila vacía */
+tbody tr td[colspan] {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+tbody tr td[colspan]::before {
+    content: "📋";
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+/* Contenedor de botones */
+.container > a:first-child {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.container > a:last-child {
+    display: block;
+    text-align: right;
+    margin-top: 30px;
+    clear: both;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    h1::after {
+        right: -40px;
+        font-size: 1.8rem;
+    }
+    
+    table {
+        font-size: 0.9rem;
+    }
+    
+    thead th {
+        padding: 15px 10px;
+        font-size: 0.8rem;
+    }
+    
+    tbody td {
+        padding: 12px 10px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .crear {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .salir {
+        width: 100%;
+        float: none;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    /* Tabla responsive con scroll horizontal */
+    .table-container {
+        overflow-x: auto;
+        margin: 20px -15px;
+    }
+    
+    table {
+        min-width: 500px;
+        margin: 0;
+    }
+    
+    thead th,
+    tbody td {
+        white-space: nowrap;
+        padding: 10px 8px;
+    }
+    
+    .edit {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animaciones */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(-50%);
+    }
+    40% {
+        transform: translateY(-60%);
+    }
+    60% {
+        transform: translateY(-55%);
+    }
+}
+
+@keyframes slideInTable {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: slideInTable 0.6s ease-out;
+}
+
+/* Efectos adicionales */
+.container::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.container {
+    position: relative;
+}
+
+/* Estados de hover para filas */
+@keyframes rowHighlight {
+    0% { background: transparent; }
+    50% { background: linear-gradient(135deg, #f0f4ff, #ffffff); }
+    100% { background: transparent; }
+}
+
+tbody tr:hover {
+    animation: none;
+}
+
+/* Mejoras de accesibilidad */
+button:focus-visible {
+    outline: 3px solid #333333;
+    outline-offset: 3px;
+}
+
+tbody tr:focus-within {
+    background: linear-gradient(135deg, #f8f9ff, #ffffff);
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+}

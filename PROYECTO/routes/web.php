@@ -91,14 +91,14 @@ Route::post('/niveles', [NivelController::class, 'store'])->name('niveles.store'
 Route::get('/asignatura', [AsignaturaController::class, 'index'])->name('asignatura.index');
 Route::get('/asignatura/create', [AsignaturaController::class, 'create'])->name('asignatura.create');
 Route::post('/asignaturas', [AsignaturaController::class, 'store'])->name('asignaturas.store');
-Route::get('/asignatura/{idasi}/edit', [TitulacionController::class, 'edit'])->name('asignaturas.edit');
-Route::get('/asignaturas/{idasi}', [TitulacionController::class, 'update'])->name('asignaturas.update');
+Route::get('asignaturas/{idasi}/edit', [AsignaturaController::class, 'edit'])->name('asignaturas.edit');
+Route::put('asignaturas/{idasi}', [AsignaturaController::class, 'update'])->name('asignaturas.update');
 
 Route::get('/titulacion', [TitulacionController::class, 'index'])->name('titulacion.index');
 Route::get('/titulacion/create', [TitulacionController::class, 'create'])->name('titulacion.create');
 Route::post('/titulaciones', [TitulacionController::class, 'store'])->name('titulaciones.store');
 Route::get('/titulacion/{idtit}/edit', [TitulacionController::class, 'edit'])->name('titulaciones.edit');
-Route::get('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name('titulaciones.update');
+Route::put('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name('titulaciones.update');
 
 Route::resource('profesores', ProfesorController::class);
 
@@ -126,11 +126,6 @@ Route::get('pro_asi/asignaturas/{idpro}', [ProAsiController::class, 'getAsignatu
 
 Route::get('/pro-asi/get-asignaturas-por-docente/{idpro}', [ProAsiController::class, 'getAsignaturasPorDocente'])
     ->name('pro_asi.get_asignaturas');
-
-//Asignar areas a profesor
-Route::get('/asignar-area-docente', [AreaController::class, 'asignarArea'])->name('asignar.area.docente');
-Route::post('/asignar-area-docente', [AreaController::class, 'guardarAsignacion'])->name('guardar.asignacion.area');
-
 
 //Rutas protegidas
 

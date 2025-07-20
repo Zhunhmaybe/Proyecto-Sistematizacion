@@ -10,12 +10,13 @@ body {
     background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
     min-height: 100vh;
     padding: 20px;
-    color: #333333;
+    color: #333;
 }
 
+/* Título principal */
 h1 {
     text-align: center;
-    color: #333333;
+    color: #2d3436;
     font-size: 2.5em;
     font-weight: 700;
     margin-bottom: 30px;
@@ -24,13 +25,14 @@ h1 {
 
 /* Contenedor principal */
 .container {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     background: white;
     padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Estilos del formulario */
@@ -44,51 +46,48 @@ label {
     color: #555;
     margin-bottom: 8px;
     font-size: 1.1rem;
+    position: relative;
 }
 
 input[type="text"],
 input[type="number"],
 select {
     width: 100%;
-    padding: 15px;
+    padding: 16px;
     border: 2px solid #e1e5e9;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
     margin-bottom: 20px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background: #f8f9fa;
     font-family: inherit;
+    position: relative;
 }
 
 input[type="text"]:focus,
 input[type="number"]:focus,
 select:focus {
     outline: none;
-    border-color: #515252;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #4d4c4c;
+    box-shadow: 0 0 0 4px rgba(255, 154, 86, 0.15);
     background: white;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
 }
 
 input[type="text"]:hover,
 input[type="number"]:hover,
 select:hover {
-    border-color: #656565;
+    border-color: #636363;
     background: white;
+    transform: translateY(-1px);
 }
 
-/* Botones */
-button {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: inherit;
+/* Estilos especiales para campos con datos existentes */
+input[type="text"][value],
+input[type="number"][value] {
+    background: linear-gradient(145deg, #ffffff, #ffffff);
+    border-color: #333333;
+    font-weight: 500;
 }
 
 /* Estilos base para botones */
@@ -124,28 +123,12 @@ a button:active {
     transform: translateY(0);
 }
 
-/* Botón crear */
-.create {
+/* Botón volver */
+.volver {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
     width: auto;
-}
-
-.create:hover {
-    background: linear-gradient(135deg, #b90504, #990100);
-}
-
-.create::before {
-    font-size: 1.1em;
-}
-
-/* Botón volver */
-.volver {
-    margin-top: 10px;
-    background: linear-gradient(135deg, #990100, #b90504);
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
 }
 
 .volver:hover {
@@ -153,6 +136,22 @@ a button:active {
 }
 
 .volver::before {
+    font-size: 1.1em;
+}
+
+/* Botón update */
+.update {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.update:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.update::before {
     font-size: 1.1em;
 }
 
@@ -172,15 +171,26 @@ a button:active {
 .salir::before {
     font-size: 1.1em;
 }
-
 /* Mensajes de error */
 div[style*="color:red"] {
-    background: linear-gradient(45deg, #ffebee, #ffcdd2);
-    border: 2px solid #6c6c6c;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    border: 2px solid #f44336;
+    border-radius: 12px;
     padding: 20px;
     margin: 20px 0;
-    color: #7f7f7f;
+    color: #d32f2f;
+    position: relative;
+    overflow: hidden;
+}
+
+div[style*="color:red"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #f44336;
 }
 
 div[style*="color:red"] ul {
@@ -189,18 +199,42 @@ div[style*="color:red"] ul {
 }
 
 div[style*="color:red"] li {
-    padding: 5px 0;
+    padding: 8px 0;
     font-weight: 500;
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px;
 }
 
 div[style*="color:red"] li:before {
-    content: "⚠";
+    content: "⚠️";
     position: absolute;
     left: 0;
-    color: #777777;
+    font-size: 1.2rem;
+}
+
+/* Indicador de campo editado */
+.field-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.edit-indicator {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    background: #cdcdcc;
+    color: white;
+    border-radius: 20px;
+    padding: 2px 8px;
+    font-size: 0.7rem;
     font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:focus + .edit-indicator,
+select:focus + .edit-indicator {
+    opacity: 1;
 }
 
 /* Espaciado mejorado */
@@ -215,35 +249,37 @@ br {
     }
     
     .container {
-        padding: 20px;
+        padding: 25px;
         margin: 10px;
     }
     
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 20px;
+        padding: 15px;
     }
     
     input[type="text"],
     input[type="number"],
     select {
-        padding: 12px;
-        font-size: 0.9rem;
+        padding: 14px;
+        font-size: 0.95rem;
     }
     
     button {
-        padding: 12px 20px;
+        padding: 14px 25px;
         font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        padding: 12px;
     }
     
     .container {
-        padding: 15px;
+        padding: 20px;
     }
     
     input[type="text"],
@@ -252,48 +288,68 @@ br {
     button {
         font-size: 0.9rem;
     }
+    
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 16px;
+    }
 }
 
-/* Animaciones sutiles */
-@keyframes slideIn {
+/* Animaciones */
+@keyframes slideInEdit {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
 .container {
-    animation: slideIn 0.6s ease-out;
+    animation: slideInEdit 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Estados de validación */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Estados de validación mejorados */
 input:valid {
     border-color: #4CAF50;
 }
 
+input:valid::after {
+    content: "✓";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-weight: bold;
+}
+
 input:invalid:not(:focus):not(:placeholder-shown) {
-    border-color: #333333;
+    border-color: #f44336;
     box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
 }
 
+/* Efectos especiales para formulario de edición */
+.container:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
 /* Mejoras de accesibilidad */
-button:focus,
-input:focus,
-select:focus {
-    outline: 2px solid #333333;
-    outline-offset: 2px;
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 3px solid #333333;
+    outline-offset: 3px;
 }
 
-/* Hover effects adicionales */
-label {
-    transition: color 0.3s ease;
-}
-
-input:focus + label,
-select:focus + label {
-    color: #333333;
+/* Transiciones suaves para todos los elementos interactivos */
+* {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }

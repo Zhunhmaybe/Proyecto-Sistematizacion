@@ -1,4 +1,3 @@
-/* Reset y configuración base */
 * {
     margin: 0;
     padding: 0;
@@ -12,16 +11,6 @@ body {
     padding: 20px;
     color: #333333;
 }
-
-h1 {
-    text-align: center;
-    color: #333333;
-    font-size: 2.5em;
-    font-weight: 700;
-    margin-bottom: 30px;
-    position: relative;
-}
-
 /* Contenedor principal */
 .container {
     max-width: 600px;
@@ -33,47 +22,53 @@ h1 {
     position: relative;
 }
 
-/* Estilos del formulario */
-form {
-    margin: 30px 0;
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
 }
 
+
+/* Etiquetas */
 label {
     display: block;
+    margin-bottom: 0.5rem;
+    color: #4a5568;
     font-weight: 600;
-    color: #555;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
-input[type="text"],
-input[type="number"],
-select {
+label:first-of-type {
+    margin-top: 0;
+}
+
+/* Campos de entrada */
+input[type="text"] {
     width: 100%;
-    padding: 15px;
-    border: 2px solid #e1e5e9;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
     border-radius: 10px;
     font-size: 1rem;
-    margin-bottom: 20px;
     transition: all 0.3s ease;
     background: #f8f9fa;
-    font-family: inherit;
+    color: #333;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-select:focus {
+input[type="text"]:focus {
     outline: none;
-    border-color: #515252;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #333333;
     background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     transform: translateY(-2px);
 }
 
-input[type="text"]:hover,
-input[type="number"]:hover,
-select:hover {
-    border-color: #656565;
+input[type="text"]:hover {
+    border-color: #cbd5e0;
     background: white;
 }
 
@@ -110,7 +105,6 @@ a button {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: 100%;
 }
 
 button:hover,
@@ -124,28 +118,13 @@ a button:active {
     transform: translateY(0);
 }
 
-/* Botón crear */
-.create {
+/* Botón volver */
+.volver {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(175, 76, 76, 0.3);
     width: auto;
-}
-
-.create:hover {
-    background: linear-gradient(135deg, #b90504, #990100);
-}
-
-.create::before {
-    font-size: 1.1em;
-}
-
-/* Botón volver */
-.volver {
-    margin-top: 10px;
-    background: linear-gradient(135deg, #990100, #b90504);
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    margin-bottom: 10px;
 }
 
 .volver:hover {
@@ -153,6 +132,23 @@ a button:active {
 }
 
 .volver::before {
+    font-size: 1.1em;
+}
+
+/* Botón crear */
+.crear {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    width: auto;
+}
+
+.crear:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.crear::before {
     font-size: 1.1em;
 }
 
@@ -173,89 +169,8 @@ a button:active {
     font-size: 1.1em;
 }
 
-/* Mensajes de error */
-div[style*="color:red"] {
-    background: linear-gradient(45deg, #ffebee, #ffcdd2);
-    border: 2px solid #6c6c6c;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px 0;
-    color: #7f7f7f;
-}
-
-div[style*="color:red"] ul {
-    list-style: none;
-    padding: 0;
-}
-
-div[style*="color:red"] li {
-    padding: 5px 0;
-    font-weight: 500;
-    position: relative;
-    padding-left: 25px;
-}
-
-div[style*="color:red"] li:before {
-    content: "⚠";
-    position: absolute;
-    left: 0;
-    color: #777777;
-    font-weight: bold;
-}
-
-/* Espaciado mejorado */
-br {
-    display: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .container {
-        padding: 20px;
-        margin: 10px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-        margin-bottom: 20px;
-    }
-    
-    input[type="text"],
-    input[type="number"],
-    select {
-        padding: 12px;
-        font-size: 0.9rem;
-    }
-    
-    button {
-        padding: 12px 20px;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-    
-    .container {
-        padding: 15px;
-    }
-    
-    input[type="text"],
-    input[type="number"],
-    select,
-    button {
-        font-size: 0.9rem;
-    }
-}
-
-/* Animaciones sutiles */
-@keyframes slideIn {
+/* Animaciones de entrada */
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -266,34 +181,118 @@ br {
     }
 }
 
-.container {
-    animation: slideIn 0.6s ease-out;
+h2 {
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Estados de validación */
-input:valid {
-    border-color: #4CAF50;
+form {
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-input:invalid:not(:focus):not(:placeholder-shown) {
+div {
+    animation: fadeInUp 1s ease forwards;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    form {
+        padding: 2rem;
+    }
+    
+    input[type="text"] {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+    
+    button[type="submit"] {
+        padding: 0.875rem;
+        font-size: 1rem;
+    }
+    
+    a {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.9rem;
+        min-width: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    form {
+        padding: 1.5rem;
+    }
+    
+    div {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    a {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+/* Efectos adicionales */
+input[type="text"]::placeholder {
+    color: #a0aec0;
+    opacity: 0.7;
+}
+
+/* Efecto de brillo en el botón */
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+button[type="submit"] {
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Validación visual */
+input[type="text"]:invalid {
     border-color: #333333;
-    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+}
+
+input[type="text"]:valid {
+    border-color: #38a169;
+}
+
+/* Estados de carga */
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
 }
 
 /* Mejoras de accesibilidad */
-button:focus,
-input:focus,
-select:focus {
-    outline: 2px solid #333333;
-    outline-offset: 2px;
-}
-
-/* Hover effects adicionales */
-label {
-    transition: color 0.3s ease;
-}
-
-input:focus + label,
-select:focus + label {
-    color: #333333;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
