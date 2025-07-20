@@ -23,6 +23,9 @@
                     <th>Acciones</th>
                 </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/Karlos
             </thead>
             <tbody>
                 @foreach($usuarios as $usuario)
@@ -41,6 +44,7 @@
         </table>
         <a href="{{ route('admin.index') }}"><button class="close">Salir</button></a>
     </div>
+<<<<<<< HEAD
 =======
             @endforeach
         </tbody>
@@ -48,5 +52,7 @@
     <a href="{{ route('admin.index') }}">Salir</a>
                     
 >>>>>>> origin/Oskar
+=======
+>>>>>>> origin/Karlos
 </body>
 </html>

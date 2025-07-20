@@ -62,4 +62,8 @@
     </div>
     <a href="{{ route('logout') }}" class="boton-salir"><button class="left-button">Cerrar Sesion</button></a>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> origin/Karlos

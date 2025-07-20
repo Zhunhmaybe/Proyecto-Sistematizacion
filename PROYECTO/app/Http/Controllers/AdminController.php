@@ -16,6 +16,4 @@ class AdminController extends Controller
 
         return view('Admin', compact('totalUsuarios', 'totalAreas', 'totalRoles'));
     }
-
-    
 }
