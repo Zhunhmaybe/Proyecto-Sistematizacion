@@ -1,0 +1,400 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e8e8e8 0%, #f6f6f6 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333333;
+}
+
+h1 {
+    text-align: center;
+    color: #333333;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Subtítulos */
+h4 {
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin: 25px 0 20px 0;
+    font-weight: 600;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Párrafos y texto general */
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    animation: slideInUp 0.6s ease;
+}
+
+p strong {
+    color: #333333;
+    font-weight: 700;
+}
+
+/* Alertas y mensajes */
+.alert {
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: bounceIn 0.6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: currentColor;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-success::after {
+    content: '✓';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.alert-warning::after {
+    content: '⚠️';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+
+/* Estilos base para botones */
+button,
+a button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+    width: auto;
+}
+
+button:hover,
+a button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+button:active,
+a button:active {
+    transform: translateY(0);
+}
+
+/* Botón ir */
+.ir {
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+}
+
+.ir:hover {
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Botón ver cerrar */
+.cerrar {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #B90504, #990100);
+    color: white;
+}
+
+.cerrar:hover {
+    background: linear-gradient(135deg, #B90504, #990100);
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease;
+}
+
+.table-bordered {
+    border: none;
+}
+
+/* Encabezado de tabla */
+.thead-light {
+    background: linear-gradient(45deg, #333333);
+    color: white;
+}
+
+.thead-light th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+}
+
+/* Celdas */
+.table td, .table th {
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.table td {
+    padding: 18px 15px;
+    font-size: 1em;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+/* Filas */
+.table tbody tr {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f8f9ff;
+}
+
+.table tbody tr:hover {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    transform: scale(1.01);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Columnas específicas */
+.table td:nth-child(1) {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+
+.table td:nth-child(2) {
+    color: #333333;
+    font-weight: 500;
+}
+
+
+.table td:nth-child(3) {
+    color: #555;
+    font-style: regular;
+}
+
+/* Separador HR */
+hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #495057, #343a40, transparent);
+    margin: 30px 0;
+    border-radius: 1px;
+}
+
+/* Mensaje de no matriculado */
+body > p:last-of-type {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+body > p:last-of-type::before {
+    content: '📋';
+    display: block;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2em;
+        padding: 20px;
+    }
+    
+    h4 {
+        font-size: 1.3em;
+        padding: 12px 15px;
+    }
+    
+    p {
+        padding: 15px;
+        font-size: 1em;
+    }
+    
+    button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    
+    .table {
+        font-size: 0.9em;
+    }
+    
+    .thead-light th,
+    .table td {
+        padding: 12px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6em;
+        padding: 15px;
+    }
+    
+    .table {
+        font-size: 0.8em;
+    }
+    
+    .thead-light th,
+    .table td {
+        padding: 8px 5px;
+    }
+    
+    /* Hacer tabla scrollable horizontalmente */
+    .table-container {
+        overflow-x: auto;
+        margin: 20px -15px;
+        padding: 0 15px;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Efectos adicionales */
+.alert:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Animación para las filas de la tabla */
+.table tbody tr {
+    animation: slideInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+.table tbody tr:nth-child(5) { animation-delay: 0.5s; }
+.table tbody tr:nth-child(n+6) { animation-delay: 0.6s; }

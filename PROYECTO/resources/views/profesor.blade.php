@@ -3,93 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Panel del Profesor</title>
-
-    <!-- FullCalendar CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/main.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-        }
-
-        #calendar {
-            max-width: 1000px;
-            margin: 30px auto;
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-
-        .section {
-            max-width: 1000px;
-            margin: auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h1, h2 {
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        ul {
-            list-style: disc;
-            padding-left: 20px;
-        }
-
-        a {
-            display: inline-block;
-            margin: 10px 10px 0 0;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
-
-        a:hover {
-            background-color: #45a049;
-        }
-
-        .fc-daygrid-day-frame {
-            min-height: 100px;
-        }
-
-        .fc .fc-daygrid-day {
-            border: 1px solid #ddd;
-        }
-
-        .fc .fc-scrollgrid {
-            border: none;
-        }
-
-        .fc-event {
-            font-size: 0.9em;
-            padding: 2px 4px;
-            border-radius: 4px;
-        }
-
-        .fc-toolbar-title {
-            font-size: 1.5em;
-        }
-
-        .calendar-title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('css/profesor.css')}}">
 </head>
 <body>
 
@@ -111,14 +25,14 @@
             </ul>
         @endif
 
-        <a href="{{ route('profesores.tutorias.index') }}">Ver mis Tutorías</a>
-        <a href="{{ route('profesores.tutorias.create') }}">Crear Tutoría</a>
-        <a href="{{ route('logout') }}">Cerrar Sesión</a>
+        <a href="{{ route('profesores.tutorias.index') }}"><button class="ver">Ver mis Tutorías</button></a>
+        <a href="{{ route('profesores.tutorias.create') }}"><button class="crear">Crear Tutoría</button></a>
+        <a href="{{ route('logout') }}"><button class="cerrar">Cerrar Sesión</button></a>
     </div>
 
     <!-- Calendario -->
     <div class="calendar-container">
-        <h2 class="calendar-title">📅 Calendario de Tutorías</h2>
+        <h2 class="calendar-title">Calendario de Tutorías</h2>
         <div id="calendar"></div>
     </div>
 

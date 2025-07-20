@@ -6,188 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Formulario Matricula</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .container {
-            padding: 40px 20px;
-        }
-        
-        .form-container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .form-title {
-            color: #333;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2.2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-label {
-            font-weight: 600;
-            color: #555;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .form-control {
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            padding: 12px 16px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
-            background: white;
-        }
-        
-        .form-control:disabled {
-            background-color: #f8f9fa;
-            border-color: #dee2e6;
-            color: #6c757d;
-            opacity: 0.7;
-        }
-        
-        .btn-matricular {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 12px;
-            color: white;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        
-        .btn-matricular:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-        
-        .btn-matricular:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .alert {
-            border-radius: 12px;
-            border: none;
-            padding: 15px 20px;
-            margin-bottom: 25px;
-        }
-        
-        .alert-info {
-            background: linear-gradient(135deg, #667eea20, #764ba220);
-            color: #495057;
-            border-left: 4px solid #667eea;
-        }
-        
-        .alert-warning {
-            background: linear-gradient(135deg, #ffc10720, #ff851b20);
-            color: #856404;
-            border-left: 4px solid #ffc107;
-        }
-        
-        .asignaturas-info {
-            font-size: 14px;
-            color: #6c757d;
-            margin-top: 5px;
-            font-style: italic;
-        }
-        
-        .form-control[multiple] {
-            min-height: 200px;
-        }
-        
-        .form-control[multiple] option {
-            padding: 12px;
-            margin: 3px 0;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        
-        .form-control[multiple] option:checked {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        
-        .student-info {
-            background: linear-gradient(135deg, #667eea10, #764ba210);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-left: 4px solid #667eea;
-        }
-        
-        .student-info h5 {
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .student-info p {
-            color: #666;
-            margin: 0;
-        }
-        
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .spinner-border {
-            width: 3rem;
-            height: 3rem;
-            border-width: 0.3em;
-            border-color: #667eea;
-            border-right-color: transparent;
-        }
-        
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 25px;
-                margin: 20px 10px;
-            }
-            
-            .form-title {
-                font-size: 1.8rem;
-            }
-            
-            .btn-matricular {
-                width: 100%;
-                padding: 18px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('css/Estudiantes/matricula.css')}}">
 </head>
 <body>
     <div class="container">
@@ -275,18 +94,18 @@
                         </div>
                         
                         <div class="text-center">
-                            <button type="submit" class="btn btn-matricular" id="btn-matricular" disabled>
+                            <button type="submit" class="matricular"disabled>
                                 <i class="fas fa-check-circle"></i>
                                 Matricular Estudiante
                             </button>
                         </div>
                     </form>
+                    <a href="{{ route('estudiante.dashboard') }}" ><button class="volver">Volver</button></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <a href="{{ route('estudiante.dashboard') }}" class="btn btn-secondary">Volver</a>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>

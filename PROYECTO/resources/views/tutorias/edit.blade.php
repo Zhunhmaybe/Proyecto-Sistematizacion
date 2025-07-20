@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Editar Tutoría</title>
+    <link rel="stylesheet" href="{{asset('css/Tutorias/edit.css')}}">
 </head>
 <body>
     <div class="container">
@@ -47,10 +48,11 @@
             <input type="text" name="detalletut" class="form-control" value="{{ old('detalletut', $tutoria->detalletut) }}" maxlength="100" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-        <a href="{{ route('tutorias.index') }}" class="btn btn-secondary">Volver</a>
+        <button type="submit" class="update">Actualizar</button>
     </form>
+    <a href="{{ route('tutorias.index') }}"><button class="volver">Volver</button></a>
+    <a href="{{ route('admin.index') }}"><button class="cancel">Cancelar</button></a>
 </div>
-     <a href="{{ route('admin.index') }}">Cancelar</a>
+     
 </body>
 </html>

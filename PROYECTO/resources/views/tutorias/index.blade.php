@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tutorias</title>
+    <link rel="stylesheet" href="{{asset('css/Tutorias/index.css')}}">
 </head>
 <body>
     <div class="container">
@@ -14,7 +15,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('tutorias.create') }}" class="btn btn-primary mb-3">Crear nueva tutoría</a>
+    <a href="{{ route('tutorias.create') }}"><button class="crear">Crear nueva tutoría</button></a>
 
     <table class="table table-bordered">
         <thead>
@@ -37,18 +38,19 @@
                     </td>
                     <td>{{ $tutoria->detalletut }}</td>
                     <td>
-                        <a href="{{ route('tutorias.edit', $tutoria->idtut) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{{ route('tutorias.edit', $tutoria->idtut) }}"><button class="edit">Editar</button></a>
                         <form action="{{ route('tutorias.destroy', $tutoria->idtut) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm" onclick="return confirm('¿Deseas eliminar esta tutoría?')">Eliminar</button>
+                            <button class="eliminar" onclick="return confirm('¿Deseas eliminar esta tutoría?')">Eliminar</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <a href="{{ route('admin.index') }}"><button class="cancel">Cancelar</button></a>
 </div>
- <a href="{{ route('admin.index') }}">Cancelar</a>
+ 
 </body>
 </html>

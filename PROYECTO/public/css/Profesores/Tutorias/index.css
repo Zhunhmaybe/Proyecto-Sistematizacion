@@ -109,45 +109,12 @@ a button:active {
     font-size: 1.1em;
 }
 
-/* Botón edit */
-.edit {
-    margin-top: 10px;
-    background: linear-gradient(135deg, #990100, #b90504);
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
-}
-
-.edit:hover {
-    background: linear-gradient(135deg, #b90504, #990100);
-}
-
-.edit::before {
-    font-size: 1.1em;
-}
-
-/* Botón eliminar */
-.eliminar {
-    margin-top: 10px;
-    background: linear-gradient(135deg, #990100, #b90504);
-    color: white;
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
-    width: auto;
-}
-
-.eliminar:hover {
-    background: linear-gradient(135deg, #b90504, #990100);
-}
-
-.eliminar::before {
-    font-size: 1.1em;
-}
 /* Botón cancel */
 .cancel {
     margin-top: 10px;
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
-    width: auto;
 }
 
 .cancel:hover {
@@ -155,6 +122,23 @@ a button:active {
 }
 
 .cancel::before {
+    font-size: 1.1em;
+}
+
+/* Botón volver */
+.volver {
+    margin-top: 10px;
+    background: linear-gradient(135deg, #990100, #b90504);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    width: auto;
+}
+
+.volver:hover {
+    background: linear-gradient(135deg, #b90504, #990100);
+}
+
+.volver::before {
     font-size: 1.1em;
 }
 

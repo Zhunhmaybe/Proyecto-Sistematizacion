@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Edicion Horario</title>
+    <link rel="stylesheet" href="{{asset('css/Horarios/edit.css')}}">
 </head>
 <body>
     <div class="container">
@@ -45,10 +46,12 @@
             <input type="time" name="horafin" class="form-control" value="{{ old('horafin', $horario->horafin) }}" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-        <a href="{{ route('horarios.index') }}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="update">Actualizar</button>
+        
     </form>
+    <a href="{{ route('horarios.index') }}"><button class="volver">Volver</button></a>
+    <a href="{{ route('admin.index') }}"><button class="cancel">Cancelar</button></a>
 </div>
- <a href="{{ route('admin.index') }}">Cancelar</a>
+ 
 </body>
 </html>

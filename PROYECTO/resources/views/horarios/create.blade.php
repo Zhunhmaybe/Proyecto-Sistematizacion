@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crear Horario</title>
+    <link rel="stylesheet" href="{{asset('css/Horarios/create.css')}}">
 </head>
 <body>
     <div class="container">
@@ -49,10 +50,10 @@
             <input type="time" name="horafin" class="form-control" value="{{ old('horafin') }}" required>
         </div>
 
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <a href="{{ route('horarios.index') }}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="save">Guardar</button>
     </form>
+    <a href="{{ route('horarios.index') }}" ><button class="ver">Ver Horarios</button></a>
+    <a href="{{ route('admin.index') }}"><button class="cancel">Cancelar</button></a>
 </div>
- <a href="{{ route('admin.index') }}">Cancelar</a>
 </body>
 </html>

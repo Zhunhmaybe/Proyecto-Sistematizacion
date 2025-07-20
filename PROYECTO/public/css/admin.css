@@ -59,7 +59,7 @@ body {
 /* Títulos de sección */
 .section-title {
     font-size: 1.5rem;
-    color: #4a5568;
+    color: #333333;
     margin-bottom: 1.5rem;
     font-weight: 600;
     border-bottom: 3px solid #333333;
@@ -169,7 +169,7 @@ body > a[href*="logout"] {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #333333;
     color: white;
     padding: 0.75rem 1.5rem;
     text-decoration: none;

@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Estudiante</title>
+    <link rel="stylesheet" href="{{asset('css/Estudiantes/dashboard.css')}}">
 </head>
 <body>
-    <h1>Bienvenido al Dashboard del Estudiante</h1>
+    <div class="container">
+    <h1>Bienvenido Estudiante</h1>
 
 
     {{-- Mensaje si viene algo desde el controlador --}}
@@ -43,7 +45,7 @@
     {{-- Botón para matricularse si hay un periodo activo --}}
     @if ($periodoActivo)
         <p>Para matricularte, por favor selecciona las asignaturas disponibles.</p>
-        <a href="{{ route('estudiante.matricula') }}" class="btn btn-primary">Ir al formulario de matrícula</a>
+        <a href="{{ route('estudiante.matricula') }}"><button class="ir">Ir al formulario de matrícula</button></a>
     @endif
 
     <hr>
@@ -73,7 +75,7 @@
         <p>No estás matriculado en ninguna asignatura aún.</p>
     @endif
 
-    <br>
-    <a href="{{ route('login.form') }}" class="btn btn-secondary">Cerrar sesión</a>
+    <a href="{{ route('login.form') }}"><button class="cerrar">Cerrar sesión</button></a>
+    </div>
 </body>
 </html>

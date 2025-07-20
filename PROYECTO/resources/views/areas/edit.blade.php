@@ -6,7 +6,8 @@
     <title>Editar Área</title>
 </head>
 <body>
-    <h2>Editar Área</h2>
+    <div class="container">
+    <h1>Editar Área</h1>
 
     @if ($errors->any())
         <ul style="color:red;">
@@ -32,9 +33,10 @@
             @endforeach
         </select><br><br>
 
-        <button type="submit">Actualizar</button>
-        <a href="{{ route('areas.index') }}">Volver</a>
-         <a href="{{ route('admin.index') }}">Cancelar</a>
+        <button type="submit" class="update">Actualizar</button>
     </form>
+    <a href="{{ route('areas.index') }}"><button class="volver">Volver</button></a>
+    <a href="{{ route('admin.index') }}"><button class="cancel">Cancelar</button></a>
+    </div>
 </body>
 </html>
