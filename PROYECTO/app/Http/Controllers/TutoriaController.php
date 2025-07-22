@@ -82,12 +82,18 @@ class TutoriaController extends Controller
 
     public function storeFromProfesor(Request $request)
     {
-
         $validated = $request->validate([
             'iddet' => 'required|exists:detallematriculas,iddet',
             'idhor' => 'required|exists:horarios,idhor',
             'detalletut' => 'required|max:100',
         ]);
+
+        // Validación personalizada: verificar si el horario ya está en uso
+        $existe = Tutoria::where('idhor', $validated['idhor'])->exists();
+
+        if ($existe) {
+            return redirect()->back()->withErrors(['idhor' => 'Este horario ya está asignado a otra tutoría.'])->withInput();
+        }
 
         Tutoria::create([
             'iddet' => $validated['iddet'],
@@ -98,11 +104,20 @@ class TutoriaController extends Controller
         return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
     }
 
+
     public function misTutorias()
     {
+        
+        /*$detallematricula = Detallematricula::where('idusu', $cedula)->first();
         $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
 
-        return view('profesores.tutorias.index', compact('tutorias'));
+        return view('profesores.tutorias.index', compact('tutorias'));*/
+        // Consultar la vista filtrando por idpro
+        $cedula = auth()->user()->obtenercedula();
+        $tutorias = DB::select('SELECT * FROM public.vista_tutorias WHERE idpro = ?', [$cedula]);
+
+        // Pasar los resultados a una vista Blade
+        return view('tutorias.index', compact('tutorias'));
     }
 
     // Eliminar una tutoría

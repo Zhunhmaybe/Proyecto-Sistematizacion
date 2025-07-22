@@ -92,7 +92,16 @@
     h1 {
         color: #c00;
     }
-
+    /* Contenedor principal */
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
     .semestre {
         margin-bottom: 25px;
     }

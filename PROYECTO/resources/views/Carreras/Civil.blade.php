@@ -38,6 +38,7 @@
     </ul>
   </div>
 </nav>
+<div class="container">
 <h1>Ingeniería Civil</h1>
 
   <p>La carrera de Ingeniería en Software forma profesionales capaces de analizar, diseñar, desarrollar y mantener sistemas informáticos de calidad. El egresado podrá trabajar en proyectos de desarrollo web, móvil, inteligencia artificial, ciberseguridad, bases de datos, y mucho más.</p>
@@ -87,5 +88,6 @@
   <!-- Puedes continuar con los semestres 5 al 10 -->
 
   <a href="/Inscripciones/formulario" class="btn-inscripcion">Inscribirse</a>
+  </div>
 </body>
 </html>

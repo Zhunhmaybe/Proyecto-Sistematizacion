@@ -57,8 +57,8 @@
       <ul>
         <li><a href="/Carreras/Software">Ingeniería en Sistemas</a></li>
         <li><a href="/Carreras/Civil">Ingeniería Civil</a></li>
-        <li><a href="/Carreras/ingenieria-electronica">Ingeniería Electrónica</a></li>
-        <li><a href="/Carreras/ingenieria-industrial">Ingeniería Industrial</a></li>
+        <li><a href="/Carreras/Electronica">Ingeniería Electrónica</a></li>
+        <li><a href="/Carreras/Industrial">Ingeniería Industrial</a></li>
       </ul>
     </div>
 
@@ -66,10 +66,10 @@
     <div class="facultad-box">
       <h3>Facultad de Ciencias Administrativas</h3>
       <ul>
-        <li><a href="/carreras/administracion">Administración de Empresas</a></li>
-        <li><a href="/carreras/contabilidad">Contabilidad y Auditoría</a></li>
-        <li><a href="/carreras/economia">Economía</a></li>
-        <li><a href="/carreras/marketing">Marketing</a></li>
+        <li><a href="/Carreras/Administracion">Administración de Empresas</a></li>
+        <li><a href="/Carreras/Contabilidad">Contabilidad y Auditoría</a></li>
+        <li><a href="/Carreras/Economia">Economía</a></li>
+        <li><a href="/Carreras/Marketing">Marketing</a></li>
       </ul>
     </div>
 

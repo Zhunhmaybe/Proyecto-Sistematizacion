@@ -150,27 +150,6 @@ h1 {
     margin-top: 2rem;
 }
 
-/* Botones */
-button,
-.ver,
-.salir,
-.asignar {
-    padding: 0.875rem 1.5rem;
-    border: none;
-    border-radius: var(--radius);
-    font-weight: 600;
-    font-size: 0.925rem;
-    cursor: pointer;
-    transition: var(--transition);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 120px;
-    position: relative;
-    overflow: hidden;
-}
-
 /* Efecto ripple en botones */
 /* Botones */
 button {
@@ -240,6 +219,7 @@ a button:active {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    margin-top: 10px;
 }
 
 .ver:hover {
@@ -255,7 +235,7 @@ a button:active {
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
-    width: auto;
+    margin-top: 10px;
 }
 
 .salir:hover {

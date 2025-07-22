@@ -127,19 +127,19 @@ a button:active {
     font-size: 1.1em;
 }
 
-/* Botón edit */
-.edit {
+/* Botón eliminar */
+.eliminar {
     margin-top: 10px;
     background: linear-gradient(135deg, #990100, #b90504);
     color: white;
     box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
 }
 
-.edit:hover {
+.eliminar:hover {
     background: linear-gradient(135deg, #b90504, #990100);
 }
 
-.edit::before {
+.eliminar::before {
     font-size: 1.1em;
 }
 
@@ -209,7 +209,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: #e0f2fe;
+    background-color: #ffffff;
     transform: translateX(4px);
     box-shadow: inset 4px 0 0 var(--primary-color);
 }

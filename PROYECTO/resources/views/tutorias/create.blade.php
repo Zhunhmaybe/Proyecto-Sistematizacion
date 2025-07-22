@@ -26,7 +26,7 @@
         <select name="idhor" required>
             @foreach($horarios as $horario)
                 <option value="{{ $horario->idhor }}">
-                    {{ $horario->dia->nombredia ?? 'Día desconocido' }} - {{ $horario->horainicio }} a {{ $horario->horafin }}
+                    {{ $horario->dia->nombredia ?? 'Día desconocido' }} - {{ $horario->horaini }} a {{ $horario->horafin }}
                 </option>
             @endforeach
         </select><br>
