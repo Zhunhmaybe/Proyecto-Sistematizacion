@@ -72,46 +72,6 @@ class TutoriaController extends Controller
         return redirect()->route('tutorias.index')->with('success', 'Tutoría actualizada con éxito.');
     }
 
-    public function createFromProfesor()
-    {
-        $detallematriculas = Detallematricula::all();  // Obtener todos los registros de detalle de matrícula
-        $horarios = Horario::all();  // Obtener todos los registros de horarios
-
-        return view('profesores.tutorias.create', compact('detallematriculas', 'horarios'));
-    }
-
-    public function storeFromProfesor(Request $request)
-    {
-        $validated = $request->validate([
-            'iddet' => 'required|exists:detallematriculas,iddet',
-            'idhor' => 'required|exists:horarios,idhor',
-            'detalletut' => 'required|max:100',
-        ]);
-
-        // Validación personalizada: verificar si el horario ya está en uso
-        $existe = Tutoria::where('idhor', $validated['idhor'])->exists();
-
-        if ($existe) {
-            return redirect()->back()->withErrors(['idhor' => 'Este horario ya está asignado a otra tutoría.'])->withInput();
-        }
-
-        Tutoria::create([
-            'iddet' => $validated['iddet'],
-            'idhor' => $validated['idhor'],
-            'detalletut' => $validated['detalletut'],
-        ]);
-
-        return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
-    }
-
-
-    public function misTutorias()
-    {
-        $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
-
-        return view('profesores.tutorias.index', compact('tutorias'));
-    }
-
     // Eliminar una tutoría
     public function destroy($id)
     {

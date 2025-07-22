@@ -112,9 +112,9 @@ Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->n
 
 // Agrupa TODAS las rutas de profesor con el middleware
 Route::middleware(['check.any.permission:profesor'])->prefix('profesor')->group(function () {
-    Route::get('/tutorias', [TutoriaController::class, 'misTutorias'])->name('profesores.tutorias.index');
-    Route::get('/tutorias/crear', [TutoriaController::class, 'createFromProfesor'])->name('profesores.tutorias.create');
-    Route::post('/tutorias', [TutoriaController::class, 'storeFromProfesor'])->name('profesores.tutorias.store');
+    Route::get('/tutorias', [ProfesorController::class, 'misTutorias'])->name('profesores.tutorias.index');
+    Route::get('/tutorias/crear', [ProfesorController::class, 'createFromProfesor'])->name('profesores.tutorias.create');
+    Route::post('/tutorias', [ProfesorController::class, 'storeFromProfesor'])->name('profesores.tutorias.store');
 });
 
 
