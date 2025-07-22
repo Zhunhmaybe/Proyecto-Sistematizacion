@@ -73,4 +73,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profesor::class, 'idpro', 'idusu');
     }
+    public function obtenercedula() {
+        return 'idusu';
+    }
 }

@@ -34,7 +34,7 @@ class Tutoria extends Model
     }
     public function profesor()
     {
-        return $this->belongsTo(\App\Models\Profesor::class, 'idpro');
+        return $this->belongsTo(User::class, 'idpro');
     }
 
 }

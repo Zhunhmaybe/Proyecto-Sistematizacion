@@ -46,5 +46,8 @@ class Asignatura extends Model
     {
         return $this->hasMany(Detallematricula::class, 'idasi');
     }
-    
+    public function docente()
+    {
+        return $this->belongsTo(User::class, 'idusu', 'idusu');
+    }
 }
