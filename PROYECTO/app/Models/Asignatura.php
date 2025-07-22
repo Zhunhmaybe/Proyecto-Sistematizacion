@@ -42,9 +42,13 @@ class Asignatura extends Model
         return $this->hasMany(ProAsi::class, 'idasi');
     }
 
+    public function profesor()
+    {
+        return $this->belongsTo(Profesor::class, 'idpro', 'idpro');
+    }
+
     public function detallematricula()
     {
-        return $this->hasMany(Detallematricula::class, 'idasi');
+        return $this->hasMany(Detallematricula::class, 'idasi', 'idasi');
     }
-    
 }

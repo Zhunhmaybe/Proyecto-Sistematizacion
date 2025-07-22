@@ -25,16 +25,20 @@ class Tutoria extends Model
 
     public function detallematricula()
     {
-        return $this->belongsTo(Detallematricula::class, 'iddet');
+        return $this->belongsTo(Detallematricula::class, 'iddet', 'iddet');
+    }
+
+    public function profesor()
+    {
+        return $this->belongsTo(Profesor::class, 'idpro', 'idpro');
     }
 
     public function horario()
     {
-        return $this->belongsTo(Horario::class, 'idhor');
+        return $this->belongsTo(Horario::class, 'idhor', 'idhor');
     }
-    public function profesor()
+    public function asignatura()
     {
-        return $this->belongsTo(\App\Models\Profesor::class, 'idpro');
+        return $this->belongsTo(Asignatura::class, 'idasi', 'idasi');
     }
-
 }

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class MatriculaController extends Controller
 {
-   public function index()
+    public function index()
     {
         $matriculas = Matricula::with('estudiante', 'periodo')->get();
         return view('matriculas.index', compact('matriculas'));

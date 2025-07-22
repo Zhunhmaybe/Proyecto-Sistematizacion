@@ -7,7 +7,9 @@ use App\Models\Area;
 use App\Models\Tutoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Detallematricula;
 use App\Models\Departamento;
+use App\Models\Horario;
 
 class ProfesorController extends Controller
 {
@@ -91,7 +93,7 @@ class ProfesorController extends Controller
         $profesor = Profesor::findOrFail($idpro);
         $departamentos = Departamento::all();
         $areas = Area::all();
-        return view('profesor.edit', compact('profesor', 'departamentos','areas'));
+        return view('profesor.edit', compact('profesor', 'departamentos', 'areas'));
     }
 
     // Actualizar profesor existente
@@ -117,6 +119,64 @@ class ProfesorController extends Controller
 
         return redirect()->route('profesor.index')->with('success', 'Profesor actualizado correctamente.');
     }
+
+    public function createFromProfesor()
+    {
+        $usuario = session('usuario');
+
+        if (!$usuario || $usuario->idrol != 1) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        $detallematriculas = Detallematricula::all();
+        $horarios = Horario::all();
+
+        return view('profesores.tutorias.create', compact('detallematriculas', 'horarios', 'usuario'));
+    }
+
+
+    public function storeFromProfesor(Request $request)
+    {
+        $usuario = session('usuario');
+
+        if (!$usuario || $usuario->idrol != 1) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        $validated = $request->validate([
+            'iddet' => 'required|exists:detallematriculas,iddet',
+            'idhor' => 'required|exists:horarios,idhor',
+            'detalletut' => 'required|max:100',
+        ]);
+
+        $existe = Tutoria::where('idhor', $validated['idhor'])->exists();
+
+        if ($existe) {
+            return redirect()->back()->withErrors(['idhor' => 'Este horario ya está asignado a otra tutoría.'])->withInput();
+        }
+
+        Tutoria::create([
+            'iddet' => $validated['iddet'],
+            'idhor' => $validated['idhor'],
+            'detalletut' => $validated['detalletut'],
+        ]);
+
+        return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
+    }
+
+    public function misTutorias()
+    {
+        $usuario = session('usuario');
+
+        if (!$usuario || $usuario->idrol != 1) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        $tutorias = Tutoria::with(['detallematricula', 'horario'])->get();
+
+        return view('profesores.tutorias.index', compact('tutorias', 'usuario'));
+    }
+
 
     // Eliminar profesor
     public function destroy($idpro)

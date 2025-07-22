@@ -5,7 +5,13 @@
     <title>Asignar Materia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/Pro_asi/create.css') }}">
+=======
+    <!-- Bootstrap 5 -->
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> dd5735fe4760000963c495ea154502385e9e7983
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -13,8 +19,13 @@
 
 <div class="container mt-5">
     <div class="card shadow-sm">
+<<<<<<< HEAD
         <div class="card-header bg-primary text-white">
             <h1 class="mb-0">Nueva Asignación</h1>
+=======
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">Nueva Asignación</h5>
+>>>>>>> dd5735fe4760000963c495ea154502385e9e7983
         </div>
 
         <div class="card-body">

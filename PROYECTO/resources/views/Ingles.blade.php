@@ -37,8 +37,8 @@
     <li class="dropdown">
       <a class="nav-link">Sesion ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="/Login" class="nav-link">Estudiante</a></li>
-        <li><a href="/Login" class="nav-link">Docente</a></li>
+        <li><a href="/Login" class="nav-link">Iniciar Sesión</a></li>
+        <li><a href="/register" class="nav-link">Registrarse</a></li>
       </ul>
     </li>
       <li><a href="/Servicios" class="nav-link">Servicios</a></li>

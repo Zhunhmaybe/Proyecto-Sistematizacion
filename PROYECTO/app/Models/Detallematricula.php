@@ -30,11 +30,16 @@ class Detallematricula extends Model
 
     public function asignatura()
     {
-        return $this->belongsTo(Asignatura::class, 'idasi');
+        return $this->belongsTo(Asignatura::class, 'idasi', 'idasi');
     }
 
     public function tutorias()
     {
-        return $this->hasMany(Tutoria::class, 'iddet');
+        return $this->hasMany(Tutoria::class, 'iddet','iddet');
+    }
+
+    public function profesor()
+    {
+        return $this->belongsTo(Profesor::class, 'idprof', 'idprof'); // Si tienes un campo idprof aquí
     }
 }

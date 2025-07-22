@@ -10,8 +10,11 @@ use App\Models\Matricula;
 use App\Models\Detallematricula;
 use App\Models\Asignatura;
 use App\Models\Titulacion; // Agregar el modelo Titulacion
+use App\Models\Tutoria;
+use App\Models\InscripcionTutoria;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Log;
+use Illuminate\Support\Facades\Auth;
 
 class EstudianteController extends Controller
 {
@@ -22,6 +25,7 @@ class EstudianteController extends Controller
         if (!$usuario || $usuario->idrol != 2) {
             return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
         }
+
 
         $estudiante = Estudiante::where('mailest', $usuario->email)->first();
         $periodoActivo = Periodo::whereDate('inicioper', '<=', now())
@@ -46,15 +50,22 @@ class EstudianteController extends Controller
                     $asignaturasMatriculadas->push($detalle);
                 }
             }
+            $tutoriasInscritas = InscripcionTutoria::where('idest', $estudiante->idest)
+                ->with(['tutoria.horario.dia', 'tutoria.profesor']) // <- Muy importante
+                ->get();
+        } else {
+            $tutoriasInscritas = collect();
         }
 
         return view('estudiante.dashboard', compact(
             'usuario',
             'periodoActivo',
             'matriculado',
-            'asignaturasMatriculadas'
+            'asignaturasMatriculadas',
+            'tutoriasInscritas'
         ));
     }
+
 
     public function mostrarFormularioMatricula()
     {
@@ -219,5 +230,90 @@ class EstudianteController extends Controller
         }
 
         return redirect()->route('estudiante.dashboard')->with('success', $mensajeFinal);
+    }
+
+    public function verTutorias()
+    {
+        $usuario = session('usuario');
+
+        if (!$usuario || $usuario->idrol != 2) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
+
+        $tutorias = Tutoria::with(['profesor', 'horario'])
+            ->orderBy('idhor', 'asc')
+            ->get();
+
+        return view('estudiante.tutorias', compact('usuario', 'tutorias'));
+    }
+
+    public function tutoriasDisponibles()
+    {
+        $idest = session('idest'); // O usa Auth si estás usando autenticación Laravel
+
+        $estudiante = \App\Models\Estudiante::where('idest', $idest)->first();
+
+        $tutorias = \App\Models\Tutoria::with('horario.dia')
+            ->where('disponible', true)
+            ->get();
+
+        return view('estudiantes.tutorias', compact('tutorias', 'estudiante'));
+    }
+
+    public function inscribirseTutoria(Request $request)
+    {
+        // Validar que se reciba un id de tutoría válido
+        $request->validate([
+            'idtut' => 'required|exists:tutorias,idtut',
+        ]);
+
+        $usuario = session('usuario');
+        if (!$usuario || $usuario->idrol != 2) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso denegado']);
+        }
+
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
+        if (!$estudiante) {
+            return back()->withErrors(['estudiante' => 'Estudiante no encontrado.']);
+        }
+
+        // Verificar si ya está inscrito en esa tutoría
+        $yaInscrito = InscripcionTutoria::where('idest', $estudiante->idest)
+            ->where('idtut', $request->idtut)
+            ->exists();
+
+        if ($yaInscrito) {
+            return back()->with('mensaje', 'Ya estás inscrito en esta tutoría.');
+        }
+
+        // Crear la inscripción sin asignar manualmente el 'id'
+        InscripcionTutoria::create([
+            'idest' => $estudiante->idest,
+            'idtut' => $request->idtut,
+            // 'created_at' y 'updated_at' se asignan automáticamente si usas timestamps
+        ]);
+
+        return back()->with('success', 'Te has inscrito en la tutoría correctamente.');
+    }
+
+    public function misTutorias()
+    {
+
+        $usuario = session('usuario');
+
+        if (!$usuario || $usuario->idrol != 2) {
+            return redirect()->route('login.form')->withErrors(['access' => 'Acceso no autorizado']);
+        }
+
+        $estudiante = Estudiante::where('mailest', $usuario->email)->first();
+
+        $tutoriasInscritas = InscripcionTutoria::with([
+            'tutoria.horario.dia',
+            'tutoria.profesor',
+        ])->where('idest', $estudiante->idest)->get();
+
+        return view('estudiante.tutorias_inscritas', compact('tutoriasInscritas'));
     }
 }
