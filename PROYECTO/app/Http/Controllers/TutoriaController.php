@@ -82,12 +82,18 @@ class TutoriaController extends Controller
 
     public function storeFromProfesor(Request $request)
     {
-
         $validated = $request->validate([
             'iddet' => 'required|exists:detallematriculas,iddet',
             'idhor' => 'required|exists:horarios,idhor',
             'detalletut' => 'required|max:100',
         ]);
+
+        // Validación personalizada: verificar si el horario ya está en uso
+        $existe = Tutoria::where('idhor', $validated['idhor'])->exists();
+
+        if ($existe) {
+            return redirect()->back()->withErrors(['idhor' => 'Este horario ya está asignado a otra tutoría.'])->withInput();
+        }
 
         Tutoria::create([
             'iddet' => $validated['iddet'],
@@ -97,6 +103,7 @@ class TutoriaController extends Controller
 
         return redirect()->route('profesores.tutorias.index')->with('success', 'Tutoría creada con éxito.');
     }
+
 
     public function misTutorias()
     {

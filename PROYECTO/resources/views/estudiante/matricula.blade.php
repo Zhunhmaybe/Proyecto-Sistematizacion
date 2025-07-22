@@ -93,12 +93,11 @@
                             </div>
                         </div>
                         
-                        <div class="text-center">
-                            <button type="submit" class="matricular"disabled>
-                                <i class="fas fa-check-circle"></i>
-                                Matricular Estudiante
-                            </button>
-                        </div>
+<button type="submit" id="btn-matricular" class="matricular" disabled>
+    <i class="fas fa-check-circle"></i>
+    Matricular Estudiante
+</button>
+
                     </form>
                     <a href="{{ route('estudiante.dashboard') }}" ><button class="volver">Volver</button></a>
                 </div>

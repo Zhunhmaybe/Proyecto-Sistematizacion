@@ -28,8 +28,8 @@
                 <a href="{{route('titulacion.index')}}" class="admin-button">Ver Carreras</a>
                 <a href="{{route('asignatura.index')}}" class="admin-button">Ver Asignaturas</a>
                 <a href="{{route('pro_asi.create')}}" class="admin-button">Asignar Materias a Docente</a>
-                <a href="{{ route('horarios.create') }}" class="admin-button"> Crear Horario</a>
                 <a href="{{ route('dias.create') }}" class="admin-button">Crear Día</a>
+                <a href="{{ route('horarios.create') }}" class="admin-button"> Crear Horario</a>
                 <a href="{{ route('tutorias.create') }}" class="admin-button"> Crear Tutoría</a>
             </div>
         </div>

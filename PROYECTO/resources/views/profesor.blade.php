@@ -24,8 +24,9 @@
                 @endforeach
             </ul>
         @endif
-
-        <a href="{{ route('profesores.tutorias.index') }}"><button class="ver">Ver mis Tutorías</button></a>
+<a href="{{ route('profesores.tutorias.index', ['idpro' => $profesor->idpro]) }}">
+    <button class="crear">Ver Tutorias</button></a>
+</a>
         <a href="{{ route('profesores.tutorias.create') }}"><button class="crear">Crear Tutoría</button></a>
         <a href="{{ route('logout') }}"><button class="cerrar">Cerrar Sesión</button></a>
     </div>

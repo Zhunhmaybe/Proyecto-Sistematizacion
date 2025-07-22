@@ -58,6 +58,14 @@ Route::get('login', [AuthController::class, 'loginForm'])->name('login.form');
 Route::get('/estudiante/dashboard', [EstudianteController::class, 'dashboard'])->name('estudiante.dashboard');
 Route::get('/estudiante/matricula', [EstudianteController::class, 'mostrarFormularioMatricula'])->name('estudiante.matricula.form');
 Route::post('/estudiante/matricula', [EstudianteController::class, 'procesarMatricula'])->name('estudiante.matricula');
+Route::get('/estudiante/VerTutorias', [EstudianteController::class, 'verTutorias'])
+    ->name('estudiante.tutorias');
+Route::get('/estudiante/tutorias-inscritas', [EstudianteController::class, 'misTutorias'])
+    ->name('estudiante.tutorias.inscritas');
+Route::post('/estudiante/tutorias/inscribirse/{idtut}', [EstudianteController::class, 'inscribirseTutoria'])
+    ->name('estudiante.inscribirse.tutoria');
+Route::post('/estudiante/tutorias/inscribirse', [EstudianteController::class, 'inscribirseTutoria'])->name('estudiante.tutorias.inscribirse');
+
 // Rutas para estudiante
 Route::post('/estudiante/obtener-asignaturas-por-titulacion', [EstudianteController::class, 'obtenerAsignaturasPorTitulacion'])
     ->name('estudiante.obtenerAsignaturasPorTitulacion');
@@ -100,7 +108,6 @@ Route::put('/titulacion/{idtit}', [TitulacionController::class, 'update'])->name
 
 Route::resource('profesores', ProfesorController::class);
 
-
 Route::get('/dashboard/profesores', [ProfesorController::class, 'dashboard'])->name('profesor.dashboard');
 
 // Agrupa TODAS las rutas de profesor con el middleware
@@ -109,7 +116,6 @@ Route::middleware(['check.any.permission:profesor'])->prefix('profesor')->group(
     Route::get('/tutorias/crear', [TutoriaController::class, 'createFromProfesor'])->name('profesores.tutorias.create');
     Route::post('/tutorias', [TutoriaController::class, 'storeFromProfesor'])->name('profesores.tutorias.store');
 });
-
 
 
 Route::resource('pro_asi', ProAsiController::class);

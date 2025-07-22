@@ -28,13 +28,13 @@ class Tutoria extends Model
         return $this->belongsTo(Detallematricula::class, 'iddet');
     }
 
-    public function horario()
-    {
-        return $this->belongsTo(Horario::class, 'idhor');
-    }
     public function profesor()
     {
-        return $this->belongsTo(User::class, 'idpro');
+        return $this->belongsTo(Profesor::class, 'idprof', 'idprof');
     }
 
+    public function horario()
+    {
+        return $this->belongsTo(Horario::class, 'idhor', 'idhor');
+    }
 }

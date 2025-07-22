@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="{{asset('css/Profesores/Tutorias/index.css')}}">
 </head>
 <body>
-    <div class="container">
-    <h1>Mis Tutorías Programadas</h1>
+<div class="container">
+    <h1 class="mb-4">Mis Tutorías</h1>
 
-    <a href="{{ route('profesores.tutorias.create') }}"><button class="crear">Crear Tutoría</button></a>
-
-    <table border="1">
-        <thead>
+    <table class="table table-striped table-bordered">
+<thead>
             <tr>
                 <th>Día</th>
                 <th>Hora Inicio</th>
@@ -37,7 +35,7 @@
             @endforelse
         </tbody>
     </table>
-    <a href="{{ route('profesor.dashboard') }}"><button class="volver">Volver</button></a>
-    </div>
+        <a href="{{ route('profesor.dashboard') }}"><button class="cancel">Cancelar</button></a>
+</div>
 </body>
 </html>

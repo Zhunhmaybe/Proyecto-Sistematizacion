@@ -22,13 +22,14 @@ class Horario extends Model
         'horafin',
         'iddia',
     ];
-    
-    public function tutoria(){
-        return $this->hasMany(tutoria::class,'idhor');
+
+    public function tutoria()
+    {
+        return $this->hasMany(tutoria::class, 'idhor');
     }
 
     public function dia()
     {
-        return $this->belongsTo(Dia::class, 'iddia');
+        return $this->belongsTo(Dia::class, 'iddia', 'iddia');
     }
 }
